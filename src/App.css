@@ -1,0 +1,28 @@
+.container {
+  /* margin: 0 auto;
+  width: 1280px; */
+  background: grey;
+}
+
+header {
+  display: flex;
+ flex-flow: row nowrap;
+ justify-content: space-between;
+ padding: 20px;
+}
+
+header .left-menu {
+  display: flex;
+}
+
+header .left-menu .logo {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid red;
+}
+
+header .right-menu {
+  display: flex;
+}
