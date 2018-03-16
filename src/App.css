@@ -1,28 +1,107 @@
-.container {
-  /* margin: 0 auto;
-  width: 1280px; */
-  background: grey;
+.fixed-width {
+  margin: 0 auto;
+  width: 1280px;
 }
 
 header {
-  display: flex;
- flex-flow: row nowrap;
- justify-content: space-between;
- padding: 20px;
+ padding: 20px 0;
+ background: white;
+ -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
-header .left-menu {
-  display: flex;
+header::after {
+  content: '';
+  clear: both;
+  display: table;
 }
+
+header .logo-container {
+    display: inline-block;
+    width: 20%;
+    /* margin-right: -4px; */
+    /* border: 1px solid red; */
+}
+
+header nav {
+    display: inline-block;
+    width: 80%;
+    /* margin-right: -4px; */
+    color: white;
+    /* border: 1px solid blue; */
+}
+
+header nav ul {
+  padding: 0;
+  margin: 0;
+  text-align: right;
+}
+
+header nav ul li {
+    display: inline-block;
+    /* padding: 0 15px; */
+    text-align: right;
+}
+
+header .login-btn {
+  padding:  0 20px;
+  cursor: pointer;
+  border: none;
+  text-transform: uppercase;
+  background-color: #64B5F6;
+  border-radius: 2px;
+  color: white;
+}
+/* /HEADER */
+
 
 header .left-menu .logo {
   font-size: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid red;
+}
+
+header left-menu .logo img {
+  border: 1px solid blue;
+  padding: 10px;
 }
 
 header .right-menu {
-  display: flex;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    /* float: right; */
+}
+
+header .right-menu button {
+  padding: 0 20px;
+  cursor: pointer;
+  border: none;
+  text-transform: uppercase;
+  background-color: #64B5F6;
+  border-radius: 2px;
+}
+
+/* --- */
+section .bg {
+  /* background: red; */
+  padding: 125px 0;
+  /* border: 1px solid green; */
+  margin: 0;
+}
+
+.about-us-container {
+  background: #29b6f6;
+
+}
+.about-us {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* grid-gap: 20px; */
+  /* margin: 0 auto;
+  width: 1280px; */
+}
+
+footer {
+  /* background: rgba(51, 51, 51, 0.08); */
+  background-color: grey;
+  text-align: center;
+  padding: 15px 0;
 }
