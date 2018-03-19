@@ -1,29 +1,24 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 export default class Header extends React.Component {
   render(){
     return (
-      <header >
-        <div className='fixed-width container'>
-
+      <div className='header-background'>
+        <header className='fixed-width'>
           <div className="logo-container">
-              LOGO
-              {/* <img src="logo.png" alt="" /> */}
+            <NavLink exact to="/"><img src={ require("./images/logo.png") } alt="" /></NavLink>
           </div>
 
-              <nav>
-                <ul>
-                  <li className='login-btn'>
-                    <a href="#" >LOG INTO AN ORGANIZATION</a>
-                  </li>
-                  {/* <li>
-                    <a href="#">link 2</a>
-                  </li> */}
-                </ul>
-              </nav>
-
-        </div>
-      </header>
+          <nav>
+            <ul>
+              <li className='login-btn'>
+                <NavLink exact to="/adminView">LOG INTO AN ORGANIZATION</NavLink>
+              </li>
+            </ul>
+          </nav>
+        </header>
+      </div>
     );
   }
 }
