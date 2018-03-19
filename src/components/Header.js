@@ -12,9 +12,9 @@ export default class Header extends React.Component {
 
           <nav>
             <ul>
-              <li className='login-btn'>
-                <NavLink exact to="/adminView">LOG INTO AN ORGANIZATION</NavLink>
-              </li>
+              <NavLink exact to="/adminView">
+                <li className='login-btn'>LOG INTO AN ORGANIZATION</li>
+              </NavLink>
             </ul>
           </nav>
         </header>
