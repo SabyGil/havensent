@@ -7,7 +7,7 @@ export default class Header extends React.Component {
       <div className='header-background'>
         <header className='fixed-width'>
           <div className="logo-container">
-            <NavLink exact to="/"><img src={ require("./images/logo.png") } alt="" /></NavLink>
+            <NavLink exact to="/"><img src={ require("../styles/images/logo.png") } alt="" /></NavLink>
           </div>
 
           <nav>

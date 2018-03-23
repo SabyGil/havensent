@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
 
-export default class RequestScript extends Component {
+class RequestScript extends Component {
   render(){
     return(
       <div className='request-script-page'>
@@ -8,10 +9,10 @@ export default class RequestScript extends Component {
           <section className='script-container'>
             <h1>We already wrote a script for you!</h1>
             <div className=''>
-              Hi [Name of Haven] Administrators/Staff,
+              Hi {this.props.haven.title} Administrators/Staff,
               <br/>
               <br/>
-              My family and I have benefited from [Name of Haven]’s mission, and we are thankful for your dedication. However, we now need help with [service you need 1], [service you need 2], [service you need 3]. We strongly urge you to reach out to other organizations to provide these services for us so that we can continue to support [Name of Haven].
+              My family and I have benefited from {this.props.haven.title}’s mission, and we are thankful for your dedication. However, we now need help with these services, you need {this.props.requestedResources.map(i=>i.title)}. We strongly urge you to reach out to other organizations to provide these services for us so that we can continue to support {this.props.haven.title}.
               <br/>
               <br/>
               Thank you.
@@ -33,3 +34,9 @@ export default class RequestScript extends Component {
     );
   }
 }
+
+function mapStateToProps(state){
+  return state.request
+}
+
+export default connect(mapStateToProps)(RequestScript)
