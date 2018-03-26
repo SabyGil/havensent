@@ -51,6 +51,39 @@ class Request extends Component {
              </div>
 
           </section>
+          <section>
+            <h1>Demographics</h1>
+              <p>Gender</p>
+              <select>
+                <option>-Please Select-</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Transgender</option>
+                <option>None of the Above</option>
+              </select>
+              <p>Ethnicity</p>
+              <select>
+                <option>-Please Select-</option>
+                <option>Hispanic</option>
+                <option>Black</option>
+                <option>White</option>
+                <option>Latino or Spanish Origin</option>
+                <option>Middle Eastern</option>
+                <option>Other</option>
+              </select>
+              <p>Age</p>
+              <select>
+                <option>-Please Select-</option>
+                <option>13-17</option>
+                <option>18-24</option>
+                <option>25-34</option>
+                <option>35-44</option>
+                <option>45-54</option>
+                <option>55-64</option>
+                <option>65-74</option>
+                <option>75 or Above</option>
+              </select>
+          </section>
         </div>
       </div>
     );
