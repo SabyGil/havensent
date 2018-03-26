@@ -4,27 +4,48 @@ import {connect} from 'react-redux'
 import { getResources, getOrgs } from '../store/actions/requestActions'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 
+
+
 const MyMapComponent = withScriptjs(withGoogleMap((props) =>
   <GoogleMap
     defaultZoom={11}
     defaultCenter={{ lat: 40.730610, lng: -73.935242 }}
   >
-    {(props.isMarkerShown && props.organizations) && 
+    {(props.isMarkerShown && props.organizations) &&
     props.organizations.map(i=> <Marker onClick={()=>{props.dispatch({type:"PICK_HAVEN",payload:{id: i.id,title:i.username}})}} position={{ lat: parseFloat(i.organization.latitude), lng: parseFloat(i.organization.longitude) }} />)
   }
   </GoogleMap>
   ))
 
 class Request extends Component {
+  constructor(){
+    super();
+    this.state = {
+
+    }
+    this.loopIcons = this.loopIcons.bind(this);
+  }
   componentDidMount(){
     this.props.dispatch(getResources())
     this.props.dispatch(getOrgs())
+  }
+
+  loopIcons () {
+    const iconList = [
+       'https://www.hillaryclintonquarterly.com/wp-content/uploads/2015/09/groceries.jpg'
+    ];
+    console.log(iconList)
+    return iconList.map((icon, index) => {
+      return (
+        <img src={icon} key={index} alt='' height='100px'/>
+      );
+    })
   }
   render(){
     console.log(this.props)
     return (
       <div className='request-page'>
-        <div className='fixed-width'>
+        {/* <div className='fixed-width'> */}
 
           <section className='map-area'>
             <h1>Request Resources in NYC</h1>
@@ -34,13 +55,13 @@ class Request extends Component {
               dispatch={this.props.dispatch}
               googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
               loadingElement={<div style={{ height: `100%` }} />}
-              containerElement={<div style={{ height: `400px` }} />}
-              mapElement={<div style={{ height: `100%` }} />} 
+              containerElement={<div style={{ height: `700px`}} />}
+              mapElement={<div style={{ height: `100%` }} />}
               />
             </div>
           </section>
 
-          <section className='haven-info-container'>
+          <div className='haven-info-container top-box top-box-a'>
                 <h1>Resources</h1>
                  {
                   this.props.resources && this.props.resources.map(i=>
@@ -49,11 +70,12 @@ class Request extends Component {
              <div className='next-btn'>
                 <NavLink exact to='/requestscript'><button>Next</button></NavLink>
              </div>
+          </div>
 
-          </section>
-          <section>
-            <h1>Demographics</h1>
-              <p>Gender</p>
+          <div className='top-box top-box-b'>
+            {/* <h1>Demographics</h1> */}
+              {/* <p>Gender</p> */}
+              {this.loopIcons()}
               <select>
                 <option>-Please Select-</option>
                 <option>Male</option>
@@ -83,8 +105,8 @@ class Request extends Component {
                 <option>65-74</option>
                 <option>75 or Above</option>
               </select>
-          </section>
-        </div>
+          </div>
+        {/* </div> */}
       </div>
     );
   }
