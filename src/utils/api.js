@@ -16,7 +16,7 @@ let api = {
 		return axios.get(url)
 	},
 	makeRequest : function(data){
-		let url = baseURL + "Request"
+		let url = baseURL + "Request/"
 		return axios.post(url, data)
 	}
 }

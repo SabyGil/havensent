@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom';
 import {connect} from 'react-redux'
+import api from "../utils/api"
+import Modal from 'react-modal'
 import { getResources, getOrgs } from '../store/actions/requestActions'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 
@@ -12,7 +14,7 @@ const MyMapComponent = withScriptjs(withGoogleMap((props) =>
     defaultCenter={{ lat: 40.730610, lng: -73.935242 }}
   >
     {(props.isMarkerShown && props.organizations) &&
-    props.organizations.map(i=> <Marker onClick={()=>{props.dispatch({type:"PICK_HAVEN",payload:{id: i.id,title:i.username}})}} position={{ lat: parseFloat(i.organization.latitude), lng: parseFloat(i.organization.longitude) }} />)
+    props.organizations.map(i=> <Marker onClick={()=>{props.dispatch({type:"PICK_HAVEN",payload:{id: i.organization.id,title:i.username}})}} position={{ lat: parseFloat(i.organization.latitude), lng: parseFloat(i.organization.longitude) }} />)
   }
   </GoogleMap>
   ))
@@ -41,6 +43,26 @@ class Request extends Component {
       );
     })
   }
+  ready(){
+    if(this.props.haven && (this.props.requestedResources.length > 0) && this.props.age && this.props.gender && this.props.ethnicity){
+      return true
+    }else{
+      return false
+    }
+  }
+  sendRequest(){
+    let request = {
+      gender: this.props.gender,
+      age: this.props.age,
+      ethnicity: this.props.ethnicity,
+      requester_email: this.props.requester_email,
+      request_type: this.props.requestedResources.map(i=>i.id),
+      Organization: this.props.haven.id
+    }
+    console.log(request)
+    api.makeRequest(request)
+      .then(response=>console.log(response))
+  }
   render(){
     console.log(this.props)
     return (
@@ -68,52 +90,63 @@ class Request extends Component {
                 <h1>Resources</h1>
                  {
                   this.props.resources && this.props.resources.map(i=>
-                    <h2 value={i.id} onClick={(e)=>{this.props.dispatch({type:"ADD_TO_REQUEST",payload:{id: e.target.value,title:i.title}})}}>{i.title}</h2>
+                    <h2 value={i.id} onClick={(e)=>{this.props.dispatch({type:"ADD_TO_REQUEST",payload:{id: i.id,title:i.title}})}}>{i.title}</h2>
                   )}
-             <div className='next-btn'>
-                <NavLink exact to='/requestscript'><button>Next</button></NavLink>
-             </div>
            </div>
           </div>
 
           <div className='top-box top-box-b'>
             <div className='container'>
-
-            {/* <h1>Demographics</h1> */}
-              {/* <p>Gender</p> */}
               {this.loopIcons()}
               <br />
-              <select>
+              <p>Gender</p>
+              <select onChange={(e)=>{this.props.dispatch({type:"ADD_GENDER",payload:e.target.value})}}>
                 <option>-Please Select-</option>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Transgender</option>
-                <option>None of the Above</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Transgender">Transgender</option>
+                <option value="None">None of the Above</option>
               </select>
               <p>Ethnicity</p>
-              <select>
+              <select onChange={(e)=>{this.props.dispatch({type:"ADD_ETHNICITY",payload:e.target.value})}}>
                 <option>-Please Select-</option>
-                <option>Hispanic</option>
-                <option>Black</option>
-                <option>White</option>
-                <option>Latino or Spanish Origin</option>
-                <option>Middle Eastern</option>
-                <option>Other</option>
+                <option value="Hispanic">Hispanic</option>
+                <option value="Black">Black</option>
+                <option value="White">White</option>
+                <option value="Latino/Spanish">Latino or Spanish Origin</option>
+                <option value="Middle Eastern">Middle Eastern</option>
+                <option value="Other">Other</option>
               </select>
               <p>Age</p>
-              <select>
+              <select onChange={(e)=>{this.props.dispatch({type:"ADD_AGE",payload:e.target.value})}}>
                 <option>-Please Select-</option>
-                <option>13-17</option>
-                <option>18-24</option>
-                <option>25-34</option>
-                <option>35-44</option>
-                <option>45-54</option>
-                <option>55-64</option>
-                <option>65-74</option>
-                <option>75 or Above</option>
+                <option value="13-17">13-17</option>
+                <option value="18-24">18-24</option>
+                <option value="25-34">25-34</option>
+                <option value="35-44">35-44</option>
+                <option value="45-54">45-54</option>
+                <option value="55-64">55-64</option>
+                <option value="65-74">65-74</option>
+                <option value="75 or Above">75 or Above</option>
               </select>
+               <div className='next-btn'>
+                <button onClick={()=>this.props.dispatch({type:"OPEN_MODAL"})} disabled={this.ready()?false:true}>Submit</button>
+               </div>
+               <Modal
+                isOpen={this.props.modalIsOpen}
+                onRequestClose={()=>this.props.dispatch({type:"CLOSE_MODAL"})}
+              >
+                <button onClick={()=>this.props.dispatch({type:"CLOSE_MODAL"})}>close</button>
+                <div>
+                  <h1>You're almost done!</h1>
+                  <h2>Would you like to receive updates from this Haven?</h2>
+                  <input onChange={(e)=>this.props.dispatch({type:"ADD_EMAIL",payload:e.target.value})} type="email"/> <button onClick={()=>{this.sendRequest()}
+                  }>Submit</button>
+                  <button onClick={()=>this.sendRequest()}>No Thank You!</button>
+                </div>
+              </Modal>
+            </div>
           </div>
-        </div>
         {/* </div> */}
       </div>
     );

@@ -1,5 +1,7 @@
 const initialState ={
-	requestedResources: []
+	requestedResources: [],
+	requester_email: "",
+	modalIsOpen: false
 }
 export default function (state=initialState, action){
 	switch(action.type){
@@ -7,6 +9,12 @@ export default function (state=initialState, action){
 		return {
 			...state,
 			resources: action.response.data
+		}
+		case 'GET_ORGANIZATION':
+		return {
+			...state,
+			allOrganizations: action.response.data
+
 		}
 		case 'PICK_HAVEN':
 		return {
@@ -21,18 +29,36 @@ export default function (state=initialState, action){
 			requestedResources: state.requestedResources.concat(action.payload)
 
 		}
-		case 'GET_ORGANIZATION':
+		case "ADD_GENDER":
 		return {
 			...state,
-			allOrganizations: action.response.data
-
+			gender : action.payload
 		}
-
-		case 'REMOVE_FROM_REQUEST':
+		case "ADD_ETHNICITY":
 		return {
-
+			...state,
+			ethnicity : action.payload
 		}
-
+		case "ADD_AGE":
+		return {
+			...state,
+			age : action.payload
+		}
+		case "ADD_EMAIL":
+		return {
+			...state,
+			email : action.payload
+		}
+		case 'OPEN_MODAL':
+		return {
+			...state,
+			modalIsOpen:true
+		}
+		case 'CLOSE_MODAL':
+		return {
+			...state,
+			modalIsOpen:false
+		}
 		default:
 		return state;
 	}
