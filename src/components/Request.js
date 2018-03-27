@@ -46,8 +46,8 @@ class Request extends Component {
     return (
       <div className='request-page'>
         {/* <div className='fixed-width'> */}
-
           <section className='map-area'>
+            <div className='container'>
             <h1>Request Resources in NYC</h1>
             <div className='map-container'>
               <MyMapComponent isMarkerShown
@@ -55,13 +55,16 @@ class Request extends Component {
               dispatch={this.props.dispatch}
               googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
               loadingElement={<div style={{ height: `100%` }} />}
-              containerElement={<div style={{ height: `700px`}} />}
+              containerElement={<div style={{ height: `400px`}} />}
               mapElement={<div style={{ height: `100%` }} />}
               />
             </div>
+          </div>
           </section>
 
           <div className='haven-info-container top-box top-box-a'>
+            <div className='container'>
+
                 <h1>Resources</h1>
                  {
                   this.props.resources && this.props.resources.map(i=>
@@ -70,12 +73,16 @@ class Request extends Component {
              <div className='next-btn'>
                 <NavLink exact to='/requestscript'><button>Next</button></NavLink>
              </div>
+           </div>
           </div>
 
           <div className='top-box top-box-b'>
+            <div className='container'>
+
             {/* <h1>Demographics</h1> */}
               {/* <p>Gender</p> */}
               {this.loopIcons()}
+              <br />
               <select>
                 <option>-Please Select-</option>
                 <option>Male</option>
@@ -106,6 +113,7 @@ class Request extends Component {
                 <option>75 or Above</option>
               </select>
           </div>
+        </div>
         {/* </div> */}
       </div>
     );
