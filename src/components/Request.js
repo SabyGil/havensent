@@ -34,7 +34,10 @@ class Request extends Component {
 
   loopIcons () {
     const iconList = [
-       'https://www.hillaryclintonquarterly.com/wp-content/uploads/2015/09/groceries.jpg'
+       'https://www.hillaryclintonquarterly.com/wp-content/uploads/2015/09/groceries.jpg',
+       // 'https://www.hillaryclintonquarterly.com/wp-content/uploads/2015/09/groceries.jpg',
+       // 'https://www.hillaryclintonquarterly.com/wp-content/uploads/2015/09/groceries.jpg',
+       // 'https://www.hillaryclintonquarterly.com/wp-content/uploads/2015/09/groceries.jpg',
     ];
     console.log(iconList)
     return iconList.map((icon, index) => {
@@ -66,7 +69,7 @@ class Request extends Component {
   render(){
     console.log(this.props)
     return (
-      <div className='request-page'>
+      <div className='request-page fixed-width'>
         {/* <div className='fixed-width'> */}
           <section className='map-area'>
             <div className='container'>
@@ -77,7 +80,8 @@ class Request extends Component {
               dispatch={this.props.dispatch}
               googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
               loadingElement={<div style={{ height: `100%` }} />}
-              containerElement={<div style={{ height: `400px`}} />}
+              // containerElement={<div style={{ height: `400px`}} />}
+              containerElement={<div className='style' />}
               mapElement={<div style={{ height: `100%` }} />}
               />
             </div>
@@ -85,18 +89,18 @@ class Request extends Component {
           </section>
 
           <div className='haven-info-container top-box top-box-a'>
-            <div className='container'>
+            {/* <div className='container'> */}
 
                 <h1>Resources</h1>
                  {
                   this.props.resources && this.props.resources.map(i=>
                     <h2 value={i.id} onClick={(e)=>{this.props.dispatch({type:"ADD_TO_REQUEST",payload:{id: i.id,title:i.title}})}}>{i.title}</h2>
                   )}
-           </div>
+           {/* </div> */}
           </div>
 
           <div className='top-box top-box-b'>
-            <div className='container'>
+            {/* <div className='container'> */}
               {this.loopIcons()}
               <br />
               <p>Gender</p>
@@ -145,7 +149,7 @@ class Request extends Component {
                   <button onClick={()=>this.sendRequest()}>No Thank You!</button>
                 </div>
               </Modal>
-            </div>
+            {/* </div> */}
           </div>
         {/* </div> */}
       </div>
