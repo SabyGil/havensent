@@ -34,15 +34,22 @@ class Request extends Component {
 
   loopIcons () {
     const iconList = [
+      // test icons
        'https://www.hillaryclintonquarterly.com/wp-content/uploads/2015/09/groceries.jpg',
-       // 'https://www.hillaryclintonquarterly.com/wp-content/uploads/2015/09/groceries.jpg',
-       // 'https://www.hillaryclintonquarterly.com/wp-content/uploads/2015/09/groceries.jpg',
-       // 'https://www.hillaryclintonquarterly.com/wp-content/uploads/2015/09/groceries.jpg',
+       'https://www.hillaryclintonquarterly.com/wp-content/uploads/2015/09/groceries.jpg',
+       'https://www.hillaryclintonquarterly.com/wp-content/uploads/2015/09/groceries.jpg',
+       'https://www.hillaryclintonquarterly.com/wp-content/uploads/2015/09/groceries.jpg',
+       'https://www.hillaryclintonquarterly.com/wp-content/uploads/2015/09/groceries.jpg',
+       'https://www.hillaryclintonquarterly.com/wp-content/uploads/2015/09/groceries.jpg',
+       'https://www.hillaryclintonquarterly.com/wp-content/uploads/2015/09/groceries.jpg',
+       'https://www.hillaryclintonquarterly.com/wp-content/uploads/2015/09/groceries.jpg',
     ];
     console.log(iconList)
     return iconList.map((icon, index) => {
       return (
-        <img src={icon} key={index} alt='' height='100px'/>
+        <div className='' key={index}>
+          <img src={icon}  alt='' />
+        </div>
       );
     })
   }
@@ -70,7 +77,6 @@ class Request extends Component {
     console.log(this.props)
     return (
       <div className='request-page fixed-width'>
-        {/* <div className='fixed-width'> */}
           <section className='map-area'>
             <div className='container'>
             <h1>Request Resources in NYC</h1>
@@ -80,7 +86,6 @@ class Request extends Component {
               dispatch={this.props.dispatch}
               googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
               loadingElement={<div style={{ height: `100%` }} />}
-              // containerElement={<div style={{ height: `400px`}} />}
               containerElement={<div className='style' />}
               mapElement={<div style={{ height: `100%` }} />}
               />
@@ -89,19 +94,17 @@ class Request extends Component {
           </section>
 
           <div className='haven-info-container top-box top-box-a'>
-            {/* <div className='container'> */}
-
-                <h1>Resources</h1>
-                 {
-                  this.props.resources && this.props.resources.map(i=>
-                    <h2 value={i.id} onClick={(e)=>{this.props.dispatch({type:"ADD_TO_REQUEST",payload:{id: i.id,title:i.title}})}}>{i.title}</h2>
-                  )}
-           {/* </div> */}
+            <h1>Resources</h1>
+             {
+              this.props.resources && this.props.resources.map(i=>
+                <h2 value={i.id} onClick={(e)=>{this.props.dispatch({type:"ADD_TO_REQUEST",payload:{id: i.id,title:i.title}})}}>{i.title}</h2>
+              )}
           </div>
 
           <div className='top-box top-box-b'>
-            {/* <div className='container'> */}
+            <div className='icons'>
               {this.loopIcons()}
+            </div>
               <br />
               <p>Gender</p>
               <select onChange={(e)=>{this.props.dispatch({type:"ADD_GENDER",payload:e.target.value})}}>
@@ -149,9 +152,7 @@ class Request extends Component {
                   <button onClick={()=>this.sendRequest()}>No Thank You!</button>
                 </div>
               </Modal>
-            {/* </div> */}
           </div>
-        {/* </div> */}
       </div>
     );
   }
