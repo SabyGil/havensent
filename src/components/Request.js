@@ -77,8 +77,8 @@ class Request extends Component {
     console.log(this.props)
     return (
       <div className='request-page fixed-width'>
-          <section className='map-area'>
-            <div className='container'>
+        <section className='map-area'>
+          <div className='container'>
             <h1>Request Resources in NYC</h1>
             <div className='map-container'>
               <MyMapComponent isMarkerShown
@@ -91,68 +91,68 @@ class Request extends Component {
               />
             </div>
           </div>
-          </section>
+        </section>
 
-          <div className='haven-info-container top-box top-box-a'>
-            <h1>Resources</h1>
-             {
-              this.props.resources && this.props.resources.map(i=>
-                <h2 value={i.id} onClick={(e)=>{this.props.dispatch({type:"ADD_TO_REQUEST",payload:{id: i.id,title:i.title}})}}>{i.title}</h2>
-              )}
+        <div className='haven-info-container top-box top-box-a'>
+          <h1>Resources</h1>
+           {
+            this.props.resources && this.props.resources.map(i=>
+              <h2 value={i.id} onClick={(e)=>{this.props.dispatch({type:"ADD_TO_REQUEST",payload:{id: i.id,title:i.title}})}}>{i.title}</h2>
+            )}
+        </div>
+
+        <div className='top-box top-box-b'>
+          <div className='icons'>
+            {this.loopIcons()}
           </div>
-
-          <div className='top-box top-box-b'>
-            <div className='icons'>
-              {this.loopIcons()}
-            </div>
-              <br />
-              <p>Gender</p>
-              <select onChange={(e)=>{this.props.dispatch({type:"ADD_GENDER",payload:e.target.value})}}>
-                <option>-Please Select-</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Transgender">Transgender</option>
-                <option value="None">None of the Above</option>
-              </select>
-              <p>Ethnicity</p>
-              <select onChange={(e)=>{this.props.dispatch({type:"ADD_ETHNICITY",payload:e.target.value})}}>
-                <option>-Please Select-</option>
-                <option value="Hispanic">Hispanic</option>
-                <option value="Black">Black</option>
-                <option value="White">White</option>
-                <option value="Latino/Spanish">Latino or Spanish Origin</option>
-                <option value="Middle Eastern">Middle Eastern</option>
-                <option value="Other">Other</option>
-              </select>
-              <p>Age</p>
-              <select onChange={(e)=>{this.props.dispatch({type:"ADD_AGE",payload:e.target.value})}}>
-                <option>-Please Select-</option>
-                <option value="13-17">13-17</option>
-                <option value="18-24">18-24</option>
-                <option value="25-34">25-34</option>
-                <option value="35-44">35-44</option>
-                <option value="45-54">45-54</option>
-                <option value="55-64">55-64</option>
-                <option value="65-74">65-74</option>
-                <option value="75 or Above">75 or Above</option>
-              </select>
-               <div className='next-btn'>
-                <button onClick={()=>this.props.dispatch({type:"OPEN_MODAL"})} disabled={this.ready()?false:true}>Submit</button>
-               </div>
-               <Modal
-                isOpen={this.props.modalIsOpen}
-                onRequestClose={()=>this.props.dispatch({type:"CLOSE_MODAL"})}
+            <br />
+            <p>Gender</p>
+            <select onChange={(e)=>{this.props.dispatch({type:"ADD_GENDER",payload:e.target.value})}}>
+              <option>-Please Select-</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Transgender">Transgender</option>
+              <option value="None">None of the Above</option>
+            </select>
+            <p>Ethnicity</p>
+            <select onChange={(e)=>{this.props.dispatch({type:"ADD_ETHNICITY",payload:e.target.value})}}>
+              <option>-Please Select-</option>
+              <option value="Hispanic">Hispanic</option>
+              <option value="Black">Black</option>
+              <option value="White">White</option>
+              <option value="Latino/Spanish">Latino or Spanish Origin</option>
+              <option value="Middle Eastern">Middle Eastern</option>
+              <option value="Other">Other</option>
+            </select>
+            <p>Age</p>
+            <select onChange={(e)=>{this.props.dispatch({type:"ADD_AGE",payload:e.target.value})}}>
+              <option>-Please Select-</option>
+              <option value="13-17">13-17</option>
+              <option value="18-24">18-24</option>
+              <option value="25-34">25-34</option>
+              <option value="35-44">35-44</option>
+              <option value="45-54">45-54</option>
+              <option value="55-64">55-64</option>
+              <option value="65-74">65-74</option>
+              <option value="75 or Above">75 or Above</option>
+            </select>
+             <div className='next-btn'>
+              <button onClick={()=>this.props.dispatch({type:"OPEN_MODAL"})} disabled={this.ready()?false:true}>Submit</button>
+             </div>
+             <Modal
+              isOpen={this.props.modalIsOpen}
+              onRequestClose={()=>this.props.dispatch({type:"CLOSE_MODAL"})}
               >
-                <button onClick={()=>this.props.dispatch({type:"CLOSE_MODAL"})}>close</button>
-                <div>
-                  <h1>You're almost done!</h1>
-                  <h2>Would you like to receive updates from {this.props.haven && this.props.haven.title}?</h2>
-                  <input onChange={(e)=>this.props.dispatch({type:"ADD_EMAIL",payload:e.target.value})} type="email"/> <button onClick={()=>{this.sendRequest()}
-                  }>Submit</button>
-                  <button onClick={()=>this.sendRequest()}>No Thank You!</button>
-                </div>
-              </Modal>
-          </div>
+              <button onClick={()=>this.props.dispatch({type:"CLOSE_MODAL"})}>close</button>
+              <div>
+                <h1>You're almost done!</h1>
+                <h2>Would you like to receive updates from {this.props.haven && this.props.haven.title}?</h2>
+                <input onChange={(e)=>this.props.dispatch({type:"ADD_EMAIL",payload:e.target.value})} type="email"/> <button onClick={()=>{this.sendRequest()}
+                }>Submit</button>
+                <button onClick={()=>this.sendRequest()}>No Thank You!</button>
+              </div>
+            </Modal>
+        </div>
       </div>
     );
   }
