@@ -6,7 +6,7 @@ import Request from './components/Request';
 import Footer from './components/Footer';
 import AdminView from './components/AdminView';
 
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 class App extends Component {
   render() {
