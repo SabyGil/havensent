@@ -15,12 +15,6 @@ export default class Request extends Component {
                 and more in our communities.
               </p>
             </div>
-
-            <div className='about-us-col social-media'>
-              <span>Social</span>
-              <br />
-              <span>Facebook</span>
-            </div>
           </section>
         </div>
 

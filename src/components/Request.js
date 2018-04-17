@@ -25,34 +25,12 @@ class Request extends Component {
     this.state = {
 
     }
-    this.loopIcons = this.loopIcons.bind(this);
   }
   componentDidMount(){
     this.props.dispatch(getResources())
     this.props.dispatch(getOrgs())
   }
 
-  loopIcons () {
-    const iconList = [
-      // test icons
-       'https://www.hillaryclintonquarterly.com/wp-content/uploads/2015/09/groceries.jpg',
-       'https://www.hillaryclintonquarterly.com/wp-content/uploads/2015/09/groceries.jpg',
-       'https://www.hillaryclintonquarterly.com/wp-content/uploads/2015/09/groceries.jpg',
-       'https://www.hillaryclintonquarterly.com/wp-content/uploads/2015/09/groceries.jpg',
-       'https://www.hillaryclintonquarterly.com/wp-content/uploads/2015/09/groceries.jpg',
-       'https://www.hillaryclintonquarterly.com/wp-content/uploads/2015/09/groceries.jpg',
-       'https://www.hillaryclintonquarterly.com/wp-content/uploads/2015/09/groceries.jpg',
-       'https://www.hillaryclintonquarterly.com/wp-content/uploads/2015/09/groceries.jpg',
-    ];
-    console.log(iconList)
-    return iconList.map((icon, index) => {
-      return (
-        <div className='' key={index}>
-          <img src={icon}  alt='' />
-        </div>
-      );
-    })
-  }
   ready(){
     if(this.props.haven && (this.props.requestedResources.length > 0) && this.props.age && this.props.gender && this.props.ethnicity){
       return true
@@ -93,18 +71,18 @@ class Request extends Component {
           </div>
         </section>
 
-        <div className='haven-info-container top-box top-box-a'>
-          <h1>Resources</h1>
-           {
-            this.props.resources && this.props.resources.map(i=>
-              <h2 value={i.id} onClick={(e)=>{this.props.dispatch({type:"ADD_TO_REQUEST",payload:{id: i.id,title:i.title}})}}>{i.title}</h2>
-            )}
+        <div className='haven-info-container top-box top-box-b'>
+          <h1>I NEED</h1>
+          <div className='icons'>
+            {
+              this.props.resources && this.props.resources.map(i=>
+                <img className="icon" style={{cursor:"pointer"}} src={i.icon} value={i.id}  height='100px' onClick={(e)=>{this.props.dispatch({type:"ADD_TO_REQUEST",payload:{id: i.id,title:i.title}})}} />
+                )}
+          </div>
         </div>
 
-        <div className='top-box top-box-b'>
-          <div className='icons'>
-            {this.loopIcons()}
-          </div>
+        <div className='top-box top-box-a'>
+         
             <br />
             <p>Gender</p>
             <select onChange={(e)=>{this.props.dispatch({type:"ADD_GENDER",payload:e.target.value})}}>

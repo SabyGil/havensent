@@ -18,6 +18,14 @@ let api = {
 	makeRequest : function(data){
 		let url = baseURL + "Request/"
 		return axios.post(url, data)
+	},
+	register : function(data){
+		let url = baseURL + "User"
+		return axios.post(url, data)
+	},
+	login : function(data){
+		let url = baseURL + "api/login/"
+		return axios.post(url, data)
 	}
 }
 
