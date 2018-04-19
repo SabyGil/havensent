@@ -11,6 +11,7 @@ body {
   --dark: #333;
   --light: #fff;
   --shadow: 0 1px 5px rgba(104, 104, 104, 0.8); */
+  --primary-blue: #64B5F6;
 }
 
 .fixed-width {
@@ -226,7 +227,7 @@ footer {
   outline: none;
 }
 
-/* /Request *//
+/* /Request */
 
 /* AdminView */
 
@@ -278,6 +279,65 @@ footer {
 }
 
 /* /AdminView */
+
+/* header modal */
+.modal-styles-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .7);
+  margin: 0 auto;
+  width: 1200px;
+  color: white;
+}
+
+/* request modal */
+.modal-styles {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .7);
+  position: relative;
+}
+
+.modal-styles .modal-content {
+  width: 1000px;
+  border: 1px solid silver;
+  border-radius: 5px;
+  padding: 250px 50px;
+  align-items: center;
+}
+
+.modal-styles .close-button {
+  position: absolute;
+  right: -20px;
+  top: -25px;
+  font-size: 3rem;
+  border-radius: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--primary-blue);
+}
+
+.modal-styles .modal-content input {
+  margin-top: 1rem;
+}
+
+.modal-styles .modal-content button:not(.close-button) {
+  border: 1px solid #777;
+  width: 200px;
+  padding: 1.5rem;
+  background: transparent;
+  margin-top: 1rem;
+}
+
+.modal-styles .modal-content button:not(.close-button):hover {
+  background-color: var(--primary-blue);
+}
 
 @media (max-width: 768px) {
   .header-background header {

@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom';
 import {connect} from 'react-redux'
 import {login,register} from "../store/actions/userActions"
 import Modal from 'react-modal'
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+
 
 class Header extends React.Component {
   constructor(){
@@ -51,14 +53,21 @@ class Header extends React.Component {
         </header>
         <Modal
           isOpen={this.props.loginModalIsOpen}
+          className='modal-styles-header'
           onRequestClose={()=>this.props.dispatch({type:"CLOSE_LOGIN_MODAL"})}
-        >
-          <div>
-            <label>Username</label>
-            <input onChange={this.handleChange} name="username" type="text" />
-            <label>Password</label>
-            <input onChange={this.handleChange} name="password" type="password" />
-            <input onClick={this.handleSubmit} type="submit" />
+          >
+          <div className='login'>
+           <Form>
+            <FormGroup>
+              <Label for="username">Username:</Label>
+              <Input onChange={this.handleChange} name="username" type="text" placeholder="Username" />
+            </FormGroup>
+            <FormGroup>
+              <Label for="password">Password:</Label>
+              <Input type="password" name="password" placeholder="Password" />
+            </FormGroup>
+            <Button onClick={this.handleSubmit}>Submit</Button>
+          </Form>
           </div>
         </Modal>
       </div>
