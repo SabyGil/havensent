@@ -54,6 +54,7 @@ class Header extends React.Component {
         <Modal
           isOpen={this.props.loginModalIsOpen}
           className='modal-styles-header'
+          overlayClassName='overlay'
           onRequestClose={()=>this.props.dispatch({type:"CLOSE_LOGIN_MODAL"})}
           >
           <div className='login'>

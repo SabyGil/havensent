@@ -120,6 +120,7 @@ class Request extends Component {
              <Modal
               isOpen={this.props.modalIsOpen}
               className='modal-styles'
+              overlayClassName='overlay'
               onRequestClose={()=>this.props.dispatch({type:"CLOSE_MODAL"})}
               >
               <div className='modal-content'>

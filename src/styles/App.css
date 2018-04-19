@@ -281,34 +281,56 @@ footer {
 /* /AdminView */
 
 /* header modal */
+.overlay {
+  position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: rgba(0, 0, 0, .7);
+}
+
 .modal-styles-header {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  background-color: rgba(0, 0, 0, .7);
-  margin: 0 auto;
-  width: 1200px;
-  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 700px;
+  background-color: white;
+  min-width: 1200px;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
 }
 
 /* request modal */
 .modal-styles {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  background-color: rgba(0, 0, 0, .7);
-  position: relative;
-}
-
-.modal-styles .modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 700px;
+  background-color: white;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
   width: 1000px;
   border: 1px solid silver;
   border-radius: 5px;
-  padding: 250px 50px;
+  z-index: -1;
+}
+
+.modal-styles .modal-content {
+  height: 100%;
+  width: 100%;
+  display: flex;
   align-items: center;
+  justify-content: center;
+  /* align-items: center; */
 }
 
 .modal-styles .close-button {
