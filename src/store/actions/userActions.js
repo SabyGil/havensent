@@ -21,3 +21,10 @@ export function register(data){
 		.then(response=>
 			disptach({type:"REGISTER_SUCCESS",response}))
 }
+
+export function getRequests(){
+	return disptach => api.getRequests()
+		.then(response=>
+			disptach({type:"ALL_REQUESTS",response}))
+		.catch(err=>console.log(err))
+}

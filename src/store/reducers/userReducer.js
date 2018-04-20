@@ -2,7 +2,8 @@ const initialState ={
 	isLoggedIn: false,
 	signUpSuccess: false,
 	loginModalIsOpen:false,
-	loginFailed: false
+	loginFailed: false,
+	allRequests: []
 }
 export default function (state=initialState, action){
 	switch(action.type){
@@ -22,6 +23,12 @@ export default function (state=initialState, action){
 		return {
 			...state,
 			loginFailed: true
+		}
+		case 'ALL_REQUESTS':
+		return {
+			...state,
+			allRequests: action.response.data
+
 		}
 		case "OPEN_LOGIN_MODAL":
 		return{

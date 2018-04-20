@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux'
+import {getRequests} from "../store/actions/userActions"
+import {getResources} from "../store/actions/requestActions"
+import { Link } from 'react-router-dom';
 
-export default class AdminView extends Component {
+class AdminView extends Component {
+  componentDidMount(){
+    this.props.dispatch(getRequests())
+    this.props.dispatch(getResources())
+  }
+
   render(){
+    console.log(this.props)
     return (
       <div className='admin-view-page'>
         <div className='fixed-width'>
@@ -17,51 +27,15 @@ export default class AdminView extends Component {
                     <th> <div className=" center">Number of requests</div></th>
                     <th> <div className=" right"></div></th>
                   </tr>
-                  <tr>
-                    <th><div className=" ">Food Pantry</div></th>
-                    <th> <div className=" center ">3</div></th>
-                    <th> <div className=" right"><a href="" className="waves-effect waves-light btn">Find Services</a></div></th>
-                  </tr>
-                  <tr>
-                    <th><div className=" ">Food Benefits</div></th>
-                    <th> <div className=" center">2</div></th>
-                    <th> <div className=" right"><a className="waves-effect waves-light btn">Find Services</a></div></th>
-                  </tr>
-                  <tr>
-                    <th><div className=" ">Paying Utilities and Rent</div></th>
-                    <th> <div className=" center ">1</div></th>
-                    <th> <div className=" right"><a className="waves-effect waves-light btn">Find Services</a></div></th>
-                  </tr>
-                  <tr>
-                    <th><div className=" ">Immigration Services</div></th>
-                    <th> <div className=" center">10</div></th>
-                    <th> <div className=" right"><a href="findServices.html" className="waves-effect waves-light btn">Find Services</a></div></th>
-                  </tr>
-                  <tr>
-                    <th><div className=" ">Medical Screening</div></th>
-                    <th> <div className=" center">3</div></th>
-                    <th> <div className=" right"><a className="waves-effect waves-light btn">Find Services</a></div></th>
-                  </tr>
-                  <tr>
-                    <th><div className=" ">Dental Screening</div></th>
-                    <th> <div className=" center">6</div></th>
-                    <th> <div className=" right"><a className="waves-effect waves-light btn">Find Services</a></div></th>
-                  </tr>
-                  <tr>
-                    <th><div className=" s4 ">College Information</div></th>
-                    <th> <div className=" s10 center">9</div></th>
-                    <th> <div className=" s10 right"><a className="waves-effect waves-light btn">Find Services</a></div></th>
-                  </tr>
-                   <tr>
-                    <th><div className=" s4 ">Other</div></th>
-                    <th> <div className=" s10 center">0</div></th>
-                    <th> <div className=" s10 right"><a className="waves-effect waves-light btn">Find Services</a></div></th>
-                  </tr>
-                   <tr>
-                    <th><div className=" s4 ">Total</div></th>
-                    <th> <div className=" s10 center">34</div></th>
-                    <th> <div className=" s10 right"></div></th>
-                  </tr>
+                  {
+                    this.props.resources.map(i=>{
+                      let resource = this.props.requests.filter(req=>req.request_type.includes(i.id))
+                      return(<tr>
+                              <td><div><Link to={{ pathname: '/graphView',state: { resource: resource,title:i.title }}}>{i.title}</Link></div></td>
+                              <td><div className=" center">{resource.length}</div></td>
+                              <td><div className=" right">Find Services</div></td>
+                            </tr>)}
+                      )}
                 </tbody>
               </table>
             </div>
@@ -72,3 +46,13 @@ export default class AdminView extends Component {
     );
   }
 }
+
+AdminView.defaultProps ={
+  resources:[],
+  requests:[]
+}
+function mapStateToProps(state){
+  return {requests: state.user.allRequests,resources:state.request.resources}
+}
+
+export default connect(mapStateToProps)(AdminView)

@@ -5,6 +5,7 @@ import LandingPage from './components/LandingPage';
 import Request from './components/Request';
 import Footer from './components/Footer';
 import AdminView from './components/AdminView';
+import GraphView from './components/GraphView';
 
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 
@@ -17,6 +18,7 @@ class App extends Component {
           <Route exact path='/' component={LandingPage}/>
           <Route exact path='/request' component={Request}/>
           <Route exact path='/adminView' component={AdminView}/>
+          <Route exact path='/graphView' component={GraphView}/>
           <Footer />
         </div>
       </Router>

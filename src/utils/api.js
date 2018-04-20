@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const baseURL = "http://127.0.0.1:8000/"
 var header = function(){
-	return {headers: {'x-access-token': localStorage.getItem("token")}}
+	return {headers: {'Authorization': "JWT " + localStorage.getItem("token")}}
 }
 
 
@@ -26,6 +26,10 @@ let api = {
 	login : function(data){
 		let url = baseURL + "api/login/"
 		return axios.post(url, data)
+	},
+	getRequests : function(data){
+		let url = baseURL + "Request/"
+		return axios.get(url, header())
 	}
 }
 
