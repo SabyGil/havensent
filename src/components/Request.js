@@ -127,7 +127,7 @@ class Request extends Component {
                 <button className='close-button' onClick={()=>this.props.dispatch({type:"CLOSE_MODAL"})}><i className="fas fa-times-circle"></i></button>
                 <h1>You're almost done!</h1>
                 <h2>Would you like to receive updates from {this.props.haven && this.props.haven.title}?</h2>
-                <input onChange={(e)=>this.props.dispatch({type:"ADD_EMAIL",payload:e.target.value})} type="email" placeholder='Haven name...'/>
+                <input onChange={(e)=>this.props.dispatch({type:"ADD_EMAIL",payload:e.target.value})} type="email" placeholder='Enter Email...'/>
                 <button onClick={()=>this.sendRequest()}>No Thank You!</button>
                 <button onClick={()=>{this.sendRequest()}}>Submit</button>
               </div>

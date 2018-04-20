@@ -65,7 +65,7 @@ class Header extends React.Component {
             </FormGroup>
             <FormGroup>
               <Label for="password">Password:</Label>
-              <Input type="password" name="password" placeholder="Password" />
+              <Input onChange={this.handleChange} type="password" name="password" placeholder="Password" />
             </FormGroup>
             <Button onClick={this.handleSubmit}>Submit</Button>
           </Form>
