@@ -82,7 +82,7 @@ class Request extends Component {
         </div>
 
         <div className='top-box top-box-a'>
-         
+
             <br />
             <p>Gender</p>
             <select onChange={(e)=>{this.props.dispatch({type:"ADD_GENDER",payload:e.target.value})}}>
@@ -119,15 +119,17 @@ class Request extends Component {
              </div>
              <Modal
               isOpen={this.props.modalIsOpen}
+              className='modal-styles'
+              overlayClassName='overlay'
               onRequestClose={()=>this.props.dispatch({type:"CLOSE_MODAL"})}
               >
-              <button onClick={()=>this.props.dispatch({type:"CLOSE_MODAL"})}>close</button>
-              <div>
+              <div className='modal-content'>
+                <button className='close-button' onClick={()=>this.props.dispatch({type:"CLOSE_MODAL"})}><i className="fas fa-times-circle"></i></button>
                 <h1>You're almost done!</h1>
                 <h2>Would you like to receive updates from {this.props.haven && this.props.haven.title}?</h2>
-                <input onChange={(e)=>this.props.dispatch({type:"ADD_EMAIL",payload:e.target.value})} type="email"/> <button onClick={()=>{this.sendRequest()}
-                }>Submit</button>
+                <input onChange={(e)=>this.props.dispatch({type:"ADD_EMAIL",payload:e.target.value})} type="email" placeholder='Haven name...'/>
                 <button onClick={()=>this.sendRequest()}>No Thank You!</button>
+                <button onClick={()=>{this.sendRequest()}}>Submit</button>
               </div>
             </Modal>
         </div>

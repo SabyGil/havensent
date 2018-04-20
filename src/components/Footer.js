@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 export default class Request extends Component {
   render(){
     return (
-      <div>
         <div className='about-us-container'>
           <section className='about-us fixed-width'>
             <div className='about-us-col'>
@@ -15,8 +14,11 @@ export default class Request extends Component {
                 and more in our communities.
               </p>
             </div>
+
+            <div className='about-us-col social-media'>
+              <span><i className="fab fa-facebook"></i></span>
+            </div>
           </section>
-        </div>
 
         <footer>
           <span>©2018 Havensent</span>
