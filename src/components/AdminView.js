@@ -18,7 +18,7 @@ class AdminView extends Component {
         {/* <!--   Icon Section   --> */}
           <section className='requests-display'>
             <div className="">
-              <h5 className='center'>Requests received for Dolores Mission Church</h5>
+              <h5 className='center'>Requests received</h5>
               <br/>
               <table className='center'>
                 <tbody>
@@ -36,6 +36,11 @@ class AdminView extends Component {
                               <td><div className=" right">Find Services</div></td>
                             </tr>)}
                       )}
+                  <tr>
+                    <td>TOTAL</td>
+                    <td className=" center">{this.props.requests.length}</td>
+                    <td className=" right"> </td>
+                  </tr>
                 </tbody>
               </table>
             </div>

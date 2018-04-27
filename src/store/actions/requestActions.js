@@ -11,3 +11,7 @@ export function getOrgs(){
 		.then(response=>
 			disptach({type:"GET_ORGANIZATION",response}))
 }
+
+export function closeModal(){
+	return disptach => disptach({type:"CLOSE_MODAL"})
+}
