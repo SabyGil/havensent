@@ -3,21 +3,56 @@ import { NavLink } from 'react-router-dom';
 import {connect} from 'react-redux'
 import api from "../utils/api"
 import Modal from 'react-modal'
+import { compose, withProps, withStateHandlers } from "recompose"
 import { getResources, getOrgs } from '../store/actions/requestActions'
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps"
 
 
 
-const MyMapComponent = withScriptjs(withGoogleMap((props) =>
+const MyMapComponent = compose(
+  withStateHandlers((props) => ((function(){
+    console.log(props)
+    let obj = {}
+    for(let i=0;i<props.organizations.length; i++){
+      obj["open "+ i] = false
+      console.log(obj)
+    }
+    console.log(obj)
+    return obj
+  })()), {
+    onToggleOpen: () => (b,k) => {
+      if(b){
+        return{
+          ["open "+k] : false
+        }}
+      else{
+          return{ 
+            ["open "+k] : true
+          }
+        }
+      }
+  }),
+  withScriptjs,
+  withGoogleMap)
+  (props =>
   <GoogleMap
     defaultZoom={11}
     defaultCenter={{ lat: 40.730610, lng: -73.935242 }}
   >
     {(props.isMarkerShown && props.organizations) &&
-    props.organizations.map(i=> <Marker onClick={()=>{props.dispatch({type:"PICK_HAVEN",payload:{id: i.organization.id,title:i.username}})}} position={{ lat: parseFloat(i.organization.latitude), lng: parseFloat(i.organization.longitude) }} />)
+    props.organizations.map((i,k)=> 
+      <Marker onClick={()=>{props.dispatch({type:"PICK_HAVEN",payload:{id: i.organization.id,title:i.username}})}} position={{ lat: parseFloat(i.organization.latitude), lng: parseFloat(i.organization.longitude) }}
+        onMouseOver={()=>props.onToggleOpen(props["open "+k],k)}
+        onMouseOut={()=>props.onToggleOpen(props["open "+k],k)}>
+     {props["open "+k] && <InfoWindow>
+        <h1>YO !!!</h1>
+      </InfoWindow>} 
+
+      </Marker>
+      )
   }
   </GoogleMap>
-  ))
+  )
 
 class Request extends Component {
   constructor(){
@@ -26,7 +61,7 @@ class Request extends Component {
 
     }
   }
-  componentDidMount(){
+  componentWillMount(){
     this.props.dispatch(getResources())
     this.props.dispatch(getOrgs())
   }
@@ -59,14 +94,15 @@ class Request extends Component {
           <div className='container'>
             <h1>Request Resources in NYC</h1>
             <div className='map-container'>
-              <MyMapComponent isMarkerShown
-              organizations = {this.props.allOrganizations && this.props.allOrganizations.filter(i=> i.organization != null )}
-              dispatch={this.props.dispatch}
-              googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
-              loadingElement={<div style={{ height: `100%` }} />}
-              containerElement={<div className='style' />}
-              mapElement={<div style={{ height: `100%` }} />}
-              />
+              {this.props.allOrganizations.length>0 && <MyMapComponent isMarkerShown
+                            organizations = {this.props.allOrganizations && this.props.allOrganizations.filter(i=> i.organization != null )}
+                            dispatch={this.props.dispatch}
+                            googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+                            loadingElement={<div style={{ height: `100%` }} />}
+                            containerElement={<div className='style' />}
+                            mapElement={<div style={{ height: `100%` }} 
+                           />}
+                            />}
             </div>
           </div>
         </section>

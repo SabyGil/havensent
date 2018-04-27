@@ -1,4 +1,5 @@
 const initialState ={
+	allOrganizations: [],
 	requestedResources: [],
 	requester_email: "",
 	modalIsOpen: false
