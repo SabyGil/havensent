@@ -26,7 +26,7 @@ const MyMapComponent = compose(
           ["open "+k] : false
         }}
       else{
-          return{ 
+          return{
             ["open "+k] : true
           }
         }
@@ -40,13 +40,13 @@ const MyMapComponent = compose(
     defaultCenter={{ lat: 40.730610, lng: -73.935242 }}
   >
     {(props.isMarkerShown && props.organizations) &&
-    props.organizations.map((i,k)=> 
+    props.organizations.map((i,k)=>
       <Marker onClick={()=>{props.dispatch({type:"PICK_HAVEN",payload:{id: i.organization.id,title:i.username}})}} position={{ lat: parseFloat(i.organization.latitude), lng: parseFloat(i.organization.longitude) }}
         onMouseOver={()=>props.onToggleOpen(props["open "+k],k)}
         onMouseOut={()=>props.onToggleOpen(props["open "+k],k)}>
      {props["open "+k] && <InfoWindow>
         <p>{i.username}</p>
-      </InfoWindow>} 
+      </InfoWindow>}
 
       </Marker>
       )
@@ -92,7 +92,7 @@ class Request extends Component {
       <div className='request-page fixed-width'>
         <section className='map-area'>
           <div className='container'>
-            <h1>Request Resources in NYC</h1>
+            <h1>At</h1>
             <div className='map-container'>
               {this.props.allOrganizations.length>0 && <MyMapComponent isMarkerShown
                             organizations = {this.props.allOrganizations && this.props.allOrganizations.filter(i=> i.organization != null )}
@@ -100,7 +100,7 @@ class Request extends Component {
                             googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
                             loadingElement={<div style={{ height: `100%` }} />}
                             containerElement={<div className='style' />}
-                            mapElement={<div style={{ height: `100%` }} 
+                            mapElement={<div style={{ height: `100%` }}
                            />}
                             />}
             </div>
@@ -112,14 +112,14 @@ class Request extends Component {
           <div className='icons'>
             {
               this.props.resources && this.props.resources.map(i=>{
-                let bgColor = this.props.requestedResources.filter(j=>j.title==i.title).length>0?"red":""
+                let bgColor = this.props.requestedResources.filter(j=>j.title==i.title).length>0?"#03a9f4":""
                  return(
                   <span className="iconWrap">
-                   <p className="iconTitle">{i.title}</p>
-                   <img className="icon" 
-                   style={{cursor:"pointer",'backgroundColor':bgColor}} 
-                   src={i.icon} value={i.id}  height='100px' 
+                   <img className="icon"
+                   style={{cursor:"pointer",'backgroundColor':bgColor}}
+                   src={i.icon} value={i.id}  height='100px'
                    onClick={(e)=>{this.props.dispatch({type:"ADD_TO_REQUEST",payload:{id: i.id,title:i.title}})}}/>
+                   <p className="iconTitle">{i.title}</p>
                   </span>)
               })
             }

@@ -34,6 +34,12 @@ body {
   opacity: .5
 }
 
+.iconWrap {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
 .iconTitle{
   visibility: hidden;
   opacity: 0;
@@ -145,8 +151,8 @@ footer {
 .request-page {
   display: grid;
   grid-template-areas:
-  'map map top-box-b'
-  'map map top-box-a';
+  'top-box-b map map '
+  'top-box-a map map';
   margin-bottom: 20px;
 }
 
