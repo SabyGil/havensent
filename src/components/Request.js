@@ -45,7 +45,7 @@ const MyMapComponent = compose(
         onMouseOver={()=>props.onToggleOpen(props["open "+k],k)}
         onMouseOut={()=>props.onToggleOpen(props["open "+k],k)}>
      {props["open "+k] && <InfoWindow>
-        <h1>YO !!!</h1>
+        <p>{i.username}</p>
       </InfoWindow>} 
 
       </Marker>
@@ -111,9 +111,18 @@ class Request extends Component {
           <h1>I NEED</h1>
           <div className='icons'>
             {
-              this.props.resources && this.props.resources.map(i=>
-                <img className="icon" style={{cursor:"pointer"}} src={i.icon} value={i.id}  height='100px' onClick={(e)=>{this.props.dispatch({type:"ADD_TO_REQUEST",payload:{id: i.id,title:i.title}})}} />
-                )}
+              this.props.resources && this.props.resources.map(i=>{
+                let bgColor = this.props.requestedResources.filter(j=>j.title==i.title).length>0?"red":""
+                 return(
+                  <span className="iconWrap">
+                   <p className="iconTitle">{i.title}</p>
+                   <img className="icon" 
+                   style={{cursor:"pointer",'backgroundColor':bgColor}} 
+                   src={i.icon} value={i.id}  height='100px' 
+                   onClick={(e)=>{this.props.dispatch({type:"ADD_TO_REQUEST",payload:{id: i.id,title:i.title}})}}/>
+                  </span>)
+              })
+            }
           </div>
         </div>
 

@@ -25,9 +25,14 @@ export default function (state=initialState, action){
 		}
 		case 'ADD_TO_REQUEST':
 		console.log(action.payload)
+		let array = state.requestedResources.filter(i=> i.title !== action.payload.title)
+		if(array.length === state.requestedResources.length){
+			array = state.requestedResources.concat(action.payload)
+		}
+
 		return {
 			...state,
-			requestedResources: state.requestedResources.concat(action.payload)
+			requestedResources: array
 
 		}
 		case "ADD_GENDER":

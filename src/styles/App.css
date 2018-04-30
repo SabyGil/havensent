@@ -34,6 +34,15 @@ body {
   opacity: .5
 }
 
+.iconTitle{
+  visibility: hidden;
+  opacity: 0;
+}
+.iconWrap:hover .iconTitle{
+  visibility: visible;
+  opacity: 1;
+}
+
 header .logo-container {
   margin-right: auto;
   display: flex;
