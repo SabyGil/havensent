@@ -33,7 +33,7 @@ class AdminView extends Component {
                       return(<tr>
                               <td><div><Link to={{ pathname: '/graphView',state: { resource: resource,title:i.title }}}>{i.title}</Link></div></td>
                               <td><div className=" center">{resource.length}</div></td>
-                              <td><div className=" right">Find Services</div></td>
+                              <td><div className=" right">Find Service Providers</div></td>
                             </tr>)}
                       )}
                   <tr>

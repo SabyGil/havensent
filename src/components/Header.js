@@ -51,14 +51,17 @@ class Header extends React.Component {
             </ul>
           </nav>
         </header>
+
         <Modal
           isOpen={this.props.loginModalIsOpen}
           className='modal-styles-header'
           overlayClassName='overlay'
           onRequestClose={()=>this.props.dispatch({type:"CLOSE_LOGIN_MODAL"})}
           >
+
           <div className='login'>
            <Form>
+            <h1>LOGIN</h1>
             <FormGroup>
               <Label for="username">Username:</Label>
               <Input onChange={this.handleChange} name="username" type="text" placeholder="Username" />
@@ -70,7 +73,40 @@ class Header extends React.Component {
             <Button onClick={this.handleSubmit}>Submit</Button>
           </Form>
           </div>
+
+          <div className='register'>
+           <Form>
+            <h1>Register</h1>
+            <FormGroup>
+              <Label for="username">Username:</Label>
+              <Input onChange={this.handleChange} name="username" type="text" placeholder="Username" />
+            </FormGroup>
+            <FormGroup>
+              <Label for="password">Password:</Label>
+              <Input onChange={this.handleChange} type="password" name="password" placeholder="Password" />
+            </FormGroup>
+            <FormGroup>
+              <Label for="password">Password:</Label>
+              <Input onChange={this.handleChange} type="password" name="password" placeholder="Password" />
+            </FormGroup>
+            <FormGroup>
+              <Label for="password">Password:</Label>
+              <Input onChange={this.handleChange} type="password" name="password" placeholder="Password" />
+            </FormGroup>
+            <FormGroup>
+              <Label for="password">Password:</Label>
+              <Input onChange={this.handleChange} type="password" name="password" placeholder="Password" />
+            </FormGroup>
+            <FormGroup>
+              <Label for="password">Password:</Label>
+              <Input onChange={this.handleChange} type="password" name="password" placeholder="Password" />
+            </FormGroup>
+            <Button onClick={this.handleSubmit}>Submit</Button>
+          </Form>
+          </div>
+
         </Modal>
+
       </div>
     );
   }

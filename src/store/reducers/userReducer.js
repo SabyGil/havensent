@@ -3,6 +3,7 @@ const initialState ={
 	signUpSuccess: false,
 	loginModalIsOpen:false,
 	loginFailed: false,
+	filters: {age: "",gender:"",ethnicity:""},
 	allRequests: []
 }
 export default function (state=initialState, action){
@@ -28,6 +29,36 @@ export default function (state=initialState, action){
 		return {
 			...state,
 			allRequests: action.response.data
+
+		}
+		case 'SELECT_FILTER':
+
+		let filter = state.filters
+		if(action.payload.type == "age"){
+			if (filter.age == action.payload.data){
+				filter.age = ""
+			}else{
+				filter.age = action.payload.data
+			}
+		}
+		else if (action.payload.type=="ethnicity"){
+			if (filter.ethnicity == action.payload.data){
+				filter.ethnicity = ""
+			}else{
+				filter.ethnicity = action.payload.data
+			}
+		}
+		else if (action.payload.type == "gender"){
+			if (filter.gender == action.payload.data){
+				filter.gender = ""
+			}else{
+				filter.gender = action.payload.data
+			}
+		}
+
+		return {
+			...state,
+			filters: filter
 
 		}
 		case "OPEN_LOGIN_MODAL":

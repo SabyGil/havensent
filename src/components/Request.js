@@ -67,7 +67,7 @@ class Request extends Component {
   }
 
   ready(){
-    if(this.props.haven && (this.props.requestedResources.length > 0) && this.props.age && this.props.gender && this.props.ethnicity){
+    if(this.props.haven && (this.props.requestedResources.length > 0) && this.props.age !== "" && this.props.gender !== "" && this.props.ethnicity !== ""){
       return true
     }else{
       return false
@@ -84,7 +84,11 @@ class Request extends Component {
     }
     console.log(request)
     api.makeRequest(request)
-      .then(response=>console.log(response))
+      .then(response=> {
+        this.props.dispatch({type:"FINISH"})
+        this.props.history.push("/")
+    })
+
   }
   render(){
     console.log(this.props)

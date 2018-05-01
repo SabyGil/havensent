@@ -29,11 +29,9 @@ export default function (state=initialState, action){
 		if(array.length === state.requestedResources.length){
 			array = state.requestedResources.concat(action.payload)
 		}
-
 		return {
 			...state,
 			requestedResources: array
-
 		}
 		case "ADD_GENDER":
 		return {
@@ -54,6 +52,16 @@ export default function (state=initialState, action){
 		return {
 			...state,
 			email : action.payload
+		}
+		case 'FINISH':
+		return {
+			...state,
+			requestedResources : [],
+			email: "",
+			age: "",
+			gender: "",
+			ethnicity: "",
+			modalIsOpen:false
 		}
 		case 'OPEN_MODAL':
 		return {
