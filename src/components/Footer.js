@@ -8,10 +8,9 @@ export default class Request extends Component {
             <div className='about-us-col'>
               <h1>About Us</h1>
               <p>
-                Havensent empowers immigrant youth and their families to have essential services provided
-                at their safe havens- the schools, houses of worship, and community centers they attend regularly. ith data aggregation,
-                safe havens get more funding, legislators have better data to effect policy,
-                and more in our communities.
+                Havensent safely voices your needs so that important resources are brought to
+                your safe havens - the schools, houses of worship, and community centers you attend regularly. With Havensent,
+                these safe havens can get more funding and our communities get what they need. 
               </p>
             </div>
 

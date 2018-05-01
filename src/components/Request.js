@@ -96,7 +96,7 @@ class Request extends Component {
       <div className='request-page fixed-width'>
         <section className='map-area'>
           <div className='container'>
-            <h1>At</h1>
+            <h1>Select location</h1>
             <div className='map-container'>
               {this.props.allOrganizations.length>0 && <MyMapComponent isMarkerShown
                             organizations = {this.props.allOrganizations && this.props.allOrganizations.filter(i=> i.organization != null )}
@@ -112,7 +112,7 @@ class Request extends Component {
         </section>
 
         <div className='haven-info-container top-box top-box-b'>
-          <h1>I NEED</h1>
+          <h1>Select needs</h1>
           <div className='icons'>
             {
               this.props.resources && this.props.resources.map(i=>{
@@ -131,7 +131,7 @@ class Request extends Component {
         </div>
 
         <div className='top-box top-box-a'>
-
+            <label>Enter basic information</label>
             <br />
             <p>Gender</p>
             <select onChange={(e)=>{this.props.dispatch({type:"ADD_GENDER",payload:e.target.value})}}>

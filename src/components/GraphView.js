@@ -127,11 +127,13 @@ class GraphView extends Component {
 
   render(){
     return (
-      <div>
+      <div className='services-chart-container fixed-width'>
         <h1>{this.props.history.location.state.title}</h1>
-        <Chart chartData={this.state.gender} title='Gender' legendPosition='right' />
-        <Chart chartData={this.state.ethnicity} title='Ethnicity' legendPosition='right' />
-        <Chart chartData={this.state.age} title='Age' legendPosition='right' />
+        <section className='chart-data-container'>
+          <Chart chartData={this.state.gender} title='Gender' legendPosition='right' />
+          <Chart chartData={this.state.ethnicity} title='Ethnicity' legendPosition='right' />
+          <Chart chartData={this.state.age} title='Age' legendPosition='right' />
+        </section>
       </div>
     );
   }
