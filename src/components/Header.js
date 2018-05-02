@@ -6,7 +6,6 @@ import Modal from 'react-modal'
 import { TabContent, TabPane, Nav, NavItem, NavLink as Link, Button, Form, FormGroup, Label, Input, Card, CardTitle, CardText, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
 
-
 class Header extends React.Component {
   constructor(){
     super();
@@ -37,20 +36,22 @@ class Header extends React.Component {
 
   handleRegister(e){
     e.preventDefault()
+    let org = {
+        organization_name: this.state.organization_name,
+        phone_number: this.state.phone_number,
+        address : this.state.address,
+        operating_budget: this.state.operating_budget,
+        formation_type : this.state.formation_type,
+        full_time_staff: this.state.full_time_staff,
+        part_time_staff : this.state.part_time_staff
+      }
     let data = {
       username: this.state.username,
       password : this.state.password,
       email : this.state.email,
-      organization: {
-        organization_name: this.state.organization_name,
-        phone_number: this.state.phone_number,
-        address : this.state.password,
-        operating_budget: this.state.username,
-        formation_type : this.state.password,
-        full_time_staff: this.state.username,
-        part_time_staff : this.state.password
-      }
+      organization : org
     }
+    console.log(data)
     this.props.dispatch(register(data))
     this.props.dispatch({type:"CLOSE_LOGIN_MODAL"})
   }
@@ -113,18 +114,15 @@ class Header extends React.Component {
              <TabContent activeTab={this.state.activeTab}>
              <TabPane tabId="1">
                <Row>
-                 <Col sm="6">
-                  <Form>
-                   <FormGroup>
-                      <Label for="username">Username:</Label>
-                      <Input onChange={this.handleChange} name="username" type="text" placeholder="Username" />
-                    </FormGroup>
-                    <FormGroup>
-                      <Label for="password">Password:</Label>
-                      <Input onChange={this.handleChange} type="password" name="password" placeholder="Password" />
-                    </FormGroup>
-                    <Button onClick={this.handleSubmit}>Submit</Button>
-                  </Form>
+                 <Col>
+                   <Card body>
+                     <CardTitle>Log In</CardTitle>
+                     <Label for="username">Username:</Label>
+                     <Input onChange={this.handleChange} name="username" type="text" placeholder="Username" />
+                     <Label for="password">Password:</Label>
+                     <Input onChange={this.handleChange} type="password" name="password" placeholder="Password" />
+                     <Button onClick={this.handleSubmit}>Submit</Button>
+                   </Card>
                  </Col>
                </Row>
              </TabPane>
@@ -135,6 +133,10 @@ class Header extends React.Component {
                  <FormGroup>
                    <Label for="username">Username:</Label>
                    <Input onChange={this.handleChange} name="username" type="text" placeholder="Username" />
+                 </FormGroup>
+                  <FormGroup>
+                   <Label for="username">Email:</Label>
+                   <Input onChange={this.handleChange} name="email" type="email" placeholder="Email" />
                  </FormGroup>
                  <FormGroup>
                    <Label for="password">Password:</Label>
@@ -162,11 +164,11 @@ class Header extends React.Component {
                  </FormGroup>
                  <FormGroup>
                    <Label for="password">Full-Time Staff:</Label>
-                   <Input onChange={this.handleChange} type="text" name="full_time_staff" placeholder="Full-Time Staff" />
+                   <Input onChange={this.handleChange} type="number" name="full_time_staff" placeholder="Full-Time Staff" />
                  </FormGroup>
                  <FormGroup>
                    <Label for="password">Part-Time Staff:</Label>
-                   <Input onChange={this.handleChange} type="text" name="part_time_staff" placeholder="Part-Time Staff" />
+                   <Input onChange={this.handleChange} type="number" name="part_time_staff" placeholder="Part-Time Staff" />
                  </FormGroup>
                  <Button onClick={this.handleRegister}>Submit</Button>
                </Form>

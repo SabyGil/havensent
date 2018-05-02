@@ -20,7 +20,7 @@ let api = {
 		return axios.post(url, data)
 	},
 	register : function(data){
-		let url = baseURL + "User"
+		let url = baseURL + "User/"
 		return axios.post(url, data)
 	},
 	login : function(data){
