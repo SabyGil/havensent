@@ -6,7 +6,6 @@ import Modal from 'react-modal'
 import { TabContent, TabPane, Nav, NavItem, NavLink as Link, Button, Form, FormGroup, Label, Input, Card, CardTitle, CardText, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
 
-
 class Header extends React.Component {
   constructor(){
     super();
@@ -90,11 +89,14 @@ class Header extends React.Component {
              <TabContent activeTab={this.state.activeTab}>
              <TabPane tabId="1">
                <Row>
-                 <Col sm="6">
+                 <Col>
                    <Card body>
-                     <CardTitle>Special Title Treatment</CardTitle>
-                     <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                     <Button>Go somewhere</Button>
+                     <CardTitle>Log In</CardTitle>
+                     <Label for="username">Username:</Label>
+                     <Input onChange={this.handleChange} name="username" type="text" placeholder="Username" />
+                     <Label for="password">Password:</Label>
+                     <Input onChange={this.handleChange} type="password" name="password" placeholder="Password" />
+                     <Button onClick={this.handleSubmit}>Submit</Button>
                    </Card>
                  </Col>
                </Row>
