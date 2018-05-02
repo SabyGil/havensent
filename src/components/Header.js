@@ -15,6 +15,7 @@ class Header extends React.Component {
     }
      this.handleChange = this.handleChange.bind(this);
      this.handleSubmit = this.handleSubmit.bind(this);
+     this.handleRegister = this.handleRegister.bind(this);
      this.toggle = this.toggle.bind(this);
   }
 
@@ -31,6 +32,26 @@ class Header extends React.Component {
       password : this.state.password
     }
     this.props.dispatch(login(data))
+    this.props.dispatch({type:"CLOSE_LOGIN_MODAL"})
+  }
+
+  handleRegister(e){
+    e.preventDefault()
+    let data = {
+      username: this.state.username,
+      password : this.state.password,
+      email : this.state.email,
+      organization: {
+        organization_name: this.state.organization_name,
+        phone_number: this.state.phone_number,
+        address : this.state.password,
+        operating_budget: this.state.username,
+        formation_type : this.state.password,
+        full_time_staff: this.state.username,
+        part_time_staff : this.state.password
+      }
+    }
+    this.props.dispatch(register(data))
     this.props.dispatch({type:"CLOSE_LOGIN_MODAL"})
   }
 
@@ -64,6 +85,7 @@ class Header extends React.Component {
         </header>
 
         <Modal
+          className="modal"
           isOpen={this.props.loginModalIsOpen}
           className='modal-styles-header'
           overlayClassName='overlay'
@@ -86,16 +108,23 @@ class Header extends React.Component {
                  <Button>Sign Up</Button>
                </Link>
              </NavItem>
+            </Nav>
 
              <TabContent activeTab={this.state.activeTab}>
              <TabPane tabId="1">
                <Row>
                  <Col sm="6">
-                   <Card body>
-                     <CardTitle>Special Title Treatment</CardTitle>
-                     <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                     <Button>Go somewhere</Button>
-                   </Card>
+                  <Form>
+                   <FormGroup>
+                      <Label for="username">Username:</Label>
+                      <Input onChange={this.handleChange} name="username" type="text" placeholder="Username" />
+                    </FormGroup>
+                    <FormGroup>
+                      <Label for="password">Password:</Label>
+                      <Input onChange={this.handleChange} type="password" name="password" placeholder="Password" />
+                    </FormGroup>
+                    <Button onClick={this.handleSubmit}>Submit</Button>
+                  </Form>
                  </Col>
                </Row>
              </TabPane>
@@ -112,27 +141,38 @@ class Header extends React.Component {
                    <Input onChange={this.handleChange} type="password" name="password" placeholder="Password" />
                  </FormGroup>
                  <FormGroup>
-                   <Label for="password">Password:</Label>
-                   <Input onChange={this.handleChange} type="password" name="password" placeholder="Password" />
+                   <Label for="password">Organization Name:</Label>
+                   <Input onChange={this.handleChange} type="text" name="organization_name" placeholder="Organization Name" />
                  </FormGroup>
                  <FormGroup>
-                   <Label for="password">Password:</Label>
-                   <Input onChange={this.handleChange} type="password" name="password" placeholder="Password" />
+                   <Label for="password">Phone Number:</Label>
+                   <Input onChange={this.handleChange} type="text" name="phone_number" placeholder="Phone Number" />
                  </FormGroup>
                  <FormGroup>
-                   <Label for="password">Password:</Label>
-                   <Input onChange={this.handleChange} type="password" name="password" placeholder="Password" />
+                   <Label for="password">Address:</Label>
+                   <Input onChange={this.handleChange} type="text" name="address" placeholder="Address" />
                  </FormGroup>
                  <FormGroup>
-                   <Label for="password">Password:</Label>
-                   <Input onChange={this.handleChange} type="password" name="password" placeholder="Password" />
+                   <Label for="password">Operating Budget:</Label>
+                   <Input onChange={this.handleChange} type="text" name="operating_budget" placeholder="Operating Budget" />
                  </FormGroup>
-                 <Button onClick={this.handleSubmit}>Submit</Button>
+                 <FormGroup>
+                   <Label for="password">Formation Type:</Label>
+                   <Input onChange={this.handleChange} type="text" name="formation_type" placeholder="Formation Type" />
+                 </FormGroup>
+                 <FormGroup>
+                   <Label for="password">Full-Time Staff:</Label>
+                   <Input onChange={this.handleChange} type="text" name="full_time_staff" placeholder="Full-Time Staff" />
+                 </FormGroup>
+                 <FormGroup>
+                   <Label for="password">Part-Time Staff:</Label>
+                   <Input onChange={this.handleChange} type="text" name="part_time_staff" placeholder="Part-Time Staff" />
+                 </FormGroup>
+                 <Button onClick={this.handleRegister}>Submit</Button>
                </Form>
                </div>
              </TabPane>
            </TabContent>
-          </Nav>
         </Modal>
       </div>
     );
