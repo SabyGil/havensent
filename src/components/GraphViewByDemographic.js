@@ -4,19 +4,24 @@ import Chart from './Chart';
 
 class GraphViewByDemographic extends Component {
   componentWillMount () {
-    console.log(this.props)
     this.getChartData();
   }
 
   getChartData () {
+    
     this.setState({
-      gender: {
+      data: {
         labels: this.props.resources.map(i=>i.title),
         datasets: [
           {
             label: 'Requests received',
-            data: this.labels.map(i=>{
-              this.props.requests.filter(j=>j.title==i && j.gender.startsWith(this.props.gender) && j.age.startsWith(this.props.age) && j.ethnicity.startsWith(this.props.ethnicity))
+            data: this.props.resources.map(i=>{
+              return this.props.requests.filter(j=>
+                j.request_type.includes(i.id) && 
+                j.gender.startsWith(this.props.filters.gender) && 
+                j.age.startsWith(this.props.filters.age) && 
+                j.ethnicity.startsWith(this.props.filters.ethnicity)
+                ).length
             }),
 
             backgroundColor:[
@@ -47,10 +52,45 @@ class GraphViewByDemographic extends Component {
   }
 
   render(){
+    console.log(this.state)
+    console.log(this.props)
     return (
       <div>
-        <h1>{this.props.history.location.state.title}</h1>
-        <Chart chartData={this.state} title='Gender' legendPosition='right' />
+        <label>Gender</label>
+        <select onChange={ (e)=>{this.props.dispatch({type:"SELECT_FILTER",payload: {type:"gender", data: e.target.value}}); this.getChartData()}} >
+          <option value={""}>----</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Transgender">Transgender</option>
+          <option value="None">None of the Above</option>
+        </select>
+
+        <label>Ethnicity</label>
+        <select onChange={ (e)=>{this.props.dispatch({type:"SELECT_FILTER",payload: {type:"ethnicity", data: e.target.value}}); this.getChartData()}} >
+            <option value={""}>-----</option>
+            <option value="Hispanic">Hispanic</option>
+            <option value="Black">Black</option>
+            <option value="White">White</option>
+            <option value="Latino/Spanish">Latino or Spanish Origin</option>
+            <option value="Middle Eastern">Middle Eastern</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <label>Age</label>
+        <select onChange={ (e)=>{this.props.dispatch({type:"SELECT_FILTER",payload: {type:"age", data: e.target.value}}); this.getChartData()}} >
+          <option value={""}>-----</option>
+          <option value="13-17">13-17</option>
+          <option value="18-24">18-24</option>
+          <option value="25-34">25-34</option>
+          <option value="35-44">35-44</option>
+          <option value="45-54">45-54</option>
+          <option value="55-64">55-64</option>
+          <option value="65-74">65-74</option>
+          <option value="75 or Above">75 or Above</option>
+        </select>
+            <section className='chart-data-container2'>
+            <Chart chartData={this.state.data} title='' legendPosition='right' />
+            </section>
       </div>
     );
   }

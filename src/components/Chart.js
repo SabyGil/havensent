@@ -5,12 +5,6 @@ import { Bar, Line, Pie, } from 'react-chartjs-2';
 // import { getResources, getOrgs } from '../store/actions/requestActions'
 
 class Chart extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      chartData: props.chartData
-    }
-  }
 
   static defaultProps = {
     displayTitle: true,
@@ -23,8 +17,8 @@ class Chart extends Component {
     return (
       <div className='chart'>
         <Bar
-          data={this.state.chartData}
-
+          data={this.props.chartData}
+          
           options={{
             title: {
               display: this.props.displayTitle,
@@ -38,7 +32,7 @@ class Chart extends Component {
           }}
         />
         <Pie
-          data={this.state.chartData}
+          data={this.props.chartData}
 
           options={{
             title: {
@@ -53,7 +47,7 @@ class Chart extends Component {
           }}
         />
         <Line
-          data={this.state.chartData}
+          data={this.props.chartData}
 
           options={{
             title: {

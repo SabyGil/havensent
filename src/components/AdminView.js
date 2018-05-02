@@ -37,7 +37,7 @@ class AdminView extends Component {
                             </tr>)}
                       )}
                   <tr>
-                    <td>TOTAL</td>
+                    <td><Link to="/demographicView">TOTAL</Link></td>
                     <td className=" center">{this.props.requests.length}</td>
                     <td className=" right"> </td>
                   </tr>

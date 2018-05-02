@@ -388,6 +388,20 @@ footer {
   grid-gap: 1rem;
 }
 
+.chart-data-container2 .chart  {
+  display: flex;
+  flex-direction: column;
+  width: 50rem;
+  margin: 0 auto;
+}
+
+.chart-data-container2 .chart > *  {
+  display:flex;
+  flex: 1;
+  width: 100%;
+  justify-content: center;
+}
+
 .chart {
   grid-gap: 1rem;
   display: grid;
