@@ -8,6 +8,11 @@ import registerServiceWorker from './registerServiceWorker';
 
 import 'bootstrap/dist/css/bootstrap.css';
 
+let token = localStorage.getItem("token")
+
+if(token){
+  store.dispatch({type:"LOGIN"})
+}
 
 ReactDOM.render(
 	<Provider store={store}>

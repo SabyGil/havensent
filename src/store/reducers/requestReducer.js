@@ -1,9 +1,17 @@
+import zipcodes from 'zipcodes'
+
 const initialState ={
 	allOrganizations: [],
 	requestedResources: [],
 	requester_email: "",
+	zipcode : 11208,
+	lat: 40.6762,
+	lon: -73.8736,
+	zipError: true,
 	modalIsOpen: false
 }
+
+
 export default function (state=initialState, action){
 	switch(action.type){
 		case 'GET_RESOURCES':
@@ -33,6 +41,27 @@ export default function (state=initialState, action){
 			...state,
 			requestedResources: array
 		}
+		case "ADD_ZIP":
+
+		if(action.payload.toString().length == 5 && zipcodes.lookup(action.payload)){
+			let lon = zipcodes.lookup(action.payload).longitude
+			let lat = zipcodes.lookup(action.payload).latitude
+
+			return {
+				...state,
+				zipcode : action.payload,
+				lat: lat,
+				lon: lon,
+				zipError: false
+			}
+		}
+		else{
+			return {
+				...state,
+				zipError: true
+			}
+		}
+		
 		case "ADD_GENDER":
 		return {
 			...state,

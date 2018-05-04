@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import {connect} from 'react-redux'
 import api from "../utils/api"
 import Modal from 'react-modal'
+import zipcodes from 'zipcodes'
 import { compose, withProps, withStateHandlers } from "recompose"
 import { getResources, getOrgs } from '../store/actions/requestActions'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps"
@@ -37,7 +38,7 @@ const MyMapComponent = compose(
   (props =>
   <GoogleMap
     defaultZoom={11}
-    defaultCenter={{ lat: 40.730610, lng: -73.935242 }}
+    defaultCenter={{ lat: props.lat, lng: props.lon }}
   >
     {(props.isMarkerShown && props.organizations) &&
     props.organizations.map((i,k)=>
@@ -96,11 +97,13 @@ class Request extends Component {
       <div className='request-page fixed-width fixed-height'>
         <section className='map-area'>
           <div className='container'>
-            <h1>Select location</h1>
+            <h1>Select Location</h1>
             <div className='map-container'>
               {this.props.allOrganizations.length>0 && <MyMapComponent isMarkerShown
                             organizations = {this.props.allOrganizations && this.props.allOrganizations.filter(i=> i.organization != null )}
                             dispatch={this.props.dispatch}
+                            lon={this.props.lon}
+                            lat={this.props.lat}
                             googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
                             loadingElement={<div style={{ height: `100%` }} />}
                             containerElement={<div className='style' />}
@@ -112,7 +115,7 @@ class Request extends Component {
         </section>
 
         <div className='haven-info-container top-box top-box-b'>
-          <h1>Select needs</h1>
+          <h1>Select Needs</h1>
           <div className='icons'>
             {
               this.props.resources && this.props.resources.map(i=>{

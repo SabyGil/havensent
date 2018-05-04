@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import Chart from './Chart';
+import { Redirect } from 'react-router-dom';
 
 class GraphViewByDemographic extends Component {
   componentWillMount () {
-    this.getChartData();
+    if(this.props.resources){
+      this.getChartData();
+    }
   }
 
   getChartData () {
@@ -54,7 +57,12 @@ class GraphViewByDemographic extends Component {
   render(){
     console.log(this.state)
     console.log(this.props)
+
     return (
+
+      !this.props.resources?
+      <Redirect to="/" />
+      :
       <div>
         <label>Gender</label>
         <select onChange={ (e)=>{this.props.dispatch({type:"SELECT_FILTER",payload: {type:"gender", data: e.target.value}}); this.getChartData()}} >

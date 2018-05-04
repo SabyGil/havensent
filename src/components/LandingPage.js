@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import {connect} from 'react-redux'
 import Modal from 'react-modal'
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
@@ -35,13 +36,11 @@ class LandingPage extends React.Component {
                   overlayClassName='overlay'
                   onRequestClose={this.modal}
                   >
-                  <Form>
                    <FormGroup>
                      <Label for="zipcode">Enter Zipcode</Label>
-                     <Input type='text' />
-                     <NavLink exact="exact" to='/request'>Continue</NavLink>
+                     <Input onChange={(e)=>this.props.dispatch({type:"ADD_ZIP",payload: e.target.value})} type='number' />
+                     {this.props.error?<h1>Enter Proper Zipcode</h1> : <NavLink exact="exact" to='/request'>Continue</NavLink>}
                    </FormGroup>
-                 </Form>
                 </Modal>
             </div>
         </section>
@@ -50,4 +49,8 @@ class LandingPage extends React.Component {
   };
 }
 
-export default LandingPage;
+function mapStateToProps(state){
+  return {error: state.request.zipError}
+}
+
+export default connect(mapStateToProps)(LandingPage);

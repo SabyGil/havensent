@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {getRequests} from "../store/actions/userActions"
 import {getResources} from "../store/actions/requestActions"
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 class AdminView extends Component {
   componentDidMount(){
@@ -13,6 +14,12 @@ class AdminView extends Component {
   render(){
     console.log(this.props)
     return (
+      !this.props.isLoggedIn?
+
+      <Redirect to="/" />
+
+      :
+
       <div className='admin-view-page'>
         <div className='fixed-width'>
         {/* <!--   Icon Section   --> */}
@@ -57,7 +64,7 @@ AdminView.defaultProps ={
   requests:[]
 }
 function mapStateToProps(state){
-  return {requests: state.user.allRequests,resources:state.request.resources}
+  return {requests: state.user.allRequests,resources:state.request.resources, isLoggedIn: state.user.isLoggedIn}
 }
 
 export default connect(mapStateToProps)(AdminView)

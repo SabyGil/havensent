@@ -23,7 +23,7 @@ body {
 .fixed-height {
   display: grid;
   grid-template-rows: auto 1fr auto;
-  height: 100vh;
+  /*height: 100vh;*/
 }
 
 .header-background {
@@ -214,7 +214,6 @@ footer {
 
 .request-page .map-area h1 {
   text-align: center;
-  /* color: #03a9f4; */
   color: var(--secondary-blue);
 }
 
@@ -270,12 +269,12 @@ footer {
   font-size: 1.6rem;
 }
 
-.admin-view-page  .requests-display table {
+.admin-view-page .requests-display table {
   width: 100%;
   display: table;
 }
 
-.admin-view-page  .requests-display table .center {
+.admin-view-page .requests-display table .center {
   text-align: center;
 }
 
@@ -288,11 +287,11 @@ footer {
   font-weight: bold;
 }
 
-.admin-view-page  .requests-display table .right {
+.admin-view-page .requests-display table .right {
   text-align: right;
 }
 
-.admin-view-page  .requests-display table .right .btn {
+.admin-view-page .requests-display table .right .btn {
   height: 36px;
   line-height: 36px;
   padding: 0 2rem;
