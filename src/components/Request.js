@@ -113,9 +113,10 @@ class Request extends Component {
             </div>
           </div>
         </section>
-
         <div className='haven-info-container top-box top-box-b'>
           <h1>Select Needs</h1>
+        <div className='haven-info-container top-box top-box-a'>
+          <h1>Select needs</h1>
           <div className='icons'>
             {
               this.props.resources && this.props.resources.map(i=>{
@@ -133,9 +134,8 @@ class Request extends Component {
           </div>
         </div>
 
-        <div className='top-box top-box-a'>
+        <div className='top-box top-box-b'>
             <h4>Enter basic information</h4>
-            <br />
             <p>Gender</p>
             <select onChange={(e)=>{this.props.dispatch({type:"ADD_GENDER",payload:e.target.value})}}>
               <option>-Please Select-</option>
@@ -166,7 +166,7 @@ class Request extends Component {
               <option value="65-74">65-74</option>
               <option value="75 or Above">75 or Above</option>
             </select>
-             <div className='next-btn'>
+             <div className='submit-btn-container'>
               <button onClick={()=>this.props.dispatch({type:"OPEN_MODAL"})} disabled={this.ready()?false:true}>Submit</button>
              </div>
              <Modal
