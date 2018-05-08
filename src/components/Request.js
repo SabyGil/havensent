@@ -46,7 +46,11 @@ const MyMapComponent = compose(
         onMouseOver={()=>props.onToggleOpen(props["open "+k],k)}
         onMouseOut={()=>props.onToggleOpen(props["open "+k],k)}>
      {props["open "+k] && <InfoWindow>
+        <div>
         <p>{i.username}</p>
+        <p>{i.organization.address}</p>
+        <p>{i.organization.phone_number}</p>
+        </div>
       </InfoWindow>}
 
       </Marker>
@@ -104,6 +108,7 @@ class Request extends Component {
                             dispatch={this.props.dispatch}
                             lon={this.props.lon}
                             lat={this.props.lat}
+                            selected = {this.props.haven}
                             googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
                             loadingElement={<div style={{ height: `100%` }} />}
                             containerElement={<div className='style' />}
@@ -113,10 +118,8 @@ class Request extends Component {
             </div>
           </div>
         </section>
-        <div className='haven-info-container top-box top-box-b'>
-          <h1>Select Needs</h1>
         <div className='haven-info-container top-box top-box-a'>
-          <h1>Select needs</h1>
+          <h1>Select Needs</h1>
           <div className='icons'>
             {
               this.props.resources && this.props.resources.map(i=>{
@@ -135,7 +138,7 @@ class Request extends Component {
         </div>
 
         <div className='top-box top-box-b'>
-            <h4>Enter basic information</h4>
+            <h4>Enter Basic Information</h4>
             <p>Gender</p>
             <select onChange={(e)=>{this.props.dispatch({type:"ADD_GENDER",payload:e.target.value})}}>
               <option>-Please Select-</option>
