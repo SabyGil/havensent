@@ -77,10 +77,10 @@ class Header extends React.Component {
             <ul>
                 {
                   this.props.isLoggedIn?
-                  <span>
+                  <div className='login-logout-container'>
                    <NavLink exact to="/adminView"><li className='login-btn'>PROFILE</li></NavLink>
-                    <button onClick={()=>this.props.dispatch(logout())}>Logout</button>
-                  </span>
+                    <button className='logout-btn' onClick={()=>this.props.dispatch(logout())}>Logout</button>
+                  </div>
                   :
                 <li><button className='login-btn' onClick={()=>this.props.dispatch({type:"OPEN_LOGIN_MODAL"})}><span>Log In</span> or <span>Sign Up</span></button></li>
                 }
@@ -95,31 +95,30 @@ class Header extends React.Component {
           overlayClassName='overlay'
           onRequestClose={()=>this.props.dispatch({type:"CLOSE_LOGIN_MODAL"})}
           >
-            <Nav tabs>
+           <TabContent activeTab={this.state.activeTab}>
+             <Nav tabs>
+               <NavItem>
+                <Link
+                  className={classnames({ active: this.state.activeTab === '1' })}
+                  onClick={() => { this.toggle('1'); }}
+                >
+                  Log In
+                </Link>
+              </NavItem>
               <NavItem>
-               <Link
-                 className={classnames({ active: this.state.activeTab === '1' })}
-                 onClick={() => { this.toggle('1'); }}
-               >
-                 Log In
-               </Link>
-             </NavItem>
-             <NavItem>
-               <Link
-                 className={classnames({ active: this.state.activeTab === '2' })}
-                 onClick={() => { this.toggle('2'); }}
-               >
-                 <Button>Sign Up</Button>
-               </Link>
-             </NavItem>
-            </Nav>
+                <Link
+                  className={classnames({ active: this.state.activeTab === '2' })}
+                  onClick={() => { this.toggle('2'); }}
+                >
+                  Sign Up
+                </Link>
+              </NavItem>
+             </Nav>
 
-             <TabContent activeTab={this.state.activeTab}>
-             <TabPane tabId="1">
+             <TabPane tabId="1" className='login-tab'>
                <Row>
                  <Col>
                    <Card body>
-                     <CardTitle>Log In</CardTitle>
                      <Label for="username">Username:</Label>
                      <Input onChange={this.handleChange} name="username" type="text" placeholder="Username" />
                      <Label for="password">Password:</Label>
@@ -130,9 +129,8 @@ class Header extends React.Component {
                </Row>
              </TabPane>
              <TabPane tabId="2">
-               <div className='register'>
+               <div className='register-tab'>
                 <Form>
-                 <h1>Register</h1>
                  <FormGroup>
                    <Label for="username">Username:</Label>
                    <Input onChange={this.handleChange} name="username" type="text" placeholder="Username" />
@@ -177,7 +175,7 @@ class Header extends React.Component {
                </Form>
                </div>
              </TabPane>
-           </TabContent>
+         </TabContent>
         </Modal>
       </div>
     );
