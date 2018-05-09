@@ -20,8 +20,8 @@ class AdminView extends Component {
 
       :
 
-      <div className='admin-view-page'>
-        <div className='fixed-width'>
+      <div className='admin-view-page fixed-width'>
+        {/* <div className='fixed-width'> */}
         {/* <!--   Icon Section   --> */}
           <section className='requests-display'>
             <div className="">
@@ -53,7 +53,7 @@ class AdminView extends Component {
             </div>
           </section>
           <br/>
-        </div>
+        {/* </div> */}
       </div>
     );
   }

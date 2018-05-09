@@ -138,7 +138,7 @@ class Request extends Component {
         </div>
 
         <div className='top-box top-box-b'>
-            <h4>Enter Basic Information</h4>
+            <h1>Enter Basic Information</h1>
             <p>Gender</p>
             <select onChange={(e)=>{this.props.dispatch({type:"ADD_GENDER",payload:e.target.value})}}>
               <option>-Please Select-</option>

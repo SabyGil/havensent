@@ -77,7 +77,7 @@ class Header extends React.Component {
             <ul>
                 {
                   this.props.isLoggedIn?
-                  <NavLink exact to="/adminView"><li>PROFILE</li></NavLink>
+                  <NavLink exact to="/adminView"><li className='login-btn'>PROFILE</li></NavLink>
                   :
                 <li><button className='login-btn' onClick={()=>this.props.dispatch({type:"OPEN_LOGIN_MODAL"})}><span>Log In</span> or <span>Sign Up</span></button></li>
                 }
