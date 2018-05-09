@@ -14,6 +14,12 @@ export default function (state=initialState, action){
 			...state,
 			isLoggedIn: true
 		}
+		case 'LOGOUT':
+		console.log(action.response)
+		return {
+			...state,
+			isLoggedIn: false
+		}
 		case 'REGISTER':
 		return {
 			...state,
@@ -55,11 +61,15 @@ export default function (state=initialState, action){
 				filter.gender = action.payload.data
 			}
 		}
-
 		return {
 			...state,
 			filters: filter
 
+		}
+		case 'CLEANUP_FILTERS':
+		return {
+			...state,
+			filters: {age: "",gender:"",ethnicity:""}
 		}
 		case "OPEN_LOGIN_MODAL":
 		return{

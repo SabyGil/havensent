@@ -14,6 +14,8 @@ const initialState ={
 
 export default function (state=initialState, action){
 	switch(action.type){
+		case 'CLEANUP_REQUEST':
+		return initialState
 		case 'GET_RESOURCES':
 		return {
 			...state,

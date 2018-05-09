@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import {connect} from 'react-redux'
-import {login,register} from "../store/actions/userActions"
+import {login, register, logout} from "../store/actions/userActions"
 import Modal from 'react-modal'
 import { TabContent, TabPane, Nav, NavItem, NavLink as Link, Button, Form, FormGroup, Label, Input, Card, CardTitle, CardText, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
@@ -77,7 +77,10 @@ class Header extends React.Component {
             <ul>
                 {
                   this.props.isLoggedIn?
-                  <NavLink exact to="/adminView"><li>PROFILE</li></NavLink>
+                  <span>
+                    <NavLink exact to="/adminView"><li>PROFILE</li></NavLink>
+                    <button onClick={()=>this.props.dispatch(logout())}>Logout</button>
+                  </span>
                   :
                 <li><button className='login-btn' onClick={()=>this.props.dispatch({type:"OPEN_LOGIN_MODAL"})}><span>Log In</span> or <span>Sign Up</span></button></li>
                 }

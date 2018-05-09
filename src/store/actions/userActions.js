@@ -16,6 +16,13 @@ export function login(data){
 			setCurrentUser(disptach,response))
 }
 
+export function logout(){
+	return disptach => {
+		localStorage.clear()
+		return disptach({type:"LOGOUT"})
+	}
+}
+
 export function register(data){
 	return disptach => api.register(data)
 		.then(response=>
