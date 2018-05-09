@@ -70,6 +70,9 @@ class Request extends Component {
     this.props.dispatch(getResources())
     this.props.dispatch(getOrgs())
   }
+   componentWillUnmount(){
+    this.props.dispatch({type:"CLEANUP_REQUEST"})
+  }
 
   ready(){
     if(this.props.haven && (this.props.requestedResources.length > 0) && this.props.age !== "" && this.props.gender !== "" && this.props.ethnicity !== ""){

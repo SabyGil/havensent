@@ -9,6 +9,9 @@ class GraphViewByDemographic extends Component {
       this.getChartData();
     }
   }
+  componentWillUnmount () {
+    this.props.dispatch({type:"CLEANUP_FILTERS"})
+  }
 
   getChartData () {
     
