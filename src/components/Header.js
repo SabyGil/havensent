@@ -10,12 +10,14 @@ class Header extends React.Component {
   constructor(){
     super();
     this.state ={
-      activeTab: '1'
+      activeTab: '1',
+      registerStep: 1
     }
      this.handleChange = this.handleChange.bind(this);
      this.handleSubmit = this.handleSubmit.bind(this);
      this.handleRegister = this.handleRegister.bind(this);
      this.toggle = this.toggle.bind(this);
+     this.toggleStep = this.toggleStep.bind(this);
   }
 
   handleChange(e){
@@ -64,8 +66,16 @@ class Header extends React.Component {
     }
   }
 
+  toggleStep(step) {
+      this.setState({
+        registerStep: step
+    })
+  }
+
+
   render(){
     console.log(this.props)
+    console.log(this.state)
     return (
       <div className='header-background'>
         <header className='fixed-width'>
@@ -131,47 +141,57 @@ class Header extends React.Component {
              <TabPane tabId="2">
                <div className='register-tab'>
                 <Form>
-                 <FormGroup>
-                   <Label for="username">Username:</Label>
-                   <Input onChange={this.handleChange} name="username" type="text" placeholder="Username" />
-                 </FormGroup>
-                  <FormGroup>
-                   <Label for="username">Email:</Label>
-                   <Input onChange={this.handleChange} name="email" type="email" placeholder="Email" />
-                 </FormGroup>
-                 <FormGroup>
-                   <Label for="password">Password:</Label>
-                   <Input onChange={this.handleChange} type="password" name="password" placeholder="Password" />
-                 </FormGroup>
-                 <FormGroup>
-                   <Label for="password">Organization Name:</Label>
-                   <Input onChange={this.handleChange} type="text" name="organization_name" placeholder="Organization Name" />
-                 </FormGroup>
-                 <FormGroup>
-                   <Label for="password">Phone Number:</Label>
-                   <Input onChange={this.handleChange} type="text" name="phone_number" placeholder="Phone Number" />
-                 </FormGroup>
-                 <FormGroup>
-                   <Label for="password">Address:</Label>
-                   <Input onChange={this.handleChange} type="text" name="address" placeholder="Address" />
-                 </FormGroup>
-                 <FormGroup>
-                   <Label for="password">Operating Budget:</Label>
-                   <Input onChange={this.handleChange} type="text" name="operating_budget" placeholder="Operating Budget" />
-                 </FormGroup>
-                 <FormGroup>
-                   <Label for="password">Formation Type:</Label>
-                   <Input onChange={this.handleChange} type="text" name="formation_type" placeholder="Formation Type" />
-                 </FormGroup>
-                 <FormGroup>
-                   <Label for="password">Full-Time Staff:</Label>
-                   <Input onChange={this.handleChange} type="number" name="full_time_staff" placeholder="Full-Time Staff" />
-                 </FormGroup>
-                 <FormGroup>
-                   <Label for="password">Part-Time Staff:</Label>
-                   <Input onChange={this.handleChange} type="number" name="part_time_staff" placeholder="Part-Time Staff" />
-                 </FormGroup>
-                 <Button onClick={this.handleRegister}>Submit</Button>
+                 {this.state.registerStep === 1 ?
+                  <div>
+                 
+                      <FormGroup>
+                        <Label for="username">Username:</Label>
+                        <Input onChange={this.handleChange} name="username" type="text" placeholder="Username" />
+                      </FormGroup>
+                       <FormGroup>
+                        <Label for="username">Email:</Label>
+                        <Input onChange={this.handleChange} name="email" type="email" placeholder="Email" />
+                      </FormGroup>
+                      <FormGroup>
+                        <Label for="password">Password:</Label>
+                        <Input onChange={this.handleChange} type="password" name="password" placeholder="Password" />
+                      </FormGroup>
+                      <FormGroup>
+                        <Label for="password">Organization Name:</Label>
+                        <Input onChange={this.handleChange} type="text" name="organization_name" placeholder="Organization Name" />
+                      </FormGroup>
+                      <FormGroup>
+                        <Label for="password">Phone Number:</Label>
+                        <Input onChange={this.handleChange} type="text" name="phone_number" placeholder="Phone Number" />
+                      </FormGroup>
+                      <a onClick={()=>{this.toggleStep(2)}}>Next</a>
+                    </div>
+                    :
+                    <div>
+                      <FormGroup>
+                        <Label for="password">Address:</Label>
+                        <Input onChange={this.handleChange} type="text" name="address" placeholder="Address" />
+                      </FormGroup>
+                      <FormGroup>
+                        <Label for="password">Operating Budget:</Label>
+                        <Input onChange={this.handleChange} type="text" name="operating_budget" placeholder="Operating Budget" />
+                      </FormGroup>
+                      <FormGroup>
+                        <Label for="password">Formation Type:</Label>
+                        <Input onChange={this.handleChange} type="text" name="formation_type" placeholder="Formation Type" />
+                      </FormGroup>
+                      <FormGroup>
+                        <Label for="password">Full-Time Staff:</Label>
+                        <Input onChange={this.handleChange} type="number" name="full_time_staff" placeholder="Full-Time Staff" />
+                      </FormGroup>
+                      <FormGroup>
+                        <Label for="password">Part-Time Staff:</Label>
+                        <Input onChange={this.handleChange} type="number" name="part_time_staff" placeholder="Part-Time Staff" />
+                      </FormGroup>
+                      <a onClick={()=>{this.toggleStep(1)}}>Back</a>
+                      <Button onClick={this.handleRegister}>Submit</Button>
+                     </div>
+                   }
                </Form>
                </div>
              </TabPane>
