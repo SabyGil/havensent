@@ -2,7 +2,6 @@ import axios from 'axios';
 
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 axios.defaults.xsrfCookieName = "csrftoken";
-axios.defaults.withCredentials = true;
 
 const baseURL = "https://havensentservertesting.herokuapp.com/"
 var header = function(){
