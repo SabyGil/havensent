@@ -12,11 +12,11 @@ var header = function(){
 
 let api = {
 	getResources : function(){
-		let url = baseURL + "Resource"
+		let url = baseURL + "Resource/"
 		return axios.get(url)
 	},
 	getOrgs : function(){
-		let url = baseURL + "User"
+		let url = baseURL + "User/"
 		return axios.get(url)
 	},
 	makeRequest : function(data){
