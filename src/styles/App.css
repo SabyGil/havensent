@@ -121,7 +121,9 @@ header nav ul {
   margin: 0;
   list-style: none;
 }
-
+a {
+  text-decoration: none;
+}
 header .login-btn {
   padding: var(--btn-padding);
   cursor: pointer;

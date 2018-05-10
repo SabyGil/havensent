@@ -78,7 +78,7 @@ class Header extends React.Component {
                 {
                   this.props.isLoggedIn?
                   <div className='login-logout-container'>
-                   <NavLink exact to="/adminView"><li className='login-btn'>PROFILE</li></NavLink>
+                   <NavLink className="yo" exact to="/adminView"><li className='login-btn'>PROFILE</li></NavLink>
                     <button className='logout-btn' onClick={()=>this.props.dispatch(logout())}>Logout</button>
                   </div>
                   :

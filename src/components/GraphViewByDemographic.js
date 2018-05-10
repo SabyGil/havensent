@@ -37,7 +37,8 @@ class GraphViewByDemographic extends Component {
              'rgba(75, 192, 192, 0.6)',
              'rgba(153, 102, 255, 0.6)',
              'rgba(255, 159, 64, 0.6)',
-             'rgba(255, 99, 132, 0.6)'
+             'rgba(255, 99, 132, 0.6)',
+             'rgba(255, 73, 120, 0.6)'
            ],
            borderWidth: 1,
            borderColor: '#777',
