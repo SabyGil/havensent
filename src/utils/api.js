@@ -1,7 +1,4 @@
 import axios from 'axios';
-
-axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*'
-
 const baseURL = "https://havensentservertesting.herokuapp.com/"
 var header = function(){
 	return {headers: {'Authorization': "JWT " + localStorage.getItem("token")}}
