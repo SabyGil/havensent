@@ -13,6 +13,7 @@ class GraphView extends Component {
     this.setState({
       gender: {
         labels: [ 'Male','Female','Transgender',"None of the Above"],
+        // defaultFontSize: 40,
         datasets: [
           {
             label: 'Requests received',
@@ -29,12 +30,12 @@ class GraphView extends Component {
              'rgba(75, 192, 192, 0.6)',
              'rgba(153, 102, 255, 0.6)',
              'rgba(255, 159, 64, 0.6)',
-             'rgba(255, 99, 132, 0.6)'
+             'rgba(232, 60, 112, 0.6)'
            ],
            borderWidth: 1,
            borderColor: '#777',
            hoverBorderWidth: 3,
-           hoverBorderColor: '#000'
+           hoverBorderColor: '#000',
          }
        ],
        layout: {
@@ -66,7 +67,7 @@ class GraphView extends Component {
              'rgba(75, 192, 192, 0.6)',
              'rgba(153, 102, 255, 0.6)',
              'rgba(255, 159, 64, 0.6)',
-             'rgba(255, 99, 132, 0.6)'
+             'rgba(232, 60, 112, 0.6)'
            ],
            borderWidth: 1,
            borderColor: '#777',
@@ -105,7 +106,7 @@ class GraphView extends Component {
              'rgba(75, 192, 192, 0.6)',
              'rgba(153, 102, 255, 0.6)',
              'rgba(255, 159, 64, 0.6)',
-             'rgba(255, 99, 132, 0.6)'
+             'rgba(232, 60, 112, 0.6)'
            ],
            borderWidth: 1,
            borderColor: '#777',
@@ -117,8 +118,8 @@ class GraphView extends Component {
          padding: {
            left: 100,
            right: 100,
-           top: 50,
-           bottom: 50
+           top: 100,
+           bottom: 100
          }
        }
       }
@@ -127,7 +128,7 @@ class GraphView extends Component {
 
   render(){
     return (
-      <div className='services-chart-container fixed-width'>
+      <div className='services-chart-container'>
         <h1>{this.props.history.location.state.title}</h1>
         <section className='chart-data-container'>
           <Chart chartData={this.state.gender} title='Gender' legendPosition='right' />

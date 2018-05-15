@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import {connect} from 'react-redux'
 import {login, register, logout} from "../store/actions/userActions"
 import Modal from 'react-modal'
-import { TabContent, TabPane, Nav, NavItem, NavLink as Link, Button, Form, FormGroup, Label, Input, Card, CardTitle, CardText, Row, Col } from 'reactstrap';
+import { TabContent, TabPane, Nav, NavItem, NavLink as Link, Button, Form, FormGroup, Label, Input, Card, Row, Col, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import classnames from 'classnames';
 
 class Header extends React.Component {
@@ -11,7 +11,8 @@ class Header extends React.Component {
     super();
     this.state ={
       activeTab: '1',
-      registerStep: 1
+      registerStep: 1,
+      dropdownOpen: false
     }
      this.handleChange = this.handleChange.bind(this);
      this.handleSubmit = this.handleSubmit.bind(this);
@@ -72,6 +73,11 @@ class Header extends React.Component {
     })
   }
 
+  toggleMenu() {
+    this.setState(prevState => ({
+      dropdownOpen: !prevState.dropdownOpen
+    }));
+  }
 
   render(){
     console.log(this.props)
@@ -97,6 +103,34 @@ class Header extends React.Component {
             </ul>
           </nav>
         </header>
+        {/* <header className='fixed-width'>
+          <div className="logo-container">
+            <NavLink exact to="/"><img src={ require("../styles/images/logo.png") } alt="" /></NavLink>
+          </div>
+
+          <nav>
+            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggleMenu} className='login-logout-container'>
+                <DropdownToggle caret>
+                  Dropdown
+                </DropdownToggle>
+                <DropdownMenu>
+
+                {
+                  this.props.isLoggedIn?
+                  <span>
+                   <DropdownItem header className='login-btn'><NavLink className="yo" exact to="/adminView">Header</NavLink></DropdownItem>
+                   <DropdownItem className='logout-btn' onClick={()=>this.props.dispatch(logout())}>Logout</DropdownItem>
+                 </span>
+                  :
+                  // <span>
+                <DropdownItem className='login-btn' onClick={()=>this.props.dispatch({type:"OPEN_LOGIN_MODAL"})}><span>Log In</span> or <span>Sign Up</span>
+                </DropdownItem>
+              // </span>
+                }
+              </DropdownMenu>
+            </Dropdown>
+          </nav>
+        </header> */}
 
         <Modal
           className="modal"
@@ -143,7 +177,7 @@ class Header extends React.Component {
                 <Form>
                  {this.state.registerStep === 1 ?
                   <div>
-                 
+
                       <FormGroup>
                         <Label for="username">Username:</Label>
                         <Input onChange={this.handleChange} name="username" type="text" placeholder="Username" />

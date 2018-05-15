@@ -14,7 +14,7 @@ class GraphViewByDemographic extends Component {
   }
 
   getChartData () {
-    
+
     this.setState({
       data: {
         labels: this.props.resources.map(i=>i.title),
@@ -23,9 +23,9 @@ class GraphViewByDemographic extends Component {
             label: 'Requests received',
             data: this.props.resources.map(i=>{
               return this.props.requests.filter(j=>
-                j.request_type.includes(i.id) && 
-                j.gender.startsWith(this.props.filters.gender) && 
-                j.age.startsWith(this.props.filters.age) && 
+                j.request_type.includes(i.id) &&
+                j.gender.startsWith(this.props.filters.gender) &&
+                j.age.startsWith(this.props.filters.age) &&
                 j.ethnicity.startsWith(this.props.filters.ethnicity)
                 ).length
             }),
@@ -67,7 +67,7 @@ class GraphViewByDemographic extends Component {
       !this.props.resources?
       <Redirect to="/" />
       :
-      <div>
+      <div className='demographic-graph'>
         <label>Gender</label>
         <select onChange={ (e)=>{this.props.dispatch({type:"SELECT_FILTER",payload: {type:"gender", data: e.target.value}}); this.getChartData()}} >
           <option value={""}>----</option>
@@ -110,6 +110,6 @@ class GraphViewByDemographic extends Component {
 
 function mapStateToProps(state){
   return {requests: state.user.allRequests,resources:state.request.resources,filters:state.user.filters}
-} 
+}
 
 export default connect(mapStateToProps)(GraphViewByDemographic)

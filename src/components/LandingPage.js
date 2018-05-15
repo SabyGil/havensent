@@ -25,10 +25,10 @@ class LandingPage extends React.Component {
       <div>
         <section className='jumbo-container filter'>
             <div className='fixed-width'>
-              <h1 className="jumbo-blurb">Get what you need, <br/>
+              <h1 className="jumbo-blurb">Ask for what you need, <br/>
                 where you feel safe.
               </h1>
-              <button onClick={this.modal}>Request Help</button>
+              <button onClick={this.modal}>Ask for help</button>
 
                 <Modal
                   isOpen={this.state.isOpen}
@@ -37,7 +37,6 @@ class LandingPage extends React.Component {
                   onRequestClose={this.modal}
                   >
                    <FormGroup>
-                     {/* <Label for="zipcode">Enter Zipcode</Label> */}
                      {this.props.error?<Label>Enter Proper Zipcode</Label> : <NavLink exact="exact" to='/request'>Continue</NavLink>}
                      <Input onChange={(e)=>this.props.dispatch({type:"ADD_ZIP",payload: e.target.value})} type='number' />
                    </FormGroup>
