@@ -31,17 +31,25 @@ export default function (state=initialState, action){
 		return {
 			...state,
 			haven: action.payload
-			
 		}
 		case 'ADD_TO_REQUEST':
 		console.log(action.payload)
 		let array = state.requestedResources.filter(i=> i.title !== action.payload.title)
+		
+		if(array.length == 3){
+			return {
+				...state,
+				resourceMsg : "You can only select 3!"
+			}
+		}
+
 		if(array.length === state.requestedResources.length){
 			array = state.requestedResources.concat(action.payload)
 		}
 		return {
 			...state,
-			requestedResources: array
+			requestedResources: array,
+			resourceMsg : ""
 		}
 		case "ADD_ZIP":
 
