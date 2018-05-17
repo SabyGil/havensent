@@ -124,17 +124,17 @@ class Request extends Component {
         </section>
         <div className='haven-info-container top-box top-box-a'>
           <h1>Select Needs</h1>
-          <div className='icons'>
+          <div className='icons-container'>
             {
               this.props.resources && this.props.resources.map(i=>{
                 let bgColor = this.props.requestedResources.filter(j=>j.title==i.title).length>0?"#03a9f4":""
                  return(
-                  <span className="iconWrap">
+                  <span className="icon-wrap">
                    <img className="icon"
                    style={{cursor:"pointer",'backgroundColor':bgColor}}
                    src={i.icon} value={i.id}  height='100px'
                    onClick={(e)=>{this.props.dispatch({type:"ADD_TO_REQUEST",payload:{id: i.id,title:i.title}})}}/>
-                   <p className="iconTitle">{i.title}</p>
+                   <p className="icon-title">{i.title}</p>
                   </span>)
               })
             }

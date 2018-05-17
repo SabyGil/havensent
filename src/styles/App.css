@@ -6,6 +6,9 @@
   box-sizing: inherit;
 }
 
+#app {
+
+}
 #root {
 
 }
@@ -19,6 +22,12 @@ body {
   font-family: sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
+
+/* css variables */
 :root {
   --primary-blue: #64B5F6;
   --secondary-blue: #03a9f4;
@@ -35,6 +44,7 @@ body {
   font-size: 1.5rem;
 }
 
+/* fixed-width/height */
 .fixed-width {
   margin: 0 auto;
   max-width: 1280px;
@@ -65,24 +75,72 @@ body {
 .tab-content input {
   font-size: 1.5rem;
 }
-.register-tab {
-  padding: 1rem;
+
+.tab-content .register-tab {
+  padding: 2rem;
+  border: 1px solid lightGrey;
 }
 
-.tab-content Button {
+.tab-content .register-tab Button {
   padding: var(--btn-padding);
   font-size: var(--a-font-size);
-  margin-top: 1rem;
+  border: none;
+}
+
+.tab-content .login-tab .card-body Input {
+  margin: 0;
+}
+
+.tab-content .login-tab input:nth-child(2) {
+  margin-bottom: 1rem;
+}
+
+.tab-content .login-tab .card-body {
+  padding: 2rem;
+}
+
+.tab-content .login-tab label {
+  margin: 0;
+}
+
+.tab-content .login-tab .card-body .forgot-password {
+  font-size: 1.4rem;
+  color: var(--secondary-blue);
+}
+
+.tab-content .login-tab button {
+  padding: var(--btn-padding);
+  font-size: var(--a-font-size);
   border: none;
 }
 
 .tab-content Button:hover {
   background-color: var(--primary-blue);
+  color: white;
+}
+
+.sign-up-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid lightGrey;
+}
+
+.login-footer {
+  border-top: 1px solid lightGrey;
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+.login-footer button {
+  width: 100%;
 }
 
 .nav-tabs .nav-link.active {
   color: var(--secondary-blue) !important;
 }
+
 /*  /Login/Logout modal */
 
 .header-background {
@@ -101,20 +159,22 @@ body {
   opacity: .5
 }
 
-.iconWrap {
+.icon-wrap {
   display: grid;
   justify-items: center;
   align-items: center;
 }
 
-.iconTitle{
-  visibility: hidden;
-  opacity: 0;
+.icon-title {
+  /* visibility: hidden; */
+  opacity: 1;
+  font-size: 1.5rem;
 }
-.iconWrap:hover .iconTitle{
+
+/* .icon-wrap:hover .icon-title {
   visibility: visible;
   opacity: 1;
-}
+} */
 
 header .logo-container {
   margin-right: auto;
@@ -128,7 +188,7 @@ header nav ul {
   list-style: none;
 }
 
-a {
+header nav a:hover {
   text-decoration: none;
 }
 
@@ -146,28 +206,36 @@ header .login-btn {
 }
 
 header .login-logout-container {
-  display: flex;
-  color: gold;
-  /* border: 1px solid red; */
+  /* display: flex;
+  color: gold; */
+}
+
+header .login-logout-container .btn-secondary.dropdown-toggle {
+  background-color: var(--primary-blue);
+  padding: var(--btn-padding);
+  box-shadow: var(--box-shadow);
+  font-size: 1.5rem;
+}
+
+header .login-logout-container .btn-secondary.dropdown-toggle:active {
+  background-color: var(--primary-blue);
 }
 
 header .login-logout-container .logout-btn {
-  /* background-color: #E0115F; */
   background-color: #F1D997;
   padding: var(--btn-padding);
   box-shadow: var(--box-shadow);
   cursor: pointer;
   color: black;
   border: none;
-  margin-left: .5rem;
+  /* margin-left: .5rem; */
   font-size: 1.5rem;
 }
 
 /* /HEADER */
 
 /* Jummbo */
-
- .jumbo-container {
+.jumbo-container {
   padding: 250px 0;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3)), url("images/bg.jpg") no-repeat;
   background-size: cover;
@@ -199,7 +267,6 @@ header .login-logout-container .logout-btn {
 /* /Jummbo */
 
 /* About us */
-
 .about-us-container {
   margin-top: auto;
   background: #29b6f6;
@@ -260,6 +327,7 @@ footer {
 
 .top-box p {
   margin: 0;
+  padding: .5rem;
 }
 
 .top-box select {
@@ -279,11 +347,12 @@ footer {
   color: var(--secondary-blue);
 }
 
-.top-box-a .icons {
+.top-box-a .icons-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min-content, 33%));
-  justify-items: center;
   width: 100%;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid lightGrey;
 }
 
 .top-box-a img {
@@ -319,7 +388,7 @@ footer {
 
 .top-box-b .submit-btn-container {
   display: flex;
-  align-items: center;
+  padding-top: 1rem;
 }
 
 .top-box-b .submit-btn-container button {

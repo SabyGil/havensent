@@ -3,13 +3,13 @@ import { NavLink } from 'react-router-dom';
 import {connect} from 'react-redux'
 import {login, register, logout} from "../store/actions/userActions"
 import Modal from 'react-modal'
-import { TabContent, TabPane, Nav, NavItem, NavLink as Link, Button, Form, FormGroup, Label, Input, Card, Row, Col, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { TabContent, TabPane, Nav, NavItem, NavLink as Link, Button, Form, FormGroup, Label, Input, Card, Row, Col, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, FormFeedback } from 'reactstrap';
 import classnames from 'classnames';
 
 class Header extends React.Component {
   constructor(){
     super();
-    this.state ={
+    this.state = {
       activeTab: '1',
       registerStep: 1,
       dropdownOpen: false
@@ -28,7 +28,7 @@ class Header extends React.Component {
   }
 
   handleSubmit(e){
-    e.preventDefault()
+    e.preventDefault();
     let data = {
       username: this.state.username,
       password : this.state.password
@@ -38,7 +38,7 @@ class Header extends React.Component {
   }
 
   handleRegister(e){
-    e.preventDefault()
+    e.preventDefault();
     let org = {
         organization_name: this.state.organization_name,
         phone_number: this.state.phone_number,
@@ -73,10 +73,10 @@ class Header extends React.Component {
     })
   }
 
-  toggleMenu() {
-    this.setState(prevState => ({
-      dropdownOpen: !prevState.dropdownOpen
-    }));
+  toggleMenu = () => {
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen
+    });
   }
 
   render(){
@@ -90,47 +90,25 @@ class Header extends React.Component {
           </div>
 
           <nav>
-            <ul>
-                {
-                  this.props.isLoggedIn?
-                  <div className='login-logout-container'>
-                   <NavLink className="yo" exact to="/adminView"><li className='login-btn'>PROFILE</li></NavLink>
-                    <button className='logout-btn' onClick={()=>this.props.dispatch(logout())}>Logout</button>
-                  </div>
-                  :
-                <li><button className='login-btn' onClick={()=>this.props.dispatch({type:"OPEN_LOGIN_MODAL"})}><span>Log In</span> or <span>Sign Up</span></button></li>
-                }
-            </ul>
-          </nav>
-        </header>
-        {/* <header className='fixed-width'>
-          <div className="logo-container">
-            <NavLink exact to="/"><img src={ require("../styles/images/logo.png") } alt="" /></NavLink>
-          </div>
-
-          <nav>
-            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggleMenu} className='login-logout-container'>
+            {
+              this.props.isLoggedIn ?
+              <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggleMenu} className='login-logout-container'>
                 <DropdownToggle caret>
                   Dropdown
                 </DropdownToggle>
                 <DropdownMenu>
-
-                {
-                  this.props.isLoggedIn?
-                  <span>
-                   <DropdownItem header className='login-btn'><NavLink className="yo" exact to="/adminView">Header</NavLink></DropdownItem>
-                   <DropdownItem className='logout-btn' onClick={()=>this.props.dispatch(logout())}>Logout</DropdownItem>
-                 </span>
-                  :
-                  // <span>
-                <DropdownItem className='login-btn' onClick={()=>this.props.dispatch({type:"OPEN_LOGIN_MODAL"})}><span>Log In</span> or <span>Sign Up</span>
-                </DropdownItem>
-              // </span>
-                }
-              </DropdownMenu>
-            </Dropdown>
+                 <DropdownItem className='login-btn'><NavLink exact to="/adminView">Header</NavLink></DropdownItem>
+                 <DropdownItem><NavLink exact to="/editProfile">Edit Profile</NavLink></DropdownItem>
+                 <DropdownItem className='logout-btn' onClick={()=>this.props.dispatch(logout())}>Logout</DropdownItem>
+               </DropdownMenu>
+              </Dropdown>
+              :
+              <div className='login-btn' onClick={()=>this.props.dispatch({type:"OPEN_LOGIN_MODAL"})}>
+                <span>Log In</span> or <span>Sign Up</span>
+              </div>
+            }
           </nav>
-        </header> */}
+        </header>
 
         <Modal
           className="modal"
@@ -166,8 +144,13 @@ class Header extends React.Component {
                      <Label for="username">Username:</Label>
                      <Input onChange={this.handleChange} name="username" type="text" placeholder="Username" />
                      <Label for="password">Password:</Label>
+                     <a href='#' className='forgot-password'>Forgot your password?</a>
                      <Input onChange={this.handleChange} type="password" name="password" placeholder="Password" />
-                     <Button onClick={this.handleSubmit}>Submit</Button>
+                     {/* <Input invalid />
+                     <FormFeedback>Oh noes! that name is already taken</FormFeedback> */}
+                     <div className='login-footer'>
+                       <button onClick={this.handleSubmit}>Submit</button>
+                     </div>
                    </Card>
                  </Col>
                </Row>
@@ -177,58 +160,62 @@ class Header extends React.Component {
                 <Form>
                  {this.state.registerStep === 1 ?
                   <div>
-
-                      <FormGroup>
-                        <Label for="username">Username:</Label>
-                        <Input onChange={this.handleChange} name="username" type="text" placeholder="Username" />
-                      </FormGroup>
-                       <FormGroup>
-                        <Label for="username">Email:</Label>
-                        <Input onChange={this.handleChange} name="email" type="email" placeholder="Email" />
-                      </FormGroup>
-                      <FormGroup>
-                        <Label for="password">Password:</Label>
-                        <Input onChange={this.handleChange} type="password" name="password" placeholder="Password" />
-                      </FormGroup>
-                      <FormGroup>
-                        <Label for="password">Organization Name:</Label>
-                        <Input onChange={this.handleChange} type="text" name="organization_name" placeholder="Organization Name" />
-                      </FormGroup>
-                      <FormGroup>
-                        <Label for="password">Phone Number:</Label>
-                        <Input onChange={this.handleChange} type="text" name="phone_number" placeholder="Phone Number" />
-                      </FormGroup>
-                      <a onClick={()=>{this.toggleStep(2)}}>Next</a>
-                    </div>
+                    <FormGroup>
+                      <Label for="username">Username:</Label>
+                      <Input onChange={this.handleChange} name="username" type="text" placeholder="Username" />
+                    </FormGroup>
+                     <FormGroup>
+                      <Label for="username">Email:</Label>
+                      <Input onChange={this.handleChange} name="email" type="email" placeholder="Email" />
+                    </FormGroup>
+                    <FormGroup>
+                      <Label for="password">Password:</Label>
+                      <Input onChange={this.handleChange} type="password" name="password" placeholder="Password" />
+                    </FormGroup>
+                    <FormGroup>
+                      <Label for="password">Organization Name:</Label>
+                      <Input onChange={this.handleChange} type="text" name="organization_name" placeholder="Organization Name" />
+                    </FormGroup>
+                    <FormGroup>
+                      <Label for="password">Phone Number:</Label>
+                      <Input onChange={this.handleChange} type="text" name="phone_number" placeholder="Phone Number" />
+                    </FormGroup>
+                    {/* <div className='sign-up-footer'> */}
+                      <button className='sign-up-footer' onClick={()=>{this.toggleStep(2)}}>Next</button>
+                    {/* </div> */}
+                  </div>
                     :
-                    <div>
-                      <FormGroup>
-                        <Label for="password">Address:</Label>
-                        <Input onChange={this.handleChange} type="text" name="address" placeholder="Address" />
-                      </FormGroup>
-                      <FormGroup>
-                        <Label for="password">Operating Budget:</Label>
-                        <Input onChange={this.handleChange} type="text" name="operating_budget" placeholder="Operating Budget" />
-                      </FormGroup>
-                      <FormGroup>
-                        <Label for="password">Formation Type:</Label>
-                        <Input onChange={this.handleChange} type="text" name="formation_type" placeholder="Formation Type" />
-                      </FormGroup>
-                      <FormGroup>
-                        <Label for="password">Full-Time Staff:</Label>
-                        <Input onChange={this.handleChange} type="number" name="full_time_staff" placeholder="Full-Time Staff" />
-                      </FormGroup>
-                      <FormGroup>
-                        <Label for="password">Part-Time Staff:</Label>
-                        <Input onChange={this.handleChange} type="number" name="part_time_staff" placeholder="Part-Time Staff" />
-                      </FormGroup>
-                      <a onClick={()=>{this.toggleStep(1)}}>Back</a>
-                      <Button onClick={this.handleRegister}>Submit</Button>
-                     </div>
-                   }
+                  <div>
+                    <FormGroup>
+                      <Label for="password">Address:</Label>
+                      <Input onChange={this.handleChange} type="text" name="address" placeholder="Address" />
+                    </FormGroup>
+                    <FormGroup>
+                      <Label for="password">Operating Budget:</Label>
+                      <Input onChange={this.handleChange} type="text" name="operating_budget" placeholder="Operating Budget" />
+                    </FormGroup>
+                    <FormGroup>
+                      <Label for="password">Formation Type:</Label>
+                      <Input onChange={this.handleChange} type="text" name="formation_type" placeholder="Formation Type" />
+                    </FormGroup>
+                    <FormGroup>
+                      <Label for="password">Full-Time Staff:</Label>
+                      <Input onChange={this.handleChange} type="number" name="full_time_staff" placeholder="Full-Time Staff" />
+                    </FormGroup>
+                    <FormGroup>
+                      <Label for="password">Part-Time Staff:</Label>
+                      <Input onChange={this.handleChange} type="number" name="part_time_staff" placeholder="Part-Time Staff" />
+                    </FormGroup>
+
+                    <div className='sign-up-footer'>
+                      <button onClick={()=>{this.toggleStep(1)}}>Back</button>
+                      <button onClick={this.handleRegister}>Submit</button>
+                    </div>
+                   </div>
+                 }
                </Form>
-               </div>
-             </TabPane>
+             </div>
+           </TabPane>
          </TabContent>
         </Modal>
       </div>
@@ -240,4 +227,4 @@ function mapStateToProps(state){
   return state.user
 }
 
-export default connect(mapStateToProps)(Header)
+export default connect(mapStateToProps)(Header);
