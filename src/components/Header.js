@@ -73,10 +73,10 @@ class Header extends React.Component {
     })
   }
 
-  toggleMenu() {
-    this.setState(prevState => ({
-      dropdownOpen: !prevState.dropdownOpen
-    }));
+  toggleMenu = () => {
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen
+    });
   }
 
   render(){
@@ -90,47 +90,25 @@ class Header extends React.Component {
           </div>
 
           <nav>
-            <ul>
-              {
-              this.props.isLoggedIn?
-              <div className='login-logout-container'>
-               <NavLink exact to="/adminView"><li className='login-btn'>PROFILE</li></NavLink>
-                <button className='logout-btn' onClick={()=>this.props.dispatch(logout())}>Logout</button>
-              </div>
-              :
-              <li><button className='login-btn' onClick={()=>this.props.dispatch({type:"OPEN_LOGIN_MODAL"})}><span>Log In</span> or <span>Sign Up</span></button></li>
-              }
-            </ul>
-          </nav>
-        </header>
-        {/* <header className='fixed-width'>
-          <div className="logo-container">
-            <NavLink exact to="/"><img src={ require("../styles/images/logo.png") } alt="" /></NavLink>
-          </div>
-
-          <nav>
-            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggleMenu} className='login-logout-container'>
+            {
+              this.props.isLoggedIn ?
+              <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggleMenu} className='login-logout-container'>
                 <DropdownToggle caret>
                   Dropdown
                 </DropdownToggle>
                 <DropdownMenu>
-
-                {
-                  this.props.isLoggedIn?
-                  <span>
-                   <DropdownItem header className='login-btn'><NavLink className="yo" exact to="/adminView">Header</NavLink></DropdownItem>
-                   <DropdownItem className='logout-btn' onClick={()=>this.props.dispatch(logout())}>Logout</DropdownItem>
-                 </span>
-                  :
-                  // <span>
-                <DropdownItem className='login-btn' onClick={()=>this.props.dispatch({type:"OPEN_LOGIN_MODAL"})}><span>Log In</span> or <span>Sign Up</span>
-                </DropdownItem>
-              // </span>
-                }
-              </DropdownMenu>
-            </Dropdown>
+                 <DropdownItem className='login-btn'><NavLink exact to="/adminView">Header</NavLink></DropdownItem>
+                 <DropdownItem><NavLink exact to="/editProfile">Edit Profile</NavLink></DropdownItem>
+                 <DropdownItem className='logout-btn' onClick={()=>this.props.dispatch(logout())}>Logout</DropdownItem>
+               </DropdownMenu>
+              </Dropdown>
+              :
+              <div className='login-btn' onClick={()=>this.props.dispatch({type:"OPEN_LOGIN_MODAL"})}>
+                <span>Log In</span> or <span>Sign Up</span>
+              </div>
+            }
           </nav>
-        </header> */}
+        </header>
 
         <Modal
           className="modal"
@@ -166,6 +144,7 @@ class Header extends React.Component {
                      <Label for="username">Username:</Label>
                      <Input onChange={this.handleChange} name="username" type="text" placeholder="Username" />
                      <Label for="password">Password:</Label>
+                     <a href='#' className='forgot-password'>Forgot your password?</a>
                      <Input onChange={this.handleChange} type="password" name="password" placeholder="Password" />
                      {/* <Input invalid />
                      <FormFeedback>Oh noes! that name is already taken</FormFeedback> */}
@@ -201,9 +180,9 @@ class Header extends React.Component {
                       <Label for="password">Phone Number:</Label>
                       <Input onChange={this.handleChange} type="text" name="phone_number" placeholder="Phone Number" />
                     </FormGroup>
-                    <div className='sign-up-footer'>
-                      <button onClick={()=>{this.toggleStep(2)}}>Next</button>
-                    </div>
+                    {/* <div className='sign-up-footer'> */}
+                      <button className='sign-up-footer' onClick={()=>{this.toggleStep(2)}}>Next</button>
+                    {/* </div> */}
                   </div>
                     :
                   <div>

@@ -30,7 +30,7 @@ class AdminView extends Component {
                 <tbody>
                   <tr>
                     <th><div className=" s5 ">Types of Services</div></th>
-                    <th> <div className=" center">Number of requests</div></th>
+                    <th> <div className=" ">Number of requests</div></th>
                     <th> <div className=" right"></div></th>
                   </tr>
                   {

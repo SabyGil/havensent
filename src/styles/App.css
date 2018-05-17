@@ -6,6 +6,9 @@
   box-sizing: inherit;
 }
 
+#app {
+
+}
 #root {
 
 }
@@ -84,8 +87,25 @@ a {
   border: none;
 }
 
+.tab-content .login-tab .card-body Input {
+  margin: 0;
+}
+
+.tab-content .login-tab input:nth-child(2) {
+  margin-bottom: 1rem;
+}
+
 .tab-content .login-tab .card-body {
   padding: 2rem;
+}
+
+.tab-content .login-tab label {
+  margin: 0;
+}
+
+.tab-content .login-tab .card-body .forgot-password {
+  font-size: 1.4rem;
+  color: var(--secondary-blue);
 }
 
 .tab-content .login-tab button {
@@ -168,6 +188,10 @@ header nav ul {
   list-style: none;
 }
 
+header nav a:hover {
+  text-decoration: none;
+}
+
 header .login-btn {
   padding: var(--btn-padding);
   cursor: pointer;
@@ -182,8 +206,19 @@ header .login-btn {
 }
 
 header .login-logout-container {
-  display: flex;
-  color: gold;
+  /* display: flex;
+  color: gold; */
+}
+
+header .login-logout-container .btn-secondary.dropdown-toggle {
+  background-color: var(--primary-blue);
+  padding: var(--btn-padding);
+  box-shadow: var(--box-shadow);
+  font-size: 1.5rem;
+}
+
+header .login-logout-container .btn-secondary.dropdown-toggle:active {
+  background-color: var(--primary-blue);
 }
 
 header .login-logout-container .logout-btn {
@@ -193,7 +228,7 @@ header .login-logout-container .logout-btn {
   cursor: pointer;
   color: black;
   border: none;
-  margin-left: .5rem;
+  /* margin-left: .5rem; */
   font-size: 1.5rem;
 }
 
