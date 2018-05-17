@@ -35,11 +35,11 @@ export default function (state=initialState, action){
 		case 'ADD_TO_REQUEST':
 		console.log(action.payload)
 		let array = state.requestedResources.filter(i=> i.title !== action.payload.title)
-		
-		if(array.length == 3){
+
+		if(array.length === 3){
 			return {
 				...state,
-				resourceMsg : "You can only select 3!"
+				resourceMsg : true
 			}
 		}
 
@@ -49,7 +49,7 @@ export default function (state=initialState, action){
 		return {
 			...state,
 			requestedResources: array,
-			resourceMsg : ""
+			resourceMsg : false
 		}
 		case "ADD_ZIP":
 
