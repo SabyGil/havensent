@@ -21,20 +21,44 @@ class Chart extends Component {
         <Bar
           data={this.props.chartData}
           options={{
+            responsive: true,
+            layout: {
+             padding: {
+                 left: 0,
+                 right: 0,
+                 top: 20,
+                 bottom: 20
+             },
+           },
             title: {
               display: this.props.displayTitle,
               text: `Requests received by ${this.props.title}`,
-              "fontSize": 30
+              fontSize: 25
             },
             legend: {
               display: this.props.displayLegend,
               position: this.props.legendPosition,
-              // "labels": {
-              //   // "fontColor": "blue",
-              //   "fontSize": 30
-              // }
+              "labels": {
+                // "fontColor": "blue",
+                fontSize: 25
+              }
             },
-
+            scales: {
+              yAxes: [{
+                ticks: {
+                  fontSize: 20,
+                  fontFamily: "sans-serif",
+                  fontStyle: '500',
+                  padding: 0
+                }
+              }],
+              xAxes: [{
+                ticks: {
+                  fontSize: 20,
+                  padding: 5
+                }
+              }],
+            }
           }}
 
         />
@@ -60,30 +84,30 @@ class Chart extends Component {
             legend: {
               display: this.props.displayLegend,
               position: this.props.legendPosition,
-              // "labels": {
-              //   // "fontColor": "blue",
-              //   "fontSize": 30
-              // }
-            }
+              "labels": {
+                // "fontColor": "blue",
+                fontSize: 25
+              }
+            },
+
           }}
         />
         <Line
           data={this.props.chartData}
 
           options={{
+            responsive: true,
             title: {
               display: this.props.displayTitle,
               text: `Requests received by ${this.props.title}`,
-              "fontSize": 30
+              "fontSize": 25
             },
             legend: {
               display: this.props.displayLegend,
               position: this.props.legendPosition,
-              // "fontColor": "blue",
-              // "labels": {
-              //   // "fontColor": "blue",
-              //   "fontSize": 30
-              // }
+              "labels": {
+                fontSize: 25
+              }
             },
             layout: {
              padding: {
@@ -96,15 +120,16 @@ class Chart extends Component {
             scales: {
               yAxes: [{
                 ticks: {
-                  fontSize: 15,
+                  fontSize: 20,
                   fontFamily: "sans-serif",
-                  // fontColor: '#000',
-                  fontStyle: '500'
+                  fontStyle: '500',
+                  padding: 0
                 }
               }],
               xAxes: [{
                 ticks: {
-                  fontSize: 15,
+                  fontSize: 25,
+                  padding: 5
                 }
               }],
             }

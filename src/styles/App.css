@@ -26,6 +26,11 @@ a {
   text-decoration: none;
 }
 
+.button {
+  padding: var(--btn-padding);
+  font-size: var(--a-font-size);
+  border: none;
+}
 
 /* css variables */
 :root {
@@ -150,7 +155,7 @@ a {
 }
 
 .header-background header {
-  padding: 1rem 0;
+  padding: 1rem;
   display: flex;
   align-items: center;
 }
@@ -202,34 +207,51 @@ header .login-btn {
   box-shadow: var(--box-shadow);
   text-decoration: none;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
 }
 
-header .login-logout-container {
-  /* display: flex;
-  color: gold; */
-}
-
-header .login-logout-container .btn-secondary.dropdown-toggle {
+/*  logged-in drop-down menu styling on bootstrap class */
+header .menu .btn-secondary.dropdown-toggle {
   background-color: var(--primary-blue);
-  padding: var(--btn-padding);
   box-shadow: var(--box-shadow);
-  font-size: 1.5rem;
-}
-
-header .login-logout-container .btn-secondary.dropdown-toggle:active {
-  background-color: var(--primary-blue);
-}
-
-header .login-logout-container .logout-btn {
-  background-color: #F1D997;
-  padding: var(--btn-padding);
-  box-shadow: var(--box-shadow);
-  cursor: pointer;
-  color: black;
   border: none;
-  /* margin-left: .5rem; */
-  font-size: 1.5rem;
+  font-size: 1.7rem;
+}
+
+header .menu-item  {
+  display: flex;
+  justify-content: center;
+  padding: var(--btn-padding);
+}
+
+header .menu-item > * {
+  font-size: 3rem;
+  color: var(--secondary-blue);
+}
+
+header .menu-item:hover {
+  color: white;
+  background-color: var(--primary-blue);
+}
+
+header .menu-item:hover a {
+  color: white;
+  background-color: var(--primary-blue);
+}
+
+header .menu .btn-secondary.dropdown-toggle:active {
+  background-color: var(--primary-blue);
+  border: 1px solid var(--secondary-blue);
+}
+
+header .menu .logout-btn {
+  cursor: pointer;
+  font-size: 3rem;
+  color: var(--secondary-blue);
+}
+
+header .menu .logout-btn:hover {
+  color: white;
 }
 
 /* /HEADER */
@@ -237,9 +259,8 @@ header .login-logout-container .logout-btn {
 /* Jummbo */
 .jumbo-container {
   padding: 250px 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3)), url("images/bg.jpg") no-repeat;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3)), url("images/bg.jpg") no-repeat center center;
   background-size: cover;
-  background-position: center;
   background-attachment: fixed;
   text-align: center;
   color: white;
@@ -252,16 +273,15 @@ header .login-logout-container .logout-btn {
 
 .jumbo-container button {
   border: none;
-  background-color: #ff8f00;
+  background-color: #FF9B00;
   cursor: pointer;
   border-radius: 2px;
-  padding: 0 2rem;
-  height: 36px;
-  line-height: 36px;
+  padding: .8rem;
   color: white;
+  font-weight: bold;
   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-  font-size: var(--a-font-size);
+  font-size: 2rem;
 }
 
 /* /Jummbo */
@@ -562,7 +582,7 @@ footer {
 /*  */
 
 .services-chart-container {
-  padding: 1rem;
+  padding: 2rem;
 }
 
 .services-chart-container h1 {
@@ -572,30 +592,21 @@ footer {
 
 .chart-data-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(55rem, 1fr));
   grid-gap: 1rem;
-  /* grid-template-columns: repeat(3, 1fr); */
-  /* grid-auto-flow: dense; */
 }
 
 .chart {
-  grid-gap: 2rem;
+  grid-gap: 1rem;
   display: grid;
-  /* justify-content: center;
-  align-content:  center;
-  margin: 1rem; */
-
-  /* display: flex;
-  flex-direction: row;
-  flex-flow: wrap; */
 }
 
 .chart > * {
-  /* border: 2px solid silver; */
+  border: 1px solid lightGrey;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
-.chart-data-container2 .chart  {
+.demographic-data-container .chart  {
   width: 70%;
   margin: 0 auto;
   padding: 1rem 0;
@@ -615,11 +626,11 @@ footer {
   border: none;
   padding: 1rem;
   width: 14rem;
-  margin: 0 1rem;
+  margin: 0 1.5rem;
 }
 
 .demographic-graph option {
-  font-size: 1rem;
+  font-size: 2rem;
 }
 
 @media (max-width: 900px) {
@@ -660,6 +671,10 @@ footer {
   .chart-data-container {
     display: flex;
     flex-direction: column;
+    padding: 1rem;
+  }
+  .demographic-data-container .chart {
+    width: 100%;
     padding: 1rem;
   }
 }
