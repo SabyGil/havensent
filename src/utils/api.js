@@ -30,6 +30,18 @@ let api = {
 		let url = baseURL + "api/login/"
 		return axios.post(url, data)
 	},
+	forgetPassword: function(data){
+		let url = baseURL + "api/forgetPassword/"
+		return axios.post(url, data)
+	},
+	checkToken: function(query){
+		let url = baseURL + "api/checkToken/" +query
+		return axios.get(url)
+	},
+	resetPassword: function(data){
+		let url = baseURL + "api/checkToken/" 
+		return axios.get(url,data)
+	},
 	getRequests : function(data){
 		let url = baseURL + "Request/"
 		return axios.get(url, header())

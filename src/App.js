@@ -7,7 +7,7 @@ import Footer from './components/Footer';
 import AdminView from './components/AdminView';
 import GraphView from './components/GraphView';
 import GraphViewByDemographic from './components/GraphViewByDemographic';
-// import EditProfile from './components/EditProfile';
+import EditProfile from './components/EditProfile';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
@@ -22,7 +22,7 @@ class App extends Component {
           <Route exact path='/adminView' component={AdminView}/>
           <Route exact path='/graphView' component={GraphView}/>
           <Route exact path='/demographicView' component={GraphViewByDemographic}/>
-          {/* <Route exact path='/editProfile' component={EditProfile}/> */}
+          <Route exact path='/editProfile' component={EditProfile}/> 
           <Footer />
         </div>
       </Router>
