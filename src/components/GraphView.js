@@ -13,7 +13,6 @@ class GraphView extends Component {
     this.setState({
       gender: {
         labels: [ 'Male','Female','Transgender',"None of the Above"],
-        // defaultFontSize: 40,
         datasets: [
           {
             label: 'Requests received',

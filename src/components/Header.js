@@ -12,7 +12,7 @@ class Header extends React.Component {
     this.state = {
       activeTab: '1',
       registerStep: 1,
-      dropdownOpen: false
+      dropdownOpen: false,
     }
      this.handleChange = this.handleChange.bind(this);
      this.handleSubmit = this.handleSubmit.bind(this);
@@ -92,19 +92,19 @@ class Header extends React.Component {
           <nav>
             {
               this.props.isLoggedIn ?
-              <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggleMenu} className='login-logout-container'>
+              <Dropdown isOpen={this.state.dropdownOpen} onMouseEnter={this.toggleMenu} onMouseLeave={this.toggleMenu} className='menu'>
                 <DropdownToggle caret>
-                  Dropdown
+                  Menu
                 </DropdownToggle>
                 <DropdownMenu>
-                 <DropdownItem className='login-btn'><NavLink exact to="/adminView">Header</NavLink></DropdownItem>
-                 <DropdownItem><NavLink exact to="/editProfile">Edit Profile</NavLink></DropdownItem>
-                 <DropdownItem className='logout-btn' onClick={()=>this.props.dispatch(logout())}>Logout</DropdownItem>
+                 <div className='menu-item'><NavLink exact to="/adminView">Header</NavLink></div>
+                 <div className='menu-item' style={{'whiteSpace': 'nowrap' }}><NavLink exact to="/editProfile">Edit Profile</NavLink></div>
+                 <div className='menu-item logout-btn' onClick={()=>this.props.dispatch(logout())}>Logout</div>
                </DropdownMenu>
               </Dropdown>
               :
               <div className='login-btn' onClick={()=>this.props.dispatch({type:"OPEN_LOGIN_MODAL"})}>
-                <span>Log In</span> or <span>Sign Up</span>
+                <span>Log In or</span>  <span>Sign Up</span>
               </div>
             }
           </nav>
@@ -118,8 +118,9 @@ class Header extends React.Component {
           onRequestClose={()=>this.props.dispatch({type:"CLOSE_LOGIN_MODAL"})}
           >
            <TabContent activeTab={this.state.activeTab}>
-             <Nav tabs>
-               <NavItem>
+             <Nav tabs style={{display:this.state.activeTab==='3'?"none":""}}>
+
+               <NavItem >
                 <Link
                   className={classnames({ active: this.state.activeTab === '1' })}
                   onClick={() => { this.toggle('1'); }}
@@ -127,6 +128,7 @@ class Header extends React.Component {
                   Log In
                 </Link>
               </NavItem>
+
               <NavItem>
                 <Link
                   className={classnames({ active: this.state.activeTab === '2' })}
@@ -135,6 +137,7 @@ class Header extends React.Component {
                   Sign Up
                 </Link>
               </NavItem>
+
              </Nav>
 
              <TabPane tabId="1" className='login-tab'>
@@ -144,7 +147,7 @@ class Header extends React.Component {
                      <Label for="username">Username:</Label>
                      <Input onChange={this.handleChange} name="username" type="text" placeholder="Username" />
                      <Label for="password">Password:</Label>
-                     <a href='#' className='forgot-password'>Forgot your password?</a>
+                     <a href='#' onClick={() => { this.toggle('3'); }} className='forgot-password'>Forgot your password?</a>
                      <Input onChange={this.handleChange} type="password" name="password" placeholder="Password" />
                      {/* <Input invalid />
                      <FormFeedback>Oh noes! that name is already taken</FormFeedback> */}
@@ -164,7 +167,7 @@ class Header extends React.Component {
                       <Label for="username">Username:</Label>
                       <Input onChange={this.handleChange} name="username" type="text" placeholder="Username" />
                     </FormGroup>
-                     <FormGroup>
+                    <FormGroup>
                       <Label for="username">Email:</Label>
                       <Input onChange={this.handleChange} name="email" type="email" placeholder="Email" />
                     </FormGroup>
@@ -180,40 +183,50 @@ class Header extends React.Component {
                       <Label for="password">Phone Number:</Label>
                       <Input onChange={this.handleChange} type="text" name="phone_number" placeholder="Phone Number" />
                     </FormGroup>
-                    {/* <div className='sign-up-footer'> */}
-                      <button className='sign-up-footer' onClick={()=>{this.toggleStep(2)}}>Next</button>
-                    {/* </div> */}
+                    <button className='sign-up-footer' onClick={()=>{this.toggleStep(2)}}>Next</button>
                   </div>
-                    :
+                  :
                   <div>
-                    <FormGroup>
-                      <Label for="password">Address:</Label>
-                      <Input onChange={this.handleChange} type="text" name="address" placeholder="Address" />
-                    </FormGroup>
-                    <FormGroup>
-                      <Label for="password">Operating Budget:</Label>
-                      <Input onChange={this.handleChange} type="text" name="operating_budget" placeholder="Operating Budget" />
-                    </FormGroup>
-                    <FormGroup>
-                      <Label for="password">Formation Type:</Label>
-                      <Input onChange={this.handleChange} type="text" name="formation_type" placeholder="Formation Type" />
-                    </FormGroup>
-                    <FormGroup>
-                      <Label for="password">Full-Time Staff:</Label>
-                      <Input onChange={this.handleChange} type="number" name="full_time_staff" placeholder="Full-Time Staff" />
-                    </FormGroup>
-                    <FormGroup>
-                      <Label for="password">Part-Time Staff:</Label>
-                      <Input onChange={this.handleChange} type="number" name="part_time_staff" placeholder="Part-Time Staff" />
-                    </FormGroup>
+                  <FormGroup>
+                    <Label for="password">Address:</Label>
+                    <Input onChange={this.handleChange} type="text" name="address" placeholder="Address" />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="password">Operating Budget:</Label>
+                    <Input onChange={this.handleChange} type="text" name="operating_budget" placeholder="Operating Budget" />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="password">Formation Type:</Label>
+                    <Input onChange={this.handleChange} type="text" name="formation_type" placeholder="Formation Type" />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="password">Full-Time Staff:</Label>
+                    <Input onChange={this.handleChange} type="number" name="full_time_staff" placeholder="Full-Time Staff" />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="password">Part-Time Staff:</Label>
+                    <Input onChange={this.handleChange} type="number" name="part_time_staff" placeholder="Part-Time Staff" />
+                  </FormGroup>
 
-                    <div className='sign-up-footer'>
-                      <button onClick={()=>{this.toggleStep(1)}}>Back</button>
-                      <button onClick={this.handleRegister}>Submit</button>
-                    </div>
-                   </div>
+                  <div className='sign-up-footer'>
+                    <button onClick={()=>{this.toggleStep(1)}}>Back</button>
+                    <button onClick={this.handleRegister}>Submit</button>
+                  </div>
+                 </div>
                  }
                </Form>
+             </div>
+           </TabPane>
+
+           <TabPane tabId="3">
+             <span style={{'color': 'var(--secondary-blue)'}} onClick={() => { this.toggle('1'); }}>back</span>
+             <p>Enter your email:</p>
+             <FormGroup>
+               <Label for="username">Email:</Label>
+               <Input onChange={this.handleChange} name="email" type="email" placeholder="Email" />
+             </FormGroup>
+             <div className='sign-up-footer'>
+               <button className='button' onClick={''}>Submit</button>
              </div>
            </TabPane>
          </TabContent>

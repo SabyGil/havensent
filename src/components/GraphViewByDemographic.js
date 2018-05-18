@@ -100,7 +100,7 @@ class GraphViewByDemographic extends Component {
           <option value="65-74">65-74</option>
           <option value="75 or Above">75 or Above</option>
         </select>
-            <section className='chart-data-container2'>
+            <section className='demographic-data-container'>
             <Chart chartData={this.state.data} title='' legendPosition='right' />
             </section>
       </div>
