@@ -94,10 +94,10 @@ class Header extends React.Component {
               this.props.isLoggedIn ?
               <Dropdown isOpen={this.state.dropdownOpen} onMouseEnter={this.toggleMenu} onMouseLeave={this.toggleMenu} className='menu'>
                 <DropdownToggle caret>
-                  Menu
+                  <span className='menu-text'>Menu</span>
                 </DropdownToggle>
                 <DropdownMenu>
-                 <div className='menu-item'><NavLink exact to="/adminView">Header</NavLink></div>
+                 <div className='menu-item'><NavLink exact to="/adminView">Profile</NavLink></div>
                  <div className='menu-item' style={{'whiteSpace': 'nowrap' }}><NavLink exact to="/editProfile">Edit Profile</NavLink></div>
                  <div className='menu-item logout-btn' onClick={()=>this.props.dispatch(logout())}>Logout</div>
                </DropdownMenu>
