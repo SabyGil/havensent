@@ -42,9 +42,11 @@ const MyMapComponent = compose(
   >
     {(props.isMarkerShown && props.organizations) &&
     props.organizations.map((i,k)=>
-      <Marker onClick={()=>{props.dispatch({type:"PICK_HAVEN",payload:{id: i.organization.id,title:i.username}})}} position={{ lat: parseFloat(i.organization.latitude), lng: parseFloat(i.organization.longitude) }}
-        onMouseOver={()=>props.onToggleOpen(props["open "+k],k)}
-        onMouseOut={()=>props.onToggleOpen(props["open "+k],k)}>
+      <Marker onClick={()=>{props.dispatch({type:"PICK_HAVEN",payload:{id: i.organization.id,title:i.username}})}} 
+              position={{ lat: parseFloat(i.organization.latitude), lng: parseFloat(i.organization.longitude) }}
+              icon={i.username == props.selected.title ? {url:"http://maps.google.com/mapfiles/ms/icons/blue-dot.png",scaledSize:{height:50,width:50}}:"" }
+              onMouseOver={()=>props.onToggleOpen(props["open "+k],k)}
+              onMouseOut={()=>props.onToggleOpen(props["open "+k],k)}>
      {props["open "+k] && <InfoWindow>
         <div>
         <p>{i.username}</p>
@@ -75,7 +77,7 @@ class Request extends Component {
   }
 
   ready(){
-    if(this.props.haven && (this.props.requestedResources.length > 0) && this.props.age !== "" && this.props.gender !== "" && this.props.ethnicity !== ""){
+    if(this.props.haven.title !== "" && (this.props.requestedResources.length > 0) && this.props.age !== "" && this.props.gender !== "" && this.props.ethnicity !== ""){
       return true
     }else{
       return false

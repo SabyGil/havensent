@@ -1,8 +1,10 @@
 import{ combineReducers } from 'redux';
 import request from './reducers/requestReducer';
 import user from './reducers/userReducer';
+import reset from "./reducers/resetReducer"
 
 const reducer = combineReducers({
+	reset,
   	request,
   	user
 });

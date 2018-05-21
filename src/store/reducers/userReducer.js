@@ -40,22 +40,22 @@ export default function (state=initialState, action){
 		case 'SELECT_FILTER':
 
 		let filter = state.filters
-		if(action.payload.type == "age"){
-			if (filter.age == action.payload.data){
+		if(action.payload.type === "age"){
+			if (filter.age === action.payload.data){
 				filter.age = ""
 			}else{
 				filter.age = action.payload.data
 			}
 		}
-		else if (action.payload.type=="ethnicity"){
-			if (filter.ethnicity == action.payload.data){
+		else if (action.payload.type==="ethnicity"){
+			if (filter.ethnicity === action.payload.data){
 				filter.ethnicity = ""
 			}else{
 				filter.ethnicity = action.payload.data
 			}
 		}
-		else if (action.payload.type == "gender"){
-			if (filter.gender == action.payload.data){
+		else if (action.payload.type === "gender"){
+			if (filter.gender === action.payload.data){
 				filter.gender = ""
 			}else{
 				filter.gender = action.payload.data
@@ -80,6 +80,11 @@ export default function (state=initialState, action){
 		return{
 			...state,
 			loginModalIsOpen:false
+		}
+		case "FORGOT_PASSWORD_SENT":
+		return {
+			...state,
+			emailSent: true
 		}
 		default:
 		return state;

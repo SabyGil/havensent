@@ -17,10 +17,10 @@ class GraphView extends Component {
           {
             label: 'Requests received',
             data: [
-              resource.filter(i=> i.gender == "Male").length,
-              resource.filter(i=> i.gender == "Female").length,
-              resource.filter(i=> i.gender == "Transgender").length,
-              resource.filter(i=> i.gender == "None of the Above").length
+              resource.filter(i=> i.gender === "Male").length,
+              resource.filter(i=> i.gender === "Female").length,
+              resource.filter(i=> i.gender === "Transgender").length,
+              resource.filter(i=> i.gender === "None of the Above").length
             ],
             backgroundColor:[
              'rgba(255, 99, 132, 0.6)',
@@ -52,12 +52,12 @@ class GraphView extends Component {
           {
             label: 'Requests received',
             data: [
-              resource.filter(i=> i.ethnicity == "Hispanic").length,
-              resource.filter(i=> i.ethnicity == "Black").length,
-              resource.filter(i=> i.ethnicity == "White").length,
-              resource.filter(i=> i.ethnicity == "Latino or Spanish Origin").length,
-              resource.filter(i=> i.ethnicity == "Middle Eastern").length,
-              resource.filter(i=> i.ethnicity == "Other").length,
+              resource.filter(i=> i.ethnicity === "Hispanic").length,
+              resource.filter(i=> i.ethnicity === "Black").length,
+              resource.filter(i=> i.ethnicity === "White").length,
+              resource.filter(i=> i.ethnicity === "Latino or Spanish Origin").length,
+              resource.filter(i=> i.ethnicity === "Middle Eastern").length,
+              resource.filter(i=> i.ethnicity === "Other").length,
             ],
             backgroundColor:[
              'rgba(255, 99, 132, 0.6)',
@@ -89,14 +89,14 @@ class GraphView extends Component {
           {
             label: 'Requests received',
             data: [
-              resource.filter(i=> i.age == "13-17").length,
-              resource.filter(i=> i.age == "18-24").length,
-              resource.filter(i=> i.age == "25-34").length,
-              resource.filter(i=> i.age == "35-44").length,
-              resource.filter(i=> i.age == "45-54").length,
-              resource.filter(i=> i.age == "55-64").length,
-              resource.filter(i=> i.age == "65-74").length,
-              resource.filter(i=> i.age == "75 or Above").length,
+              resource.filter(i=> i.age === "13-17").length,
+              resource.filter(i=> i.age === "18-24").length,
+              resource.filter(i=> i.age === "25-34").length,
+              resource.filter(i=> i.age === "35-44").length,
+              resource.filter(i=> i.age === "45-54").length,
+              resource.filter(i=> i.age === "55-64").length,
+              resource.filter(i=> i.age === "65-74").length,
+              resource.filter(i=> i.age === "75 or Above").length,
             ],
             backgroundColor:[
              'rgba(255, 99, 132, 0.6)',

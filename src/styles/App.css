@@ -109,6 +109,7 @@ a {
 }
 
 .tab-content .login-tab .card-body .forgot-password {
+  display: block;
   font-size: 1.4rem;
   color: var(--secondary-blue);
 }
@@ -597,20 +598,24 @@ footer {
   grid-gap: 1rem;
 }
 
-.chart {
+.charts {
   grid-gap: 1rem;
   display: grid;
 }
 
-.chart > * {
+.charts > * {
   border: 1px solid lightGrey;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
-.demographic-data-container .chart  {
+.demographic-data-container .charts  {
   width: 70%;
   margin: 0 auto;
   padding: 1rem 0;
+}
+.chart{
+  border: 1px solid red;
+  width: 100%;
 }
 
 /* demographic-graph  */

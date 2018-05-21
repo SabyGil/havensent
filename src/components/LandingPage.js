@@ -9,15 +9,31 @@ class LandingPage extends React.Component {
   constructor(){
     super();
     this.state = {
-      isOpen: false
+      isOpen: false,
+      attemptZip: false
     }
     this.modal = this.modal.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   modal() {
     this.setState({
       isOpen: !this.state.isOpen
     })
+  }
+
+  handleSubmit(e){
+    e.preventDefault()
+    if(this.props.error){
+        this.setState({
+          attemptZip: true
+        })
+    }else{
+      this.setState({
+          attemptZip: false
+        })
+        this.props.history.push("/request")
+    }
   }
 
   render(){
@@ -36,10 +52,14 @@ class LandingPage extends React.Component {
                   overlayClassName='overlay'
                   onRequestClose={this.modal}
                   >
+                  <Form onSubmit={this.handleSubmit}>
                    <FormGroup>
-                     {this.props.error?<Label>Enter Proper Zipcode</Label> : <NavLink exact="exact" to='/request'>Continue</NavLink>}
+                     <Label>Enter Proper Zipcode</Label>
                      <Input onChange={(e)=>this.props.dispatch({type:"ADD_ZIP",payload: e.target.value})} type='number' />
+                     <Input type="submit" />
+                     {this.state.attemptZip && <Label>Invalid Zipcode</Label>}
                    </FormGroup>
+                  </Form>
                 </Modal>
             </div>
         </section>

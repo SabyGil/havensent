@@ -7,8 +7,12 @@ const initialState ={
 	zipcode : 11208,
 	lat: 40.6762,
 	lon: -73.8736,
-	zipError: true,
-	modalIsOpen: false
+	zipError: "",
+	modalIsOpen: false,
+	haven: {
+		title: "",
+		id: ""
+	}
 }
 
 

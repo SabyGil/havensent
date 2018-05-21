@@ -11,12 +11,13 @@ class Chart extends Component {
     displayLegend: true,
     legendPosition: 'center',
     location: 'City',
-    defaultFontSize: 40,
+    defaultFontSize: 20,
 
   }
 
   render(){
     return (
+      <span className='charts'>
       <div className='chart'>
         <Bar
           data={this.props.chartData}
@@ -62,6 +63,8 @@ class Chart extends Component {
           }}
 
         />
+        </div>
+        <div className="chart">
         <Pie
           data={this.props.chartData}
 
@@ -92,6 +95,8 @@ class Chart extends Component {
 
           }}
         />
+        </div>
+        <div className="chart">
         <Line
           data={this.props.chartData}
 
@@ -136,6 +141,7 @@ class Chart extends Component {
           }}
         />
       </div>
+      </span>
     );
   }
 }

@@ -3,7 +3,8 @@ import axios from 'axios';
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 axios.defaults.xsrfCookieName = "csrftoken";
 
-const baseURL = "https://havensentservertesting.herokuapp.com/"
+// const baseURL = "https://havensentservertesting.herokuapp.com/"
+const baseURL = "http://localhost:8000/"
 var header = function(){
 	return {headers: {'Authorization': "JWT " + localStorage.getItem("token")}}
 }
@@ -35,12 +36,12 @@ let api = {
 		return axios.post(url, data)
 	},
 	checkToken: function(query){
-		let url = baseURL + "api/checkToken/" +query
+		let url = baseURL + "api/checkToken?token=" +query
 		return axios.get(url)
 	},
 	resetPassword: function(data){
 		let url = baseURL + "api/checkToken/" 
-		return axios.get(url,data)
+		return axios.post(url,data)
 	},
 	getRequests : function(data){
 		let url = baseURL + "Request/"
