@@ -8,7 +8,11 @@ class Footer extends Component {
       <div className='about-us-container'>
         { this.props.isLoggedIn ?
           <section className='about-us fixed-width'>
-            <div>Temp footer</div>
+            <div>
+              Contact us:
+              <br/>
+              info@havensent.com
+            </div>
           </section>
             :
           <section className='about-us fixed-width'>
