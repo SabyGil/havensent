@@ -100,7 +100,8 @@ class Header extends React.Component {
           <nav>
             {
               this.props.isLoggedIn ?
-              <Dropdown isOpen={this.state.dropdownOpen} onMouseEnter={this.toggleMenu} onMouseLeave={this.toggleMenu} className='menu'>
+              <Dropdown isOpen={this.state.dropdownOpen} onMouseEnter={this.toggleMenu} onMouseLeave={this.toggleMenu}
+                className='menu'>
                 <DropdownToggle caret>
                   <span className='menu-text'>Menu</span>
                 </DropdownToggle>

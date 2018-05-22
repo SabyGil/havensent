@@ -4,6 +4,8 @@ import {getRequests} from "../store/actions/userActions"
 import {getResources} from "../store/actions/requestActions"
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
+import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 
 class AdminView extends Component {
   componentDidMount(){
@@ -19,36 +21,46 @@ class AdminView extends Component {
       <Redirect to="/" />
 
       :
-
       <div className='admin-view-page fixed-width global-padding'>
-          <section className='requests-display'>
-              <h1>Requests Received</h1>
-              <table className='center'>
-                <tbody>
-                  <tr>
-                    <th><div className=" s5 ">Types of Services</div></th>
-                    <th> <div className=" ">Number of requests</div></th>
-                    <th> <div className=" right"></div></th>
-                  </tr>
-                  {
-                    this.props.resources.map(i=>{
-                      let resource = this.props.requests.filter(req=>req.request_type.includes(i.id))
-                      return(<tr>
-                              <td><div><Link to={{ pathname: '/graphView',state: { resource: resource,title:i.title }}}>{i.title}</Link></div></td>
-                              <td><div className=" center">{resource.length}</div></td>
-                              <td><div className=" right">Find Service Providers</div></td>
-                            </tr>)}
-                      )}
-                  <tr>
-                    <td><Link to="/demographicView">TOTAL</Link></td>
-                    <td className=" center">{this.props.requests.length}</td>
-                    <td className=" right"> </td>
-                  </tr>
-                </tbody>
-              </table>
-          </section>
-          <br/>
-      </div>
+       <section className='requests-display'>
+         <h1>Requests Received</h1>
+        <Table responsive hover>
+          <Thead>
+             <Tr>
+               <Th><div className=" s5 ">Types of Services</div></Th>
+               <Th> <div className=" ">Number of requests</div></Th>
+               <Th> <div className=" right"></div></Th>
+             </Tr>
+          </Thead>
+          <Tbody>
+            {
+            this.props.resources.map(i => {
+              let resource = this.props.requests.filter(req=>req.request_type.includes(i.id))
+              return (
+                    <Tr>
+                      <Td>
+                        <div>
+                          <Link to={{ pathname: '/graphView',state: { resource: resource,title:i.title }}}>
+                            {i.title}
+                          </Link>
+                        </div>
+                      </Td>
+                      <Td><div className="center">{resource.length}</div></Td>
+                      <Td><div className="right">Find Service Providers</div></Td>
+                    </Tr>
+                  )
+                }
+              )}
+             <Tr>
+               <Td><Link to="/demographicView">TOTAL</Link></Td>
+               <Td className=" center">{this.props.requests.length}</Td>
+               <Td className="right"> </Td>
+             </Tr>
+         </Tbody>
+      </Table>
+    </section>
+      <br/>
+    </div>
     );
   }
 }
