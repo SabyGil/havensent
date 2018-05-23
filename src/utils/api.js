@@ -43,6 +43,10 @@ let api = {
 		let url = baseURL + "api/checkToken/" 
 		return axios.post(url,data)
 	},
+	editProfile: function(data){
+		let url = baseURL + "api/editprofile/" 
+		return axios.post(url,data, header())
+	},
 	getRequests : function(data){
 		let url = baseURL + "Request/"
 		return axios.get(url, header())
