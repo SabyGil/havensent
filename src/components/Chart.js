@@ -23,6 +23,7 @@ class Chart extends Component {
           data={this.props.chartData}
           options={{
             responsive: true,
+            // maintainAspectRatio: false,
             layout: {
              padding: {
                  left: 0,
@@ -67,7 +68,6 @@ class Chart extends Component {
         <div className="chart">
         <Pie
           data={this.props.chartData}
-
           options={{
             responsive: true,
             // maintainAspectRatio: false,
@@ -92,16 +92,15 @@ class Chart extends Component {
                 fontSize: 25
               }
             },
-
           }}
         />
         </div>
         <div className="chart">
         <Line
           data={this.props.chartData}
-
           options={{
             responsive: true,
+            // maintainAspectRatio: false,
             title: {
               display: this.props.displayTitle,
               text: `Requests received by ${this.props.title}`,

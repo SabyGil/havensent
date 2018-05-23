@@ -255,6 +255,10 @@ header .menu .logout-btn:hover {
   color: white;
 }
 
+.menu-mobile {
+  display: none;
+}
+
 /* /HEADER */
 
 /* Jummbo */
@@ -610,7 +614,7 @@ footer {
 .demographic-data-container .chart  {
   width: 70%;
   margin: 0 auto;
-  padding: 1rem 0;
+  padding: 2rem 0;
 }
 
 /* demographic-graph  */
@@ -668,10 +672,37 @@ footer {
   .header-background header .logo-container {
     margin: 0 0 .5rem 0;
   }
-  header .menu .btn-secondary.dropdown-toggle {
+
+  header .menu {
+    display: none;
+  }
+
+  .menu-mobile {
+    display: block;
     margin-top: .5rem;
     font-size: 3.5vw;
+  }
+
+  header .menu-mobile .btn-secondary.dropdown-toggle {
+    background-color: var(--primary-blue);
+    box-shadow: var(--box-shadow);
+    border: none;
+    font-size: 1.8rem;
+    padding: 1rem 3rem;
     width: 17rem;
+  }
+  header .menu-mobile .logout-btn {
+    cursor: pointer;
+    font-size: 3rem;
+    color: var(--secondary-blue);
+  }
+
+  header .menu-mobile .logout-btn:hover {
+    color: white;
+  }
+  header .menu-mobile .btn-secondary.dropdown-toggle:active {
+    background-color: var(--primary-blue);
+    border: 1px solid var(--secondary-blue);
   }
   .request-page {
     grid-template-areas:
@@ -697,44 +728,12 @@ footer {
     padding: 1rem;
   }
   .demographic-data-container .chart {
-    width: 100%;
+    min-width: 100%;
     padding: 1rem;
   }
-  /* adminView  */
-  /* table, thead, tbody, th, td, tr {
+  .demographic-graph label, .demographic-graph select{
     display: block;
-  } */
-
-  /* Hide table headers (but not display: none;, for accessibility) */
-  /* thead tr {
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
-  } */
-  /* td {
-		border: none;
-		border-bottom: 1px solid #eee;
-		position: relative;
-		padding-left: 50%;
-	} */
-
-	/* td:before {
-		position: absolute;
-		top: 6px;
-		left: 6px;
-		width: 45%;
-		padding-right: 10px;
-		white-space: nowrap;
-	} */
-  /* ----- */
-  /* td:nth-of-type(1):before {} */
-	/* td:nth-of-type(2):before { content: "Last Name"; } */
-	/* td:nth-of-type(3):before { content: "Job Title"; } */
-	/* td:nth-of-type(4):before { content: "Favorite Color"; }
-	td:nth-of-type(5):before { content: "Wars of Trek?"; }
-	td:nth-of-type(6):before { content: "Porn Name"; }
-	td:nth-of-type(7):before { content: "Date of Birth"; }
-	td:nth-of-type(8):before { content: "Dream Vacation City"; }
-	td:nth-of-type(9):before { content: "GPA"; }
-	td:nth-of-type(10):before { content: "Arbitrary Data"; } */
+    margin: 1rem 0;
+    width: 100%;
+  }
 }
