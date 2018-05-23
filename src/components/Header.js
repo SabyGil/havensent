@@ -100,7 +100,9 @@ class Header extends React.Component {
           <nav>
             {
               this.props.isLoggedIn ?
-              <Dropdown isOpen={this.state.dropdownOpen} onMouseEnter={this.toggleMenu} onMouseLeave={this.toggleMenu} className='menu'>
+              <div>
+              <Dropdown isOpen={this.state.dropdownOpen} onMouseEnter={this.toggleMenu} onMouseLeave={this.toggleMenu}
+                className='menu'>
                 <DropdownToggle caret>
                   <span className='menu-text'>Menu</span>
                 </DropdownToggle>
@@ -110,6 +112,18 @@ class Header extends React.Component {
                  <div className='menu-item logout-btn' onClick={()=>this.props.dispatch(logout())}>Logout</div>
                </DropdownMenu>
               </Dropdown>
+
+              <Dropdown isOpen={this.state.dropdownOpen} onClick={this.toggleMenu} className='menu-mobile'>
+                <DropdownToggle caret>
+                  <span className='menu-text'>Menu</span>
+                </DropdownToggle>
+                <DropdownMenu>
+                 <div className='menu-item'><NavLink exact to="/adminView">Profile</NavLink></div>
+                 <div className='menu-item' style={{'whiteSpace': 'nowrap' }}><NavLink exact to="/editProfile">Edit Profile</NavLink></div>
+                 <div className='menu-item logout-btn' onClick={()=>this.props.dispatch(logout())}>Logout</div>
+               </DropdownMenu>
+              </Dropdown>
+            </div>
               :
               <div className='login-btn' onClick={()=>this.props.dispatch({type:"OPEN_LOGIN_MODAL"})}>
                 <span>Log In or</span>  <span>Sign Up</span>

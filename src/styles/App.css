@@ -109,7 +109,6 @@ a {
 }
 
 .tab-content .login-tab .card-body .forgot-password {
-  display: block;
   font-size: 1.4rem;
   color: var(--secondary-blue);
 }
@@ -254,6 +253,10 @@ header .menu .logout-btn {
 
 header .menu .logout-btn:hover {
   color: white;
+}
+
+.menu-mobile {
+  display: none;
 }
 
 /* /HEADER */
@@ -598,24 +601,20 @@ footer {
   grid-gap: 1rem;
 }
 
-.charts {
+.chart {
   grid-gap: 1rem;
   display: grid;
 }
 
-.charts > * {
+.chart > * {
   border: 1px solid lightGrey;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
-.demographic-data-container .charts  {
+.demographic-data-container .chart  {
   width: 70%;
   margin: 0 auto;
-  padding: 1rem 0;
-}
-.chart{
-  border: 1px solid red;
-  width: 100%;
+  padding: 2rem 0;
 }
 
 /* demographic-graph  */
@@ -639,6 +638,23 @@ footer {
   font-size: 2rem;
 }
 
+@media screen and (max-width: 40rem){
+  .responsiveTable td.pivoted .test{
+    text-align: center;
+    border: 5px solid orange;
+  }
+  .admin-view-page .requests-display table td a {
+    display: flex;
+    justify-content: center;
+  }
+  .admin-view-page .requests-display Table .center {
+    text-align: center;
+  }
+  .responsiveTable tbody tr {
+    border: 1px solid lightGrey !important;
+  }
+}
+
 @media only screen and (max-width: 1250px) and (min-width: 901px)  {
   .global-padding {
     padding: 0 2rem;
@@ -656,10 +672,37 @@ footer {
   .header-background header .logo-container {
     margin: 0 0 .5rem 0;
   }
-  header .menu .btn-secondary.dropdown-toggle {
+
+  header .menu {
+    display: none;
+  }
+
+  .menu-mobile {
+    display: block;
     margin-top: .5rem;
     font-size: 3.5vw;
+  }
+
+  header .menu-mobile .btn-secondary.dropdown-toggle {
+    background-color: var(--primary-blue);
+    box-shadow: var(--box-shadow);
+    border: none;
+    font-size: 1.8rem;
+    padding: 1rem 3rem;
     width: 17rem;
+  }
+  header .menu-mobile .logout-btn {
+    cursor: pointer;
+    font-size: 3rem;
+    color: var(--secondary-blue);
+  }
+
+  header .menu-mobile .logout-btn:hover {
+    color: white;
+  }
+  header .menu-mobile .btn-secondary.dropdown-toggle:active {
+    background-color: var(--primary-blue);
+    border: 1px solid var(--secondary-blue);
   }
   .request-page {
     grid-template-areas:
@@ -685,47 +728,12 @@ footer {
     padding: 1rem;
   }
   .demographic-data-container .chart {
-    width: 100%;
+    min-width: 100%;
     padding: 1rem;
   }
-  /* adminView  */
-  table, thead, tbody, th, td, tr {
+  .demographic-graph label, .demographic-graph select{
     display: block;
+    margin: 1rem 0;
+    width: 100%;
   }
-
-  /* Hide table headers (but not display: none;, for accessibility) */
-  thead tr {
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
-  }
-  td {
-		/* Behave  like a "row" */
-		border: none;
-		border-bottom: 1px solid #eee;
-		position: relative;
-		padding-left: 50%;
-	}
-
-	td:before {
-		/* Now like a table header */
-		position: absolute;
-		/* Top/left values mimic padding */
-		top: 6px;
-		left: 6px;
-		width: 45%;
-		padding-right: 10px;
-		white-space: nowrap;
-	}
-  /* ----- */
-  /* td:nth-of-type(1):before {} */
-	/* td:nth-of-type(2):before { content: "Last Name"; } */
-	/* td:nth-of-type(3):before { content: "Job Title"; } */
-	/* td:nth-of-type(4):before { content: "Favorite Color"; }
-	td:nth-of-type(5):before { content: "Wars of Trek?"; }
-	td:nth-of-type(6):before { content: "Porn Name"; }
-	td:nth-of-type(7):before { content: "Date of Birth"; }
-	td:nth-of-type(8):before { content: "Dream Vacation City"; }
-	td:nth-of-type(9):before { content: "GPA"; }
-	td:nth-of-type(10):before { content: "Arbitrary Data"; } */
 }
