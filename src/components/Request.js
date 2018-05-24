@@ -8,8 +8,6 @@ import { compose, withProps, withStateHandlers } from "recompose"
 import { getResources, getOrgs } from '../store/actions/requestActions'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps"
 
-
-
 const MyMapComponent = compose(
   withStateHandlers((props) => ((function(){
     console.log(props)
@@ -42,7 +40,7 @@ const MyMapComponent = compose(
   >
     {(props.isMarkerShown && props.organizations) &&
     props.organizations.map((i,k)=>
-      <Marker onClick={()=>{props.dispatch({type:"PICK_HAVEN",payload:{id: i.organization.id,title:i.username}})}} 
+      <Marker onClick={()=>{props.dispatch({type:"PICK_HAVEN",payload:{id: i.organization.id,title:i.username}})}}
               position={{ lat: parseFloat(i.organization.latitude), lng: parseFloat(i.organization.longitude) }}
               icon={i.username == props.selected.title ? {url:"http://maps.google.com/mapfiles/ms/icons/blue-dot.png",scaledSize:{height:50,width:50}}:"" }
               onMouseOver={()=>props.onToggleOpen(props["open "+k],k)}

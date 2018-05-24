@@ -108,7 +108,8 @@ a {
   margin: 0;
 }
 
-.tab-content .login-tab .card-body .forgot-password {
+.tab-content .login-tab .card-body .forgot-password-inquiry {
+  display: block;
   font-size: 1.4rem;
   color: var(--secondary-blue);
 }
@@ -142,8 +143,24 @@ a {
   width: 100%;
 }
 
+.login-footer input {
+  width: 100%;
+  font-size: 1.7rem;
+}
+
+.login-footer input:hover {
+  background-color: var(--primary-blue);
+  color: white;
+}
+
 .nav-tabs .nav-link.active {
   color: var(--secondary-blue) !important;
+}
+
+.forgot-password-tab span {
+  color: var(--secondary-blue);
+  padding: .5rem;
+  cursor: pointer;
 }
 
 /*  /Login/Logout modal */
@@ -171,15 +188,9 @@ a {
 }
 
 .icon-title {
-  /* visibility: hidden; */
   opacity: 1;
   font-size: 1.5rem;
 }
-
-/* .icon-wrap:hover .icon-title {
-  visibility: visible;
-  opacity: 1;
-} */
 
 header .logo-container {
   margin-right: auto;
@@ -281,7 +292,7 @@ header .menu .logout-btn:hover {
   background-color: #FF9B00;
   cursor: pointer;
   border-radius: 2px;
-  padding: .8rem;
+  padding: 1rem 2rem;
   color: white;
   font-weight: bold;
   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
@@ -370,13 +381,14 @@ footer {
 
 .top-box-a h1 {
   color: var(--secondary-blue);
+  margin-bottom: 1rem;
 }
 
 .top-box-a .icons-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min-content, 33%));
   width: 100%;
-  padding-bottom: 1rem;
+  padding-bottom: 1.5rem;
   border-bottom: 1px solid lightGrey;
 }
 
@@ -388,23 +400,24 @@ footer {
   grid-area: top-box-b;
   display: grid;
   justify-items: center;
-  padding-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 .top-box-b p {
-  height: 100%;
-  display: flex;
+  margin: 1.5rem 0;
   align-items: center;
   font-size: var(--p-font-size);
 }
 
 .top-box-b h1 {
   color: var(--secondary-blue);
+  margin: 0;
 }
 
 .request-page .map-area h1 {
   text-align: center;
   color: var(--secondary-blue);
+  margin-bottom: 1rem;
 }
 
 .top-box-b select{
@@ -414,6 +427,7 @@ footer {
 .top-box-b .submit-btn-container {
   display: flex;
   padding-top: 1rem;
+  margin: 1.5rem 0;
 }
 
 .top-box-b .submit-btn-container button {
@@ -426,7 +440,7 @@ footer {
   box-shadow: var(--box-shadow);
   text-decoration: none;
   color: white;
-  font-size: var(--a-font-size);
+  font-size: 2rem;
   text-align: center;
 }
 
@@ -513,10 +527,12 @@ footer {
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   border: 4px solid silver;
+  text-align: center;
 }
 
 .landing-page-modal .form-group Label, a {
   font-size: 2.5rem;
+  color: var(--secondary-blue);
 }
 
 .landing-page-modal .form-group Input {
@@ -524,9 +540,21 @@ footer {
   padding: 1rem;
 }
 
+.landing-page-modal .form-group input[type=submit]:hover {
+  color: white;
+  background-color: var(--primary-blue);
+  cursor: pointer;
+}
+
 .landing-page-modal .form-group  a {
   color: var(--secondary-blue);
   text-decoration: none;
+}
+
+.landing-page-modal .form-group .invalid-zip {
+  color: red;
+  display: block;
+  font-size: var(--p-font-size);
 }
 
 /* request modal */
@@ -710,11 +738,17 @@ footer {
     'map'
     'top-box-b';
   }
+  .top-box-a h1 {
+    margin: 2rem 0;
+  }
+  .request-page .map-area h1 {
+    margin: 2rem 0;
+  }
   .map-area .style {
     grid-template-rows: repeat(auto-fit, minmax(600px, 1fr));
   }
-  .request-page .top-box .top-box-a {
-
+  .top-box-b h1 {
+    margin: 2rem 0;
   }
   .request-page .top-box-b .submit-btn-container {
     padding-top: 1rem;

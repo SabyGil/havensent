@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import {connect} from 'react-redux'
 import Modal from 'react-modal'
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormFeedback } from 'reactstrap';
 
 
 class LandingPage extends React.Component {
@@ -57,7 +57,7 @@ class LandingPage extends React.Component {
                      <Label>Enter Proper Zipcode</Label>
                      <Input onChange={(e)=>this.props.dispatch({type:"ADD_ZIP",payload: e.target.value})} type='number' />
                      <Input type="submit" />
-                     {this.state.attemptZip && <Label>Invalid Zipcode</Label>}
+                     {this.state.attemptZip && <Label className='invalid-zip'>Invalid Zipcode</Label>}
                    </FormGroup>
                   </Form>
                 </Modal>
