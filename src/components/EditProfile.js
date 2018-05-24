@@ -5,15 +5,16 @@ import {handleEditProfileForm, editProfile} from "../store/actions/resetActions"
 
 class EditProfile extends Component {
 
-  handleChange(e){
-    let data = {
-      [e.target.name] : e.target.value
-    }
-
-    this.props.handleEdit(data)
+  handleChange = (e) =>{
+    
+    this.props.handleEdit({
+      name: e.target.name,
+      value : e.target.value
+    })
   }
 
-  handleSubmit(e){
+  handleSubmit = (e) =>{
+    e.preventDefault()
     this.props.editProfile(this.props.edited)
   }
   render(){
@@ -23,22 +24,22 @@ class EditProfile extends Component {
        Edit Profile 
        <Form onSubmit={this.handleSubmit}>
         <Label>Phone Number</Label>
-        <Input type="text" name="phone_number"/>
+        <Input type="text" onChange={this.handleChange} name="phone_number"/>
 
         <Label>Address</Label>
-        <Input type="text" name="address"/>
+        <Input type="text" onChange={this.handleChange} name="address"/>
 
         <Label>Operating Budget</Label>
-        <Input type="text" name="operating_budget"/>
+        <Input type="text" onChange={this.handleChange} name="operating_budget"/>
 
         <Label>Formation Type</Label>
-        <Input type="text" name="formation_type"/>
+        <Input type="text" onChange={this.handleChange} name="formation_type"/>
 
         <Label>Full Time Staff</Label>
-        <Input type="text" name="full_time_staff"/>
+        <Input type="text" onChange={this.handleChange} name="full_time_staff"/>
 
         <Label>Part Time Staff</Label>
-        <Input type="text" name="part_time_staff"/>
+        <Input type="text" onChange={this.handleChange} name="part_time_staff"/>
 
         <Input type="submit"/>
        </Form>

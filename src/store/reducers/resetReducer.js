@@ -1,7 +1,14 @@
 const initialState ={
 	available: false,
 	passmatch: true,
-	edited: {}
+	edited: {
+		phone_number : "",
+		address : "",
+		operating_budget : "",
+		formation_type: "",
+		full_time_staff : "",
+		part_time_staff : ""
+	}
 }
 export default function (state=initialState, action){
 	switch(action.type){
@@ -27,6 +34,7 @@ export default function (state=initialState, action){
 			passmatch: true
 		}
 		case "EDIT_PROFILE":
+		console.log(action.payload)
 		state.edited[action.payload.name] = action.payload.value
 		return state
 		

@@ -23,7 +23,7 @@ export function resetPassword(data){
 
 export function handleEditProfileForm(data){
 	return disptach => {
-		return disptach({type:"EDIT_PROFILE",profile:data})
+		return disptach({type:"EDIT_PROFILE",payload:data})
 	}
 }
 export function editProfile(data){
@@ -31,7 +31,7 @@ export function editProfile(data){
 		.then(response => 
 		{
 			if(response.status === 200){
-				return disptach({type:"EDIT_PROFILE"})
+				console.log(response)
 			}
 		})
 }
