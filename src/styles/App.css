@@ -666,10 +666,52 @@ footer {
   font-size: 2rem;
 }
 
+/* Edit Profile styles  */
+
+.edit-profile-container {
+  padding: 1rem 0;
+  border: 1px solid lightGrey;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.edit-profile-container > * :not(h1):not([type="submit"]){
+  margin-top: 1rem;
+}
+
+.edit-profile-container h1 {
+  color: var(--primary-blue);
+  font-size: var(--heading-font-size);
+}
+
+.edit-profile-container input[type=submit] {
+  padding: var(--btn-padding);
+  font-size: var(--a-font-size);
+  margin: 1.5rem auto;
+  width: 30rem;
+}
+
+.edit-profile-container input[type=submit]:hover {
+  color: white;
+  background-color: var(--secondary-blue);
+}
+
+.edit-profile-container input {
+  font-size: 1.7rem;
+  margin: 0 auto;
+  width: 70rem;
+}
+
+@media screen and (max-width: 399px){
+  .admin-view-page a {
+    margin-left: 3rem;
+    text-align: center;
+  }
+}
+
 @media screen and (max-width: 40rem){
   .responsiveTable td.pivoted .test{
-    text-align: center;
-    border: 5px solid orange;
+    margin-left: 6.8rem;
   }
   .admin-view-page .requests-display table td a {
     display: flex;
@@ -769,5 +811,13 @@ footer {
     display: block;
     margin: 1rem 0;
     width: 100%;
+  }
+
+  .edit-profile-container input[type=submit] {
+    width: 15rem;
+  }
+
+  .edit-profile-container input {
+    width: auto;
   }
 }
