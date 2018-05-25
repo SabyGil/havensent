@@ -21,7 +21,7 @@ class EditProfile extends Component {
     console.log(this.props)
     return (
       <div className='edit-profile-container'>
-       Edit Profile 
+       <h1>Edit Profile </h1>
        <Form onSubmit={this.handleSubmit}>
         <Label>Phone Number</Label>
         <Input type="text" onChange={this.handleChange} name="phone_number"/>
