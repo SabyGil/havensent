@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import {checkToken, resetPassword} from "../store/actions/resetActions"
-import { Button, Form, FormGroup, Label, Input, Card, Row, Col, Alert } from 'reactstrap';
+import { Form, FormGroup, Label, Input } from 'reactstrap';
 
 class NewPassword extends Component {
 	constructor(){

@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import {connect} from 'react-redux'
 import {login, register, logout, forgotPassword} from "../store/actions/userActions"
 import Modal from 'react-modal'
-import { TabContent, TabPane, Nav, NavItem, NavLink as Link, Button, Form, FormGroup, Label, Input, Card, Row, Col, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, FormFeedback, Alert } from 'reactstrap';
+import { TabContent, TabPane, Nav, NavItem, NavLink as Link, Form, FormGroup, Label, Input, Card, Row, Col, Dropdown, DropdownToggle, DropdownMenu, Alert } from 'reactstrap';
 import classnames from 'classnames';
 
 class Header extends React.Component {
@@ -170,7 +170,7 @@ class Header extends React.Component {
                          <Label for="username">Username:</Label>
                          <Input required onChange={this.handleChange} name="username" type="text" placeholder="Username" />
                          <Label for="password">Password:</Label>
-                         <a href='#' onClick={() => { this.toggle('3'); }} className='forgot-password'>Forgot your password?</a>
+                         <a href='#' onClick={() => { this.toggle('3'); }} className='forgot-password-inquiry'>Forgot your password?</a>
                          <Input required onChange={this.handleChange} type="password" name="password" placeholder="Password" />
                          { this.props.loginFailed ?
                          <Alert color="danger">Incorrect Username/Password Combination!</Alert> : ""}
@@ -241,11 +241,10 @@ class Header extends React.Component {
              </div>
            </TabPane>
 
-           <TabPane tabId="3">
-             <span style={{'color': 'var(--secondary-blue)'}} onClick={() => { this.toggle('1'); }}>back</span>
-             <p>Enter your email:</p>
+           <TabPane tabId="3" className='forgot-password-tab'>
+             <span onClick={() => { this.toggle('1'); }}><i class="fas fa-arrow-left"></i> Back</span>
              <FormGroup>
-               <Label for="username">Email:</Label>
+               <Label for="username">Enter your email:</Label>
                <Input onChange={this.handleChange} name="forgotemail" type="email" placeholder="Email" />
              </FormGroup>
              <div className='sign-up-footer'>
