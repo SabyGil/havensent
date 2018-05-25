@@ -53,7 +53,7 @@ class LandingPage extends React.Component {
                   >
                   <Form onSubmit={this.handleSubmit}>
                    <FormGroup>
-                     <Label>Enter Proper Zipcode</Label>
+                     <Label>Enter Zipcode</Label>
                      <Input onChange={(e)=>this.props.dispatch({type:"ADD_ZIP",payload: e.target.value})} type='number' />
                      <Input type="submit" />
                      {this.state.attemptZip && <Label className='invalid-zip'>Invalid Zipcode</Label>}
