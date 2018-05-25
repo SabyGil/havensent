@@ -6,7 +6,7 @@ import {handleEditProfileForm, editProfile} from "../store/actions/resetActions"
 class EditProfile extends Component {
 
   handleChange = (e) =>{
-    
+
     this.props.handleEdit({
       name: e.target.name,
       value : e.target.value
@@ -20,7 +20,7 @@ class EditProfile extends Component {
   render(){
     console.log(this.props)
     return (
-      <div>
+      <div className='edit-profile-container'>
        Edit Profile 
        <Form onSubmit={this.handleSubmit}>
         <Label>Phone Number</Label>
