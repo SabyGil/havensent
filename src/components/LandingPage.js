@@ -1,8 +1,7 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import Modal from 'react-modal'
-import { Button, Form, FormGroup, Label, Input, FormFeedback } from 'reactstrap';
+import { Form, FormGroup, Label, Input } from 'reactstrap';
 
 
 class LandingPage extends React.Component {

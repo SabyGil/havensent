@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import {connect} from 'react-redux'
 import {login, register, logout, forgotPassword} from "../store/actions/userActions"
 import Modal from 'react-modal'
-import { TabContent, TabPane, Nav, NavItem, NavLink as Link, Button, Form, FormGroup, Label, Input, Card, Row, Col, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, FormFeedback, Alert } from 'reactstrap';
+import { TabContent, TabPane, Nav, NavItem, NavLink as Link, Form, FormGroup, Label, Input, Card, Row, Col, Dropdown, DropdownToggle, DropdownMenu, Alert } from 'reactstrap';
 import classnames from 'classnames';
 
 class Header extends React.Component {

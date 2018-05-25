@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import {connect} from 'react-redux'
 import Chart from './Chart';
 
 class GraphView extends Component {
