@@ -89,6 +89,11 @@ export default function (state=initialState, action){
 			...state,
 			ethnicity : action.payload
 		}
+		case "ADD_RACE":
+		return {
+			...state,
+			race : action.payload
+		}
 		case "ADD_AGE":
 		return {
 			...state,

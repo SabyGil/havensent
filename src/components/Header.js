@@ -42,7 +42,7 @@ class Header extends React.Component {
     let org = {
         organization_name: this.state.organization_name,
         phone_number: this.state.phone_number,
-        address : this.state.address,
+        address : `${this.state.street},${this.state.State},${this.state.city},${this.state.zip_code}`,
         operating_budget: this.state.operating_budget,
         formation_type : this.state.formation_type,
         full_time_staff: this.state.full_time_staff,
@@ -204,36 +204,65 @@ class Header extends React.Component {
                     </FormGroup>
                     <FormGroup>
                       <Label for="phone_number">Phone Number:</Label>
-                      <Input required onChange={this.handleChange} type="text" name="phone_number" placeholder="Phone Number" />
+                      <Input required onChange={this.handleChange} type="text" name="phone_number" placeholder="9 Numbers no spaces, - or ()" />
                     </FormGroup>
                     <span className='sign-up-footer'>
                         <button  onClick={(e)=>{this.toggleStep(e,2)}}>Next</button>
                     </span>
                   </span>
+
                   <span style={{display:this.state.registerStep === 2 ?"":"none"}}>
                   <FormGroup>
-                    <Label for="address">Address:</Label>
-                    <Input required onChange={this.handleChange} type="text" name="address" placeholder="Address" />
+                    <Label for="street">Street Address:</Label>
+                    <Input required onChange={this.handleChange} type="text" name="street" placeholder="Street Address" />
                   </FormGroup>
                   <FormGroup>
-                    <Label for="operating_budget">Operating Budget:</Label>
-                    <Input required onChange={this.handleChange} type="text" name="operating_budget" placeholder="Operating Budget" />
+                    <Label for="city">City:</Label>
+                    <Input required onChange={this.handleChange} type="text" name="city" placeholder="City" />
                   </FormGroup>
                   <FormGroup>
-                    <Label for="formation_type">Formation Type:</Label>
-                    <Input required onChange={this.handleChange} type="text" name="formation_type" placeholder="Formation Type" />
+                    <Label for="State">State:</Label>
+                    <Input required onChange={this.handleChange} type="text" name="State" placeholder="State" />
                   </FormGroup>
                   <FormGroup>
-                    <Label for="full_time_staff">Full-Time Staff:</Label>
-                    <Input required onChange={this.handleChange} type="number" name="full_time_staff" placeholder="Full-Time Staff" />
-                  </FormGroup>
-                  <FormGroup>
-                    <Label for="part_time_staff">Part-Time Staff:</Label>
-                    <Input required onChange={this.handleChange} type="number" name="part_time_staff" placeholder="Part-Time Staff" />
+                    <Label for="Zip">Zip Code:</Label>
+                    <Input required onChange={this.handleChange} type="number" name="zip_code" placeholder="Zip Code" />
                   </FormGroup>
 
                   <span className='sign-up-footer'>
                     <button onClick={(e)=>{this.toggleStep(e,1)}}>Back</button>
+                    <button  onClick={(e)=>{this.toggleStep(e,3)}}>Next</button>
+                  </span>
+                 </span>
+
+                  <span style={{display:this.state.registerStep === 3 ?"":"none"}}>
+                  <FormGroup>
+                    <Label for="operating_budget">Operating Budget:</Label>
+                    <Input required onChange={this.handleChange} type="text" name="operating_budget" placeholder="$ (no commas)" />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="formation_type">Formation Type:</Label>
+                    <select required onChange={this.handleChange} name="formation_type" >
+                      <option value="Limited Liability Company">Limited Liability Company</option>
+                      <option value="Limited Liability Partnership">Limited Liability Partnership</option>
+                      <option value="S Coporation">S Coporation</option>
+                      <option value="C Coporation">C Coporation</option>
+                      <option value="Sole Proprietorship">Sole Proprietorship</option>
+                      <option value="B Corp">B Corp</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="full_time_staff"># of Full-Time Staff:</Label>
+                    <Input required onChange={this.handleChange} type="number" name="full_time_staff" placeholder="# of FT Employees" />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="part_time_staff"># of Part-Time Staff:</Label>
+                    <Input required onChange={this.handleChange} type="number" name="part_time_staff" placeholder="# of PT Employees" />
+                  </FormGroup>
+
+                  <span className='sign-up-footer'>
+                    <button onClick={(e)=>{this.toggleStep(e,2)}}>Back</button>
                     <button type="submit"> Submit </button>
                   </span>
                  </span>

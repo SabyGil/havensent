@@ -149,17 +149,26 @@ class Request extends Component {
               <option value="Male">Male</option>
               <option value="Female">Female</option>
               <option value="Transgender">Transgender</option>
-              <option value="None">None of the Above</option>
+              <option value="Non-Binary">Non-Binary</option>
+              <option value="Prefer not to say">Prefer not to say</option>
             </select>
-            <p>Ethnicity</p>
+            <p>Race</p>
+            <select onChange={(e)=>{this.props.dispatch({type:"ADD_RACE",payload:e.target.value})}}>
+              <option>-Please Select-</option>
+              <option value="American Indian or Alaska Native">American Indian or Alaska Native</option>
+              <option value="Hispanic">Hispanic</option>
+              <option value="Black or African American">Black or African American</option>
+              <option value="White">White</option>
+              <option value="Native Hawaiian or Other Pacific Islander">Native Hawaiian or Other Pacific Islander</option>
+            </select>
+            <p>Race</p>
             <select onChange={(e)=>{this.props.dispatch({type:"ADD_ETHNICITY",payload:e.target.value})}}>
               <option>-Please Select-</option>
+              <option value="American Indian or Alaska Native">American Indian or Alaska Native</option>
               <option value="Hispanic">Hispanic</option>
-              <option value="Black">Black</option>
+              <option value="Black or African American">Black or African American</option>
               <option value="White">White</option>
-              <option value="Latino/Spanish">Latino or Spanish Origin</option>
-              <option value="Middle Eastern">Middle Eastern</option>
-              <option value="Other">Other</option>
+              <option value="Native Hawaiian or Other Pacific Islander">Native Hawaiian or Other Pacific Islander</option>
             </select>
             <p>Age</p>
             <select onChange={(e)=>{this.props.dispatch({type:"ADD_AGE",payload:e.target.value})}}>
