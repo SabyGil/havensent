@@ -126,7 +126,7 @@ class Header extends React.Component {
             </div>
               :
               <div className='login-btn' onClick={()=>this.props.dispatch({type:"OPEN_LOGIN_MODAL"})}>
-                <span>Log In or</span>  <span>Sign Up</span>
+                <span>Provider Login / </span><span>Sign Up</span>
               </div>
             }
           </nav>

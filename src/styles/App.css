@@ -726,6 +726,8 @@ header .menu .logout-btn:hover {
   border: 1px solid lightGrey;
   font-size: 2rem;
   text-align: center;
+  margin: 0 auto;
+  width: 100rem;
 }
 
 .edit-profile-container > * :not(h1):not([type="submit"]){
@@ -790,6 +792,9 @@ footer {
   }
   .responsiveTable tbody tr {
     border: 1px solid lightGrey !important;
+  }
+  canvas.chartjs-render-monitor {
+    /* max-width: 100%; */
   }
 }
 
@@ -883,16 +888,6 @@ footer {
     padding: 0 25rem;
     text-align: center;
   }
-  .chart-data-container {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    padding: 1rem;
-  }
   .demographic-data-container .chart {
     min-width: 100%;
     padding: 1rem;
@@ -901,6 +896,11 @@ footer {
     display: block;
     margin: 1rem 0;
     width: 100%;
+  }
+
+  .edit-profile-container {
+    margin: auto;
+    width: auto;
   }
 
   .edit-profile-container input[type=submit] {
