@@ -44,7 +44,7 @@ let api = {
 		return axios.post(url,data)
 	},
 	editProfile: function(data){
-		let url = baseURL + "api/editprofile/" 
+		let url = baseURL + "api/editprofile/"
 		return axios.post(url,data, header())
 	},
 	getRequests : function(data){

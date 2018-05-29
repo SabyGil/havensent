@@ -12,7 +12,6 @@ class Chart extends Component {
     legendPosition: 'center',
     location: 'City',
     defaultFontSize: 20,
-
   }
 
   render(){
@@ -20,6 +19,9 @@ class Chart extends Component {
       <span className='charts'>
       <div className='chart'>
         <Bar
+          // onResize = {function(myChart, size) {
+          //   myChart.options.scales.xAxes[0].ticks.display = (size.height >= 140);
+          // }}
           data={this.props.chartData}
           options={{
             responsive: true,
@@ -61,6 +63,19 @@ class Chart extends Component {
                 }
               }],
             }
+
+          }}
+          onResize = {function(Chart, size) {
+           var showTicks = (size.height < 600) ? false : true;
+           Chart.options = {
+              scales: {
+                  xAxes: [{
+                      ticks: {
+                          display: showTicks
+                      }
+                  }],
+                }
+             };
           }}
 
         />
