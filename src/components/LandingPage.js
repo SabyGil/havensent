@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import Modal from 'react-modal'
-import { Form, FormGroup, Label, Input } from 'reactstrap';
+import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 
 class LandingPage extends React.Component {
@@ -47,7 +47,7 @@ class LandingPage extends React.Component {
 
                 <Modal
                   isOpen={this.state.isOpen}
-                  className='landing-page-modal'
+                  className='landing-page-modals'
                   overlayClassName='overlay'
                   onRequestClose={this.modal}
                   >
@@ -57,6 +57,21 @@ class LandingPage extends React.Component {
                      <Input onChange={(e)=>this.props.dispatch({type:"ADD_ZIP",payload: e.target.value})} type='number' />
                      <Input type="submit" />
                      {this.state.attemptZip && <Label className='invalid-zip'>Invalid Zipcode</Label>}
+                   </FormGroup>
+                  </Form>
+                </Modal>
+
+                <Modal
+                  isOpen={true}
+                  className='landing-page-modals'
+                  overlayClassName='overlay'
+                  onRequestClose={this.modal}
+                  >
+                  <Form onSubmit={this.handleSubmit}>
+                    <h1>Thanks! Your input helps *location* achieve its mission for your community.</h1>
+                   <FormGroup>
+                     <Label></Label>
+                     <button className='thanks-btn'>Great</button>
                    </FormGroup>
                   </Form>
                 </Modal>

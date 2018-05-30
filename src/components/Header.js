@@ -168,10 +168,10 @@ class Header extends React.Component {
                    <Card body>
                      <form onSubmit={this.handleSubmit} >
                          <Label for="username">Username:</Label>
-                         <Input required onChange={this.handleChange} name="username" type="text" placeholder="Username" />
+                         <Input required onChange={this.handleChange} name="username" type="text"/>
                          <Label for="password">Password:</Label>
                          <a href='#' onClick={() => { this.toggle('3'); }} className='forgot-password-inquiry'>Forgot your password?</a>
-                         <Input required onChange={this.handleChange} type="password" name="password" placeholder="Password" />
+                         <Input required onChange={this.handleChange} type="password" name="password"/>
                          { this.props.loginFailed ?
                          <Alert color="danger">Incorrect Username/Password Combination!</Alert> : ""}
                          <div className='login-footer'>
@@ -188,19 +188,19 @@ class Header extends React.Component {
                   <span style={{display:this.state.registerStep === 1 ?"":"none"}}>
                     <FormGroup>
                       <Label for="username">Username:</Label>
-                      <Input required onChange={this.handleChange} name="username" type="text" placeholder="Username" />
+                      <Input required onChange={this.handleChange} name="username" type="text"/>
                     </FormGroup>
                     <FormGroup>
                       <Label for="email">Email:</Label>
-                      <Input required onChange={this.handleChange} name="email" type="email" placeholder="Email" />
+                      <Input required onChange={this.handleChange} name="email" type="email"/>
                     </FormGroup>
                     <FormGroup>
                       <Label for="password">Password:</Label>
-                      <Input required onChange={this.handleChange} type="password" name="password" placeholder="Password" />
+                      <Input required onChange={this.handleChange} type="password" name="password"/>
                     </FormGroup>
                     <FormGroup>
                       <Label for="organization_name">Organization Name:</Label>
-                      <Input required onChange={this.handleChange} type="text" name="organization_name" placeholder="Organization Name" />
+                      <Input required onChange={this.handleChange} type="text" name="organization_name"/>
                     </FormGroup>
                     <FormGroup>
                       <Label for="phone_number">Phone Number:</Label>
@@ -214,19 +214,19 @@ class Header extends React.Component {
                   <span style={{display:this.state.registerStep === 2 ?"":"none"}}>
                   <FormGroup>
                     <Label for="street">Street Address:</Label>
-                    <Input required onChange={this.handleChange} type="text" name="street" placeholder="Street Address" />
+                    <Input required onChange={this.handleChange} type="text" name="street"/>
                   </FormGroup>
                   <FormGroup>
                     <Label for="city">City:</Label>
-                    <Input required onChange={this.handleChange} type="text" name="city" placeholder="City" />
+                    <Input required onChange={this.handleChange} type="text" name="city"/>
                   </FormGroup>
                   <FormGroup>
                     <Label for="State">State:</Label>
-                    <Input required onChange={this.handleChange} type="text" name="State" placeholder="State" />
+                    <Input required onChange={this.handleChange} type="text" name="State"/>
                   </FormGroup>
                   <FormGroup>
                     <Label for="Zip">Zip Code:</Label>
-                    <Input required onChange={this.handleChange} type="number" name="zip_code" placeholder="Zip Code" />
+                    <Input required onChange={this.handleChange} type="number" name="zip_code"/>
                   </FormGroup>
 
                   <span className='sign-up-footer'>
