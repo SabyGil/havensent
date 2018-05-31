@@ -103,45 +103,47 @@ class Request extends Component {
     console.log(this.props)
     return (
       <div className='request-page fixed-width fixed-height'>
+
         <section className='map-area'>
           <div className='container'>
-            <h1>Select Location</h1>
+            <h1>I Want Help Here:</h1>
             <div className='map-container'>
               {this.props.allOrganizations.length>0 && <MyMapComponent isMarkerShown
-                            organizations = {this.props.allOrganizations && this.props.allOrganizations.filter(i=> i.organization != null )}
-                            dispatch={this.props.dispatch}
-                            lon={this.props.lon}
-                            lat={this.props.lat}
-                            selected = {this.props.haven}
-                            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDURnY8-RKhvImIKT552ulVjqHmRKdKkr8
-&v=3.exp&libraries=geometry,drawing,places"
-                            loadingElement = {<div style={{ height: `100%` }} />}
-                            containerElement = {<div className = 'style' />}
-                            mapElement={<div style={{ height: `100%` }}
-                           />}
-                            />}
-            </div>
+                organizations = {this.props.allOrganizations && this.props.allOrganizations.filter(i=> i.organization != null )}
+                dispatch={this.props.dispatch}
+                lon={this.props.lon}
+                lat={this.props.lat}
+                selected = {this.props.haven}
+                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDURnY8-RKhvImIKT552ulVjqHmRKdKkr8
+  &v=3.exp&libraries=geometry,drawing,places"
+                loadingElement = {<div style={{ height: `100%` }} />}
+                containerElement = {<div className = 'style' />}
+                mapElement={<div style={{ height: `100%` }}
+               />}
+             />}
+           </div>
           </div>
         </section>
-        <div className='haven-info-container top-box top-box-a'>
-          <h1>Select Needs</h1>
+
+        <section className='haven-info-container top-box top-box-a'>
+          <h1>I Need Help With:</h1>
           <div className='icons-container'>
             {
               this.props.resources && this.props.resources.map(i=>{
                 let bgColor = this.props.requestedResources.filter(j=>j.title==i.title).length>0?"#03a9f4":""
-                 return(
+                 return (
                   <span className="icon-wrap">
-                   <img className="icon"
-                   style={{cursor:"pointer",'backgroundColor':bgColor}}
-                   src={i.icon} value={i.id}  height='100px'
-                   onClick={(e)=>{this.props.dispatch({type:"ADD_TO_REQUEST",payload:{id: i.id,title:i.title}})}}/>
-                   <p className="icon-title">{i.title}</p>
-                  </span>)
+                     <img className="icon"
+                     style={{cursor:"pointer",'backgroundColor':bgColor}}
+                     src={i.icon} value={i.id}  height='100px'
+                     onClick={(e)=>{this.props.dispatch({type:"ADD_TO_REQUEST",payload:{id: i.id,title:i.title}})}}/>
+                     <p className="icon-title">{i.title}</p>
+                  </span>
+                )
               })
             }
           </div>
-        </div>
-
+        </section>
         <div className='top-box top-box-b'>
             <h1>Enter Basic Information</h1>
             <p>Gender</p>
@@ -192,7 +194,7 @@ class Request extends Component {
               <div className='modal-content'>
                 <button className='close-button' onClick={()=>this.props.dispatch({type:"CLOSE_MODAL"})}><i className="fas fa-times-circle"></i></button>
                 <h1>You're almost done!</h1>
-                <h2>Would you like to receive updates from {this.props.haven && this.props.haven.title}?</h2>
+                <h2>Would you like to receive updates from Havensent?</h2>
                 <input onChange={(e)=>this.props.dispatch({type:"ADD_EMAIL",payload:e.target.value})} type="email" placeholder='Enter Email...'/>
                 <button onClick={()=>this.sendRequest()}>No Thank You!</button>
                 <button onClick={()=>{this.sendRequest()}}>Submit</button>
