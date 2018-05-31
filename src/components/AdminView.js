@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux'
-import {getRequests} from "../store/actions/userActions"
+import {connect} from 'react-redux';
+import {getRequests} from "../store/actions/userActions";
 import {getResources} from "../store/actions/requestActions"
-import { Link } from 'react-router-dom';
+import { Link,  } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
@@ -46,7 +46,7 @@ class AdminView extends Component {
                         </div>
                       </Td>
                       <Td><div className="center">{resource.length}</div></Td>
-                      <Td><div className="right">Find Service Providers</div></Td>
+                      <Td><div className="right"><Link to='/serviceProviders'>Find Service Providers</Link></div></Td>
                     </Tr>
                   )
                 }

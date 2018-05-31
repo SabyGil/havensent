@@ -62,7 +62,7 @@ class LandingPage extends React.Component {
                 </Modal>
 
                 <Modal
-                  isOpen={true}
+                  isOpen={false}
                   className='landing-page-modals'
                   overlayClassName='overlay'
                   onRequestClose={this.modal}
