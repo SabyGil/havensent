@@ -26,6 +26,7 @@ class GraphViewByDemographic extends Component {
                 j.request_type.includes(i.id) &&
                 j.gender.startsWith(this.props.filters.gender) &&
                 j.age.startsWith(this.props.filters.age) &&
+                j.race.startsWith(this.props.filters.race) &&
                 j.ethnicity.startsWith(this.props.filters.ethnicity)
                 ).length
             }),
@@ -74,18 +75,25 @@ class GraphViewByDemographic extends Component {
           <option value="Male">Male</option>
           <option value="Female">Female</option>
           <option value="Transgender">Transgender</option>
-          <option value="None">None of the Above</option>
+          <option value="Non-Binary">Non-Binary</option>
+          <option value="Prefer not to say">Prefer not to say</option>
         </select>
 
         <label>Ethnicity</label>
         <select onChange={ (e)=>{this.props.dispatch({type:"SELECT_FILTER",payload: {type:"ethnicity", data: e.target.value}}); this.getChartData()}} >
             <option value={""}>-----</option>
+            <option value="American Indian or Alaska Native">American Indian or Alaska Native</option>
             <option value="Hispanic">Hispanic</option>
-            <option value="Black">Black</option>
+            <option value="Black or African American">Black or African American</option>
             <option value="White">White</option>
-            <option value="Latino/Spanish">Latino or Spanish Origin</option>
-            <option value="Middle Eastern">Middle Eastern</option>
-            <option value="Other">Other</option>
+            <option value="Native Hawaiian or Other Pacific Islander">Native Hawaiian or Other Pacific Islander</option>
+        </select>
+
+        <label>Race</label>
+        <select onChange={ (e)=>{this.props.dispatch({type:"SELECT_FILTER",payload: {type:"race", data: e.target.value}}); this.getChartData()}} >
+            <option value={""}>-----</option>
+            <option value="Hispanic, Latino or of Spanish origin">Hispanic, Latino or of Spanish origin</option>
+            <option value="Not of Hispanic, Latino, or of Spanish origin">Not of Hispanic, Latino, or of Spanish origin</option>
         </select>
 
         <label>Age</label>

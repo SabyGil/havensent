@@ -147,7 +147,7 @@ class Chart extends Component {
               }],
               xAxes: [{
                 ticks: {
-                  fontSize: 25,
+                  fontSize: 20,
                   padding: 5
                 }
               }],

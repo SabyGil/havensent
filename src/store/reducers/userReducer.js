@@ -54,6 +54,13 @@ export default function (state=initialState, action){
 				filter.ethnicity = action.payload.data
 			}
 		}
+		else if (action.payload.type==="race"){
+			if (filter.race === action.payload.data){
+				filter.race = ""
+			}else{
+				filter.race = action.payload.data
+			}
+		}
 		else if (action.payload.type === "gender"){
 			if (filter.gender === action.payload.data){
 				filter.gender = ""

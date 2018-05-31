@@ -11,7 +11,7 @@ class GraphView extends Component {
     let resource = this.props.history.location.state.resource
     this.setState({
       gender: {
-        labels: [ 'Male','Female','Transgender',"None of the Above"],
+        labels: [ 'Male','Female','Transgender',"Non-Binary", "Prefer not to say"],
         datasets: [
           {
             label: 'Requests received',
@@ -19,7 +19,8 @@ class GraphView extends Component {
               resource.filter(i=> i.gender === "Male").length,
               resource.filter(i=> i.gender === "Female").length,
               resource.filter(i=> i.gender === "Transgender").length,
-              resource.filter(i=> i.gender === "None of the Above").length
+              resource.filter(i=> i.gender === "Non-Binary").length,
+              resource.filter(i=> i.gender === "Prefer not to say").length
             ],
             backgroundColor:[
              'rgba(255, 99, 132, 0.6)',
@@ -45,18 +46,51 @@ class GraphView extends Component {
          }
        }
       },
-      ethnicity: {
-        labels: [ 'Hispanic','Black','White',"Latino or Spanish Origin", "Middle Eastern", "Other"],
+      race: {
+        labels: [ 'Hispanic','Black','White',"American Indian or Alaska Native", "Native Hawaiian or Other Pacific Islander","Asian"],
         datasets: [
           {
             label: 'Requests received',
             data: [
-              resource.filter(i=> i.ethnicity === "Hispanic").length,
-              resource.filter(i=> i.ethnicity === "Black").length,
-              resource.filter(i=> i.ethnicity === "White").length,
-              resource.filter(i=> i.ethnicity === "Latino or Spanish Origin").length,
-              resource.filter(i=> i.ethnicity === "Middle Eastern").length,
-              resource.filter(i=> i.ethnicity === "Other").length,
+              resource.filter(i=> i.race === "Hispanic").length,
+              resource.filter(i=> i.race === "Black").length,
+              resource.filter(i=> i.race === "White").length,
+              resource.filter(i=> i.race === "American Indian or Alaska Native").length,
+              resource.filter(i=> i.race === "Native Hawaiian or Other Pacific Islander").length,
+              resource.filter(i=> i.race === "Asian").length,
+            ],
+            backgroundColor:[
+             'rgba(255, 99, 132, 0.6)',
+             'rgba(54, 162, 235, 0.6)',
+             'rgba(255, 206, 86, 0.6)',
+             'rgba(75, 192, 192, 0.6)',
+             'rgba(153, 102, 255, 0.6)',
+             'rgba(255, 159, 64, 0.6)',
+             'rgba(232, 60, 112, 0.6)'
+           ],
+           borderWidth: 1,
+           borderColor: '#777',
+           hoverBorderWidth: 3,
+           hoverBorderColor: '#000'
+         }
+       ],
+       layout: {
+         padding: {
+           left: 100,
+           right: 100,
+           top: 50,
+           bottom: 50
+         }
+       }
+      },
+      ethnicity: {
+        labels: [ 'Hispanic, Latino or of Spanish origin','Not of Hispanic, Latino, or of Spanish origin'],
+        datasets: [
+          {
+            label: 'Requests received',
+            data: [
+              resource.filter(i=> i.ethnicity === "Hispanic, Latino or of Spanish origin").length,
+              resource.filter(i=> i.ethnicity === "Not of Hispanic, Latino, or of Spanish origin").length,
             ],
             backgroundColor:[
              'rgba(255, 99, 132, 0.6)',
@@ -130,6 +164,7 @@ class GraphView extends Component {
         <h1>{this.props.history.location.state.title}</h1>
         <section className='chart-data-container'>
           <Chart chartData={this.state.gender} title='Gender' legendPosition='right' />
+          <Chart chartData={this.state.race} title='Race' legendPosition='right' />
           <Chart chartData={this.state.ethnicity} title='Ethnicity' legendPosition='right' />
           <Chart chartData={this.state.age} title='Age' legendPosition='right' />
         </section>

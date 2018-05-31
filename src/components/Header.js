@@ -42,7 +42,7 @@ class Header extends React.Component {
     let org = {
         organization_name: this.state.organization_name,
         phone_number: this.state.phone_number,
-        address : `${this.state.street},${this.state.State},${this.state.city},${this.state.zip_code}`,
+        address : `${this.state.street},${this.state.city},${this.state.State},${this.state.zip_code}`,
         operating_budget: this.state.operating_budget,
         formation_type : this.state.formation_type,
         full_time_staff: this.state.full_time_staff,

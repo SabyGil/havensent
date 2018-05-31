@@ -47,7 +47,7 @@ const MyMapComponent = compose(
               onMouseOut={()=>props.onToggleOpen(props["open "+k],k)}>
      {props["open "+k] && <InfoWindow>
         <div>
-        <p>{i.username}</p>
+        <p>{i.organization.organization_name}</p>
         <p>{i.organization.address}</p>
         <p>{i.organization.phone_number}</p>
         </div>
@@ -75,7 +75,7 @@ class Request extends Component {
   }
 
   ready(){
-    if(this.props.haven.title !== "" && (this.props.requestedResources.length > 0) && this.props.age !== "" && this.props.gender !== "" && this.props.ethnicity !== ""){
+    if(this.props.haven.title !== "" && (this.props.requestedResources.length > 0) && this.props.age !== "" && this.props.gender !== "" && this.props.ethnicity !== "" && this.props.race !== ""){
       return true
     }else{
       return false
@@ -86,6 +86,7 @@ class Request extends Component {
       gender: this.props.gender,
       age: this.props.age,
       ethnicity: this.props.ethnicity,
+      race: this.props.race,
       requester_email: this.props.requester_email,
       request_type: this.props.requestedResources.map(i=>i.id),
       Organization: this.props.haven.id
@@ -161,14 +162,11 @@ class Request extends Component {
               <option value="White">White</option>
               <option value="Native Hawaiian or Other Pacific Islander">Native Hawaiian or Other Pacific Islander</option>
             </select>
-            <p>Race</p>
+            <p>Ethnicity</p>
             <select onChange={(e)=>{this.props.dispatch({type:"ADD_ETHNICITY",payload:e.target.value})}}>
               <option>-Please Select-</option>
-              <option value="American Indian or Alaska Native">American Indian or Alaska Native</option>
-              <option value="Hispanic">Hispanic</option>
-              <option value="Black or African American">Black or African American</option>
-              <option value="White">White</option>
-              <option value="Native Hawaiian or Other Pacific Islander">Native Hawaiian or Other Pacific Islander</option>
+              <option value="Hispanic, Latino or of Spanish origin">Hispanic, Latino or of Spanish origin</option>
+              <option value="Not of Hispanic, Latino, or of Spanish origin">Not of Hispanic, Latino, or of Spanish origin</option>
             </select>
             <p>Age</p>
             <select onChange={(e)=>{this.props.dispatch({type:"ADD_AGE",payload:e.target.value})}}>
