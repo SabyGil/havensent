@@ -36,6 +36,7 @@ a {
   --heading-font-size: 3rem;
   --p-font-size: 2rem;
   --a-font-size: 1.7rem;
+  /* --global-vertical-margin: 1rem; */
 }
 
 /* google translate styles */
@@ -477,7 +478,7 @@ header .menu .logout-btn:hover {
 
 /* /Request */
 
-/* AdminView */
+/* Tables */
 
 .admin-view-page  {
   padding: 1rem 0;
@@ -489,38 +490,38 @@ header .menu .logout-btn:hover {
   color: var(--primary-blue);
 }
 
-.admin-view-page .requests-display table {
+table {
   width: 100%;
   display: table;
 }
 
-.admin-view-page .requests-display table .center {
+table .center {
   text-align: center;
 }
 
-.admin-view-page .requests-display table th {
+table th {
   padding: 2rem;
   border-radius: 2px;
   font-weight: bold;
   font-size: 2rem;
 }
 
-.admin-view-page .requests-display table td{
+table td{
   border: 1px solid silver;
   padding: 2rem;
   font-size: var(--p-font-size);
   vertical-align: middle;
 }
 
-.admin-view-page .requests-display table td a {
+table td a {
   color: var(--secondary-blue);
 }
 
-.admin-view-page .requests-display table .right {
+table .right {
   text-align: center;
 }
 
-.admin-view-page .requests-display table .right .btn {
+table .right .btn {
   height: 36px;
   line-height: 36px;
   padding: 0 2rem;
@@ -537,7 +538,18 @@ header .menu .logout-btn:hover {
   text-transform: uppercase;
 }
 
-/* /AdminView */
+/* service providers table  */
+.service-providers-container  {
+  padding: 1rem 0;
+}
+
+.service-providers-container h1 {
+  text-align: center;
+  font-size: var(--heading-font-size);
+  color: var(--primary-blue);
+}
+
+/* /Tables */
 
 /* header modal */
 .overlay {
@@ -797,7 +809,7 @@ footer {
   .responsiveTable td.pivoted .test{
     margin-left: 6.8rem;
   }
-  .admin-view-page .requests-display table td a {
+   table td a {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -805,7 +817,7 @@ footer {
     -ms-flex-pack: center;
     justify-content: center;
   }
-  .admin-view-page .requests-display Table .center {
+   Table .center {
     text-align: center;
   }
   .responsiveTable tbody tr {
@@ -898,7 +910,7 @@ footer {
   .request-page .top-box-b .submit-btn-container {
     padding-top: 1rem;
   }
-  .admin-view-page .requests-display {
+  .admin-view-page .request-page {
     padding: 0 2rem;
   }
   .modal-styles .modal-content h1, h2 {

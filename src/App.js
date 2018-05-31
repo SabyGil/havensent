@@ -9,6 +9,7 @@ import GraphView from './components/GraphView';
 import GraphViewByDemographic from './components/GraphViewByDemographic';
 import EditProfile from './components/EditProfile';
 import NewPassword from './components/NewPassword';
+import ServiceProviders from './components/ServiceProviders';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
@@ -17,7 +18,6 @@ class App extends Component {
     return (
       <Router>
         <div id="app">
-          
           <Header />
           <Route exact path='/'  component={LandingPage}/>
           <Route exact path='/request' component={Request}/>
@@ -25,7 +25,8 @@ class App extends Component {
           <Route exact path='/graphView' component={GraphView}/>
           <Route exact path='/demographicView' component={GraphViewByDemographic}/>
           <Route exact path="/forgetpassword/:token" component={NewPassword} />
-          <Route exact path='/editProfile' component={EditProfile}/> 
+          <Route exact path='/editProfile' component={EditProfile}/>
+          <Route exact path='/serviceProviders' component={ServiceProviders}/> 
           <Footer />
         </div>
       </Router>
