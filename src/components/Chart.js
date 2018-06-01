@@ -44,7 +44,7 @@ class Chart extends Component {
               position: this.props.legendPosition,
               "labels": {
                 // "fontColor": "blue",
-                fontSize: 25
+                fontSize: 20
               }
             },
             scales: {
@@ -58,7 +58,7 @@ class Chart extends Component {
               }],
               xAxes: [{
                 ticks: {
-                  fontSize: 20,
+                  fontSize: 18,
                   padding: 5
                 }
               }],
@@ -104,7 +104,7 @@ class Chart extends Component {
               position: this.props.legendPosition,
               "labels": {
                 // "fontColor": "blue",
-                fontSize: 25
+                fontSize: 20
               }
             },
           }}
@@ -125,7 +125,7 @@ class Chart extends Component {
               display: this.props.displayLegend,
               position: this.props.legendPosition,
               "labels": {
-                fontSize: 25
+                fontSize: 20
               }
             },
             layout: {

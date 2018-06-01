@@ -60,11 +60,7 @@ class GraphViewByDemographic extends Component {
   }
 
   render(){
-    console.log(this.state)
-    console.log(this.props)
-
     return (
-
       !this.props.resources?
       <Redirect to="/" />
       :
@@ -108,11 +104,8 @@ class GraphViewByDemographic extends Component {
           <option value="65-74">65-74</option>
           <option value="75 or Above">75 or Above</option>
         </select>
-        <section className='demographic-data-container panel'>
-        {/* <section className='feature panel'>
-          <div className='feature-chart'> */}
-            <Chart chartData={this.state.data} title='' legendPosition='right' />
-          {/* </div> */}
+        <section className='demographic-data-container'>
+          <Chart chartData={this.state.data} title='' legendPosition='right' />
         </section>
       </div>
     );
@@ -123,4 +116,4 @@ function mapStateToProps(state){
   return {requests: state.user.allRequests,resources:state.request.resources,filters:state.user.filters}
 }
 
-export default connect(mapStateToProps)(GraphViewByDemographic)
+export default connect(mapStateToProps)(GraphViewByDemographic);
