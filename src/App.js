@@ -26,7 +26,7 @@ class App extends Component {
           <Route exact path='/demographicView' component={GraphViewByDemographic}/>
           <Route exact path="/forgetpassword/:token" component={NewPassword} />
           <Route exact path='/editProfile' component={EditProfile}/>
-          <Route exact path='/serviceProviders' component={ServiceProviders}/> 
+          <Route exact path='/serviceProviders/:type' component={ServiceProviders}/> 
           <Footer />
         </div>
       </Router>

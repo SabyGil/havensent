@@ -4,7 +4,10 @@ const initialState ={
 	loginModalIsOpen:false,
 	loginFailed: false,
 	filters: {age: "",gender:"",ethnicity:""},
-	allRequests: []
+	allRequests: [],
+	allProviders: [],
+	filteredProviders: [],
+	providerReceived: false
 }
 export default function (state=initialState, action){
 	switch(action.type){
@@ -37,6 +40,18 @@ export default function (state=initialState, action){
 			allRequests: action.response.data
 
 		}
+		case 'ALL_PROVIDERS':
+		return {
+			...state,
+			allProviders: action.response.data,
+			providerReceived: true
+		}
+		case 'FILTER_PROVIDERS':
+		return {
+			...state,
+			filteredProviders: action.payload
+		}
+		
 		case 'SELECT_FILTER':
 
 		let filter = state.filters

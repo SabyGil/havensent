@@ -50,6 +50,10 @@ let api = {
 	getRequests : function(data){
 		let url = baseURL + "Request/"
 		return axios.get(url, header())
+	},
+	getProviders : function(data){
+		let url = baseURL + "Provider/"
+		return axios.get(url, header())
 	}
 }
 

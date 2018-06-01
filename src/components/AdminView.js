@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {getRequests} from "../store/actions/userActions";
+import {getRequests,getProviders} from "../store/actions/userActions";
 import {getResources} from "../store/actions/requestActions"
 import { Link,  } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
@@ -11,6 +11,9 @@ class AdminView extends Component {
   componentDidMount(){
     this.props.dispatch(getRequests())
     this.props.dispatch(getResources())
+    if(!this.props.providerReceived){
+      this.props.dispatch(getProviders())
+    }
   }
 
   render(){
@@ -46,7 +49,7 @@ class AdminView extends Component {
                         </div>
                       </Td>
                       <Td><div className="center">{resource.length}</div></Td>
-                      <Td><div className="right"><Link to='/serviceProviders'>Find Service Providers</Link></div></Td>
+                      <Td><div className="right"><Link to={`/serviceProviders/${i.title}`}>Find Service Providers</Link></div></Td>
                     </Tr>
                   )
                 }
@@ -70,7 +73,7 @@ AdminView.defaultProps ={
   requests:[]
 }
 function mapStateToProps(state){
-  return {requests: state.user.allRequests,resources:state.request.resources, isLoggedIn: state.user.isLoggedIn}
+  return {requests: state.user.allRequests,resources:state.request.resources, isLoggedIn: state.user.isLoggedIn,providerReceived:state.user.providerReceived,provider:state.user.allProviders}
 }
 
 export default connect(mapStateToProps)(AdminView)

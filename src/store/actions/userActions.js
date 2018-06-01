@@ -39,8 +39,22 @@ export function getRequests(){
 		.catch(err=>console.log(err))
 }
 
+export function getProviders(){
+	return disptach => api.getProviders()
+		.then(response=>
+			disptach({type:"ALL_PROVIDERS",response}))
+		.catch(err=>console.log(err))
+}
+
 export function forgotPassword(data){
 	return disptach => api.forgetPassword(data)
 		.then(response => 
 			disptach({type:"FORGOT_PASSWORD_SENT"}))
+}
+
+export function filterProviders(type,allProviders){
+	return disptach => {
+		let filteredArray = allProviders.filter(i=> i.category1 === type || i.category2 === type)
+		disptach({type: "FILTER_PROVIDERS", payload: filteredArray})
+	}
 }
