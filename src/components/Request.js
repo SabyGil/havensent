@@ -114,8 +114,7 @@ class Request extends Component {
                 lon={this.props.lon}
                 lat={this.props.lat}
                 selected = {this.props.haven}
-                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDURnY8-RKhvImIKT552ulVjqHmRKdKkr8
-  &v=3.exp&libraries=geometry,drawing,places"
+                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDURnY8-RKhvImIKT552ulVjqHmRKdKkr8&v=3.exp&libraries=geometry,drawing,places"
                 loadingElement = {<div style={{ height: `100%` }} />}
                 containerElement = {<div className = 'style' />}
                 mapElement={<div style={{ height: `100%` }}
