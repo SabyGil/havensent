@@ -59,11 +59,7 @@ class GraphViewByDemographic extends Component {
   }
 
   render(){
-    console.log(this.state)
-    console.log(this.props)
-
     return (
-
       !this.props.resources?
       <Redirect to="/" />
       :
@@ -79,13 +75,13 @@ class GraphViewByDemographic extends Component {
 
         <label>Ethnicity</label>
         <select onChange={ (e)=>{this.props.dispatch({type:"SELECT_FILTER",payload: {type:"ethnicity", data: e.target.value}}); this.getChartData()}} >
-            <option value={""}>-----</option>
-            <option value="Hispanic">Hispanic</option>
-            <option value="Black">Black</option>
-            <option value="White">White</option>
-            <option value="Latino/Spanish">Latino or Spanish Origin</option>
-            <option value="Middle Eastern">Middle Eastern</option>
-            <option value="Other">Other</option>
+          <option value={""}>-----</option>
+          <option value="Hispanic">Hispanic</option>
+          <option value="Black">Black</option>
+          <option value="White">White</option>
+          <option value="Latino/Spanish">Latino or Spanish Origin</option>
+          <option value="Middle Eastern">Middle Eastern</option>
+          <option value="Other">Other</option>
         </select>
 
         <label>Age</label>
@@ -100,11 +96,8 @@ class GraphViewByDemographic extends Component {
           <option value="65-74">65-74</option>
           <option value="75 or Above">75 or Above</option>
         </select>
-        <section className='demographic-data-container panel'>
-        {/* <section className='feature panel'>
-          <div className='feature-chart'> */}
-            <Chart chartData={this.state.data} title='' legendPosition='right' />
-          {/* </div> */}
+        <section className='demographic-data-container'>
+          <Chart chartData={this.state.data} title='' legendPosition='right' />
         </section>
       </div>
     );
@@ -115,4 +108,4 @@ function mapStateToProps(state){
   return {requests: state.user.allRequests,resources:state.request.resources,filters:state.user.filters}
 }
 
-export default connect(mapStateToProps)(GraphViewByDemographic)
+export default connect(mapStateToProps)(GraphViewByDemographic);
