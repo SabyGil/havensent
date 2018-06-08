@@ -36,6 +36,7 @@ class LandingPage extends React.Component {
   }
 
   render(){
+    console.log(this.props)
     return (
       <div>
         <section className='jumbo-container filter'>
@@ -62,13 +63,13 @@ class LandingPage extends React.Component {
                 </Modal>
 
                 <Modal
-                  isOpen={false}
+                  isOpen={this.props.finish}
+                  onRequestClose={()=>this.props.dispatch({type:"THANKS",payload:false})}
                   className='landing-page-modals'
                   overlayClassName='overlay'
-                  onRequestClose={this.modal}
                   >
-                  <Form onSubmit={this.handleSubmit}>
-                    <h1>Thanks! Your input helps *location* achieve its mission for your community.</h1>
+                  <Form onSubmit={()=>this.props.dispatch({type:"THANKS",payload:false})}>
+                    <h1>Thanks! Your input helps {this.props.haven} achieve its mission for your community.</h1>
                    <FormGroup>
                      <Label></Label>
                      <button className='thanks-btn'>Great</button>
@@ -83,7 +84,7 @@ class LandingPage extends React.Component {
 }
 
 function mapStateToProps(state){
-  return {error: state.request.zipError}
+  return {error: state.request.zipError, finish:state.request.finish,haven: state.request.haven.title}
 }
 
 export default connect(mapStateToProps)(LandingPage);

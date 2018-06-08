@@ -58,3 +58,9 @@ export function filterProviders(type,allProviders){
 		disptach({type: "FILTER_PROVIDERS", payload: filteredArray})
 	}
 }
+
+export function getProfile(){
+	return disptach => api.getProfile()
+		.then(response =>
+			disptach({type: "PROFILE", response}))
+}

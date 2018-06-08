@@ -79,10 +79,11 @@ class GraphViewByDemographic extends Component {
         <select onChange={ (e)=>{this.props.dispatch({type:"SELECT_FILTER",payload: {type:"ethnicity", data: e.target.value}}); this.getChartData()}} >
             <option value={""}>-----</option>
             <option value="American Indian or Alaska Native">American Indian or Alaska Native</option>
-            <option value="Hispanic">Hispanic</option>
             <option value="Black or African American">Black or African American</option>
+            <option value="Asian">Asian</option>
             <option value="White">White</option>
             <option value="Native Hawaiian or Other Pacific Islander">Native Hawaiian or Other Pacific Islander</option>
+            <option value="Prefer not to say">Prefer not to say</option>
         </select>
 
         <label>Race</label>

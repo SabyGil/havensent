@@ -12,6 +12,7 @@ const initialState ={
 	lon: -73.8736,
 	zipError: "",
 	modalIsOpen: false,
+	finish:false,
 	haven: {
 		title: "",
 		id: ""
@@ -21,8 +22,6 @@ const initialState ={
 
 export default function (state=initialState, action){
 	switch(action.type){
-		case 'CLEANUP_REQUEST':
-		return initialState
 		case 'GET_RESOURCES':
 		return {
 			...state,
@@ -78,7 +77,12 @@ export default function (state=initialState, action){
 				zipError: true
 			}
 		}
-		
+		case "LATLON":
+		return {
+			...state,
+			lat:action.payload.lat,
+			lon: action.payload.lon
+		}
 		case "ADD_GENDER":
 		return {
 			...state,
@@ -104,15 +108,37 @@ export default function (state=initialState, action){
 			...state,
 			email : action.payload
 		}
+		case 'THANKS':
+		console.log(action)
+		if(action.payload){
+			return {
+				...state,
+				finish: action.payload
+			}
+		}else{
+			return {
+				...state,
+				finish: action.payload,
+				haven: {
+					title: "",
+					id: ""
+				}
+			}
+		}
 		case 'FINISH':
 		return {
 			...state,
-			requestedResources : [],
-			email: "",
+			allOrganizations: [],
+			requestedResources: [],
+			requester_email: "",
 			age: "",
 			gender: "",
-			ethnicity: "",
-			modalIsOpen:false
+			ethnicity:"",
+			zipcode : 11208,
+			lat: 40.6762,
+			lon: -73.8736,
+			zipError: "",
+			modalIsOpen: false,
 		}
 		case 'OPEN_MODAL':
 		return {

@@ -17,6 +17,7 @@ class EditProfile extends Component {
     e.preventDefault()
     this.props.editProfile(this.props.edited)
   }
+  
   render(){
     console.log(this.props)
     return (

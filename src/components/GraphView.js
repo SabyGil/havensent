@@ -47,14 +47,14 @@ class GraphView extends Component {
        }
       },
       race: {
-        labels: [ 'Hispanic','Black','White',"American Indian or Alaska Native", "Native Hawaiian or Other Pacific Islander","Asian"],
+        labels: [ 'Black','White','Prefer not to say',"American Indian or Alaska Native", "Native Hawaiian or Other Pacific Islander","Asian"],
         datasets: [
           {
             label: 'Requests received',
             data: [
-              resource.filter(i=> i.race === "Hispanic").length,
               resource.filter(i=> i.race === "Black").length,
               resource.filter(i=> i.race === "White").length,
+              resource.filter(i=> i.race === "Prefer not to say").length,
               resource.filter(i=> i.race === "American Indian or Alaska Native").length,
               resource.filter(i=> i.race === "Native Hawaiian or Other Pacific Islander").length,
               resource.filter(i=> i.race === "Asian").length,

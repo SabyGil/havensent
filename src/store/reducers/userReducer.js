@@ -34,6 +34,11 @@ export default function (state=initialState, action){
 			...state,
 			loginFailed: true
 		}
+		case 'PROFILE':
+		return {
+			...state,
+			profile: action.response.data[0]
+		}
 		case 'ALL_REQUESTS':
 		return {
 			...state,
@@ -51,7 +56,7 @@ export default function (state=initialState, action){
 			...state,
 			filteredProviders: action.payload
 		}
-		
+
 		case 'SELECT_FILTER':
 
 		let filter = state.filters

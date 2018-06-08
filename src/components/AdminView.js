@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {getRequests,getProviders} from "../store/actions/userActions";
+import {getRequests,getProviders,getProfile} from "../store/actions/userActions";
 import {getResources} from "../store/actions/requestActions"
 import { Link,  } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
@@ -11,6 +11,7 @@ class AdminView extends Component {
   componentDidMount(){
     this.props.dispatch(getRequests())
     this.props.dispatch(getResources())
+    this.props.dispatch(getProfile())
     if(!this.props.providerReceived){
       this.props.dispatch(getProviders())
     }
@@ -25,6 +26,7 @@ class AdminView extends Component {
 
       :
       <div className='admin-view-page fixed-width global-padding'>
+      <h1>Here's your Haven Specific Link:</h1>
        <section className='requests-display'>
          <h1>Requests Received</h1>
         <Table responsive hover>
@@ -73,7 +75,7 @@ AdminView.defaultProps ={
   requests:[]
 }
 function mapStateToProps(state){
-  return {requests: state.user.allRequests,resources:state.request.resources, isLoggedIn: state.user.isLoggedIn,providerReceived:state.user.providerReceived,provider:state.user.allProviders}
+  return {requests: state.user.allRequests,resources:state.request.resources, isLoggedIn: state.user.isLoggedIn,providerReceived:state.user.providerReceived,provider:state.user.allProviders,profile:state.user.profile}
 }
 
 export default connect(mapStateToProps)(AdminView)
