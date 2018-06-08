@@ -106,7 +106,7 @@ class Request extends Component {
 
         <section className='map-area'>
           <div className='container'>
-            <h1>I Want Help Here:</h1>
+            <h1>Select Location:</h1>
             <div className='map-container'>
               {this.props.allOrganizations.length>0 && <MyMapComponent isMarkerShown
                 organizations = {this.props.allOrganizations && this.props.allOrganizations.filter(i=> i.organization != null )}
@@ -125,7 +125,7 @@ class Request extends Component {
         </section>
 
         <section className='haven-info-container top-box top-box-a'>
-          <h1>I Need Help With:</h1>
+          <h1>Select Needs:</h1>
           <div className='icons-container'>
             {
               this.props.resources && this.props.resources.map(i=>{

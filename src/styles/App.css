@@ -356,7 +356,7 @@ header .menu .logout-btn:hover {
 .request-page {
   display: -ms-grid;
   display: grid;
-      grid-template-areas:
+  grid-template-areas:
   'top-box-a map map '
   'top-box-b map map';
   padding: 1rem 0;
@@ -867,8 +867,28 @@ footer {
     background-color: var(--primary-blue);
     border: 1px solid var(--secondary-blue);
   }
+  .jumbo-container {
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.3))), url(/static/media/bg.3f2d836a.jpg) no-repeat top center;
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.3)), url(/static/media/bg.3f2d836a.jpg) no-repeat center center;
+    background: -o-linear-gradient(top, rgba(0, 0, 0, 0.3)), url(/static/media/bg.3f2d836a.jpg) no-repeat center center;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.3))), url(/static/media/bg.3f2d836a.jpg) no-repeat center center;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3)), url(/static/media/bg.3f2d836a.jpg) no-repeat center center;
+    background-size: cover;
+    text-align: center;
+    color: white;
+    height: 50rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  .jumbo-container .jumbo-blurb{
+    font-size: 9vw;
+  }
   .request-page {
-        grid-template-areas:
+    grid-template-areas:
     'top-box-a'
     'map'
     'top-box-b';
