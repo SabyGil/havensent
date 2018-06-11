@@ -19,6 +19,7 @@ class App extends Component {
       <Router>
         <div id="app">
           <Header />
+          <Route />
           <Route exact path='/'  component={LandingPage}/>
           <Route exact path='/request' component={Request}/>
           <Route exact path='/adminView' component={AdminView}/>
