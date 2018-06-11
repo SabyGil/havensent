@@ -58,25 +58,25 @@ class Chart extends Component {
               }],
               xAxes: [{
                 ticks: {
-                  fontSize: 18,
-                  padding: 5
+                  fontSize: 15,
+                  // padding: 5
                 }
               }],
             }
 
           }}
-          onResize = {function(Chart, size) {
-           var showTicks = (size.height < 600) ? false : true;
-           Chart.options = {
-              scales: {
-                  xAxes: [{
-                      ticks: {
-                          display: showTicks
-                      }
-                  }],
-                }
-             };
-          }}
+          // onResize = {function(Chart, size) {
+          //  var showTicks = (size.height < 600) ? false : true;
+          //  Chart.options = {
+          //     scales: {
+          //         xAxes: [{
+          //             ticks: {
+          //                 display: showTicks
+          //             }
+          //         }],
+          //       }
+          //    };
+          // }}
 
         />
         </div>
@@ -147,7 +147,7 @@ class Chart extends Component {
               }],
               xAxes: [{
                 ticks: {
-                  fontSize: 20,
+                  fontSize: 16,
                   padding: 5
                 }
               }],

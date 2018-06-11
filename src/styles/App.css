@@ -21,10 +21,12 @@ a {
   text-decoration: none;
 }
 
-.button {
-  padding: var(--btn-padding);
-  font-size: var(--a-font-size);
-  border: none;
+.container {
+  width: 100%;
+  padding-right: 7.5rem;
+  padding-left: 7.5rem;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 /* css variables */
@@ -36,6 +38,7 @@ a {
   --heading-font-size: 3rem;
   --p-font-size: 2rem;
   --a-font-size: 1.7rem;
+  --grey-border: 1px solid lightGrey;
 }
 
 /* google translate styles */
@@ -80,7 +83,7 @@ a {
 
 .tab-content .register-tab {
   padding: 2rem;
-  border: 1px solid lightGrey;
+  border: var(--grey-border);
 }
 
 .tab-content .register-tab Button {
@@ -133,11 +136,11 @@ a {
   -ms-flex-align: center;
   align-items: center;
   padding-top: 1rem;
-  border-top: 1px solid lightGrey;
+  border-top: var(--grey-border);
 }
 
 .login-footer {
-  border-top: 1px solid lightGrey;
+  border-top: var(--grey-border);
   margin-top: 1rem;
   padding-top: 1rem;
 }
@@ -413,7 +416,7 @@ header .menu .logout-btn:hover {
   grid-template-columns: repeat(auto-fit, minmax(min-content, 33%));
   width: 100%;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid lightGrey;
+  border-bottom: var(--grey-border);
 }
 
 .top-box-a img {
@@ -604,7 +607,7 @@ table .right .btn {
 
 .landing-page-modals .form-group .thanks-btn {
   background-color: white;
-  border: 1px solid lightGrey;
+  border: var(--grey-border);
   font-size: 1.8rem;
   padding: 1rem 3rem;
   width: 30rem;
@@ -706,7 +709,7 @@ table .right .btn {
 }
 
 .chart > * {
-  border: 1px solid lightGrey;
+  border: var(--grey-border);
   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
@@ -762,7 +765,7 @@ table .right .btn {
 
 .edit-profile-container {
   padding: 1rem 0;
-  border: 1px solid lightGrey;
+  border: var(--grey-border);
   font-size: 2rem;
   text-align: center;
   margin: 0 auto;
@@ -868,7 +871,7 @@ footer {
     border: 1px solid var(--secondary-blue);
   }
   .jumbo-container {
-    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.3))), url(/static/media/bg.3f2d836a.jpg) no-repeat top center;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.3))), url(/static/media/bg.3f2d836a.jpg) no-repeat center center;
     background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.3)), url(/static/media/bg.3f2d836a.jpg) no-repeat center center;
     background: -o-linear-gradient(top, rgba(0, 0, 0, 0.3)), url(/static/media/bg.3f2d836a.jpg) no-repeat center center;
     background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.3))), url(/static/media/bg.3f2d836a.jpg) no-repeat center center;
@@ -912,10 +915,14 @@ footer {
   .admin-view-page .request-page {
     padding: 0 2rem;
   }
+  /* request modal */
   .modal-styles .modal-content h1, h2 {
     margin: .5rem 10rem;
     padding: 0 25rem;
     text-align: center;
+  }
+  .services-chart-container {
+    padding: 2rem 0;
   }
   .demographic-data-container .chart {
     min-width: 100%;
@@ -926,18 +933,21 @@ footer {
     margin: 1rem 0;
     width: 100%;
   }
-
   .edit-profile-container {
     margin: auto;
     width: auto;
   }
-
   .edit-profile-container input[type=submit] {
     width: 15rem;
   }
-
   .edit-profile-container input {
     width: auto;
+  }
+  .landing-page-modals  {
+    padding: 10rem;
+  }
+  .landing-page-modals .form-group .thanks-btn  {
+    width: 20rem;
   }
 }
 
@@ -957,7 +967,7 @@ footer {
     text-align: center;
   }
   .responsiveTable tbody tr {
-    border: 1px solid lightGrey !important;
+    border: var(--grey-border) !important;
   }
 }
 
@@ -971,6 +981,7 @@ footer {
 @media print {
   .goog-te-menu-value {
     display: none;
+    visibility: hidden;
   }
   .header-background {
     display: none;
@@ -978,17 +989,14 @@ footer {
   .about-us-container {
     display: none;
   }
-  .services-chart-container .chart-data-container {
-    display: block;
-    margin: 0 auto;
-    width: 70rem;
+  .services-chart-container {
+    padding-top: 3rem;
   }
-  .chart {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+  .services-chart-container h1 {
+    padding: 2rem;
+  }
+  .chart-data-container {
+    margin: 0 auto;
+    width: 80rem;
   }
 }
