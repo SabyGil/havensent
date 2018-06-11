@@ -23,47 +23,49 @@ class AdminView extends Component {
 
         <Redirect to="/" />
 
-        :
-        <div className='admin-view-page fixed-width global-padding'>
-         <section className='requests-display'>
-           <h1>Requests Received</h1>
-          <Table responsive hover>
-            <Thead>
-               <Tr>
-                 <Th><div className="s5">Types of Services</div></Th>
-                 <Th> <div className="center">Number of requests</div></Th>
-                 <Th> <div className="right"></div></Th>
-               </Tr>
-            </Thead>
-            <Tbody>
-              {
-              this.props.resources.map(i => {
-                let resource = this.props.requests.filter(req=>req.request_type.includes(i.id))
-                return (
-                      <Tr>
-                        <Td>
-                          <div>
-                            <Link to={{ pathname: '/graphView',state: { resource: resource,title:i.title }}}>
-                              {i.title}
-                            </Link>
-                          </div>
-                        </Td>
-                        <Td><div className="center">{resource.length}</div></Td>
-                        <Td><div className="right"><Link to={`/serviceProviders/${i.title}`}>Find Service Providers</Link></div></Td>
-                      </Tr>
-                    )
-                  }
-                )}
-               <Tr>
-                 <Td><Link to="/demographicView">TOTAL</Link></Td>
-                 <Td className="center"><span className='total-num'>{this.props.requests.length}</span></Td>
-                 <Td className="right"> </Td>
-               </Tr>
-           </Tbody>
-        </Table>
-      </section>
-        <br/>
-      </div>
+      :
+      <div className='admin-view-page fixed-width global-padding'>
+      {this.props.profile && <h1>Here's your Haven Specific Link: {`http://localhost:3000/request?id=${this.props.profile.id}`}</h1>}
+       <section className='requests-display'>
+         <h1>Requests Received</h1>
+        <Table responsive hover>
+          <Thead>
+             <Tr>
+               <Th><div className=" s5 ">Types of Services</div></Th>
+               <Th> <div className="center">Number of requests</div></Th>
+               <Th> <div className=" right"></div></Th>
+             </Tr>
+          </Thead>
+          <Tbody>
+            {
+            this.props.resources.map(i => {
+              let resource = this.props.requests.filter(req=>req.request_type.includes(i.id))
+              return (
+                    <Tr>
+                      <Td>
+                        <div>
+                          <Link to={{ pathname: '/graphView',state: { resource: resource,title:i.title }}}>
+                            {i.title}
+                          </Link>
+                        </div>
+                      </Td>
+                      <Td><div className="center">{resource.length}</div></Td>
+                      <Td><div className="right"><Link to={`/serviceProviders/${i.title}`}>Find Service Providers</Link></div></Td>
+                    </Tr>
+                  )
+                }
+              )}
+             <Tr>
+               <Td><Link to="/demographicView">TOTAL</Link></Td>
+               <Td className="center"><span className='total-num'>{this.props.requests.length}</span></Td>
+               <Td className="right"> </Td>
+             </Tr>
+         </Tbody>
+      </Table>
+    </section>
+      <br/>
+    </div>
+
     );
   }
 }
