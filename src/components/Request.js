@@ -127,7 +127,7 @@ class Request extends Component {
               />   
         </center>
             :
-            <div className='request-page fixed-width fixed-height container-fluid'>
+            <div className='request-page fixed-width fixed-height container'>
                     <section className='map-area'>
                       <div className='container'>
                         <h1>Select Where I Need Help:</h1>
