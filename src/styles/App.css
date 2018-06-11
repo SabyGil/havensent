@@ -21,6 +21,14 @@ a {
   text-decoration: none;
 }
 
+.container {
+  width: 100%;
+  padding-right: 7.5rem;
+  padding-left: 7.5rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 /* css variables */
 :root {
   --primary-blue: #64B5F6;
@@ -863,7 +871,7 @@ footer {
     border: 1px solid var(--secondary-blue);
   }
   .jumbo-container {
-    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.3))), url(/static/media/bg.3f2d836a.jpg) no-repeat top center;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.3))), url(/static/media/bg.3f2d836a.jpg) no-repeat center center;
     background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.3)), url(/static/media/bg.3f2d836a.jpg) no-repeat center center;
     background: -o-linear-gradient(top, rgba(0, 0, 0, 0.3)), url(/static/media/bg.3f2d836a.jpg) no-repeat center center;
     background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.3))), url(/static/media/bg.3f2d836a.jpg) no-repeat center center;
@@ -973,6 +981,7 @@ footer {
 @media print {
   .goog-te-menu-value {
     display: none;
+    visibility: hidden;
   }
   .header-background {
     display: none;
@@ -980,17 +989,14 @@ footer {
   .about-us-container {
     display: none;
   }
-  .services-chart-container .chart-data-container {
-    display: block;
-    margin: 0 auto;
-    width: 70rem;
+  .services-chart-container {
+    padding-top: 3rem;
   }
-  .chart {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+  .services-chart-container h1 {
+    padding: 2rem;
+  }
+  .chart-data-container {
+    margin: 0 auto;
+    width: 80rem;
   }
 }

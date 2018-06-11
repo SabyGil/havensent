@@ -102,7 +102,7 @@ class Request extends Component {
   render(){
     console.log(this.props)
     return (
-      <div className='request-page fixed-width fixed-height'>
+      <div className='request-page fixed-width fixed-height container-fluid'>
 
         <section className='map-area'>
           <div className='container'>
