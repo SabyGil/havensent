@@ -115,7 +115,6 @@ class Request extends Component {
   render(){
     console.log(this.props)
     return (
-<<<<<<< HEAD
       <div>
        { 
         this.props.allOrganizations.length == 0?
