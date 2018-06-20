@@ -25,7 +25,7 @@ class AdminView extends Component {
 
       :
       <div className='admin-view-page fixed-width global-padding'>
-      {this.props.profile && <h1>Here's your Haven Specific Link: {`http://localhost:3000/request?id=${this.props.profile.id}`}</h1>}
+      {this.props.profile && <h1>Here's the link for *haven name here*: {`http://localhost:3000/request?id=${this.props.profile.id}`}</h1>}
        <section className='requests-display'>
          <h1>Requests Received</h1>
         <Table responsive hover>
