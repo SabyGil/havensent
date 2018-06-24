@@ -130,7 +130,7 @@ class Request extends Component {
             <div className='request-page fixed-width fixed-height container'>
                     <section className='map-area'>
                       <div className='container'>
-                        <h1>Select Where I Need Help:</h1>
+                        <h1>Select Where I Want Help:</h1>
                         <div className='map-container'>
                           {this.props.allOrganizations.length>0 && <MyMapComponent isMarkerShown
                             organizations = {this.props.allOrganizations && this.props.allOrganizations.filter(i=> i.organization != null )}

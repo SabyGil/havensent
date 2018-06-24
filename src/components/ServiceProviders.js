@@ -20,13 +20,13 @@ class ServiceProviders extends Component {
               <a target="_blank" href={provider.website} > {provider.website} </a>
             </Td>
             <Td>
-              {provider.email !== "nan" ? provider.email : "No Email"}
+              {provider.email !== "nan" ? provider.email : "N/A"}
             </Td>
             <Td>
-              {provider.address}
+              {provider.address !== "nan" ? provider.address : "N/A"}
             </Td>
             <Td>
-              {provider.phone_number}
+              {provider.phone_number !== "nan" ? provider.phone_number : "N/A"}
             </Td>
         </Tr>
       )
