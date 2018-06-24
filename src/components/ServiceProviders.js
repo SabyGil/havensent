@@ -17,7 +17,7 @@ class ServiceProviders extends Component {
               {provider.name}
             </Td>
             <Td>
-              <a target="_blank" href={provider.website} > {provider.website} </a>
+              {provider.website !== "nan" ? <a target="_blank" href={provider.website} > {provider.website} </a>: "N/A"}
             </Td>
             <Td>
               {provider.email !== "nan" ? provider.email : "N/A"}
@@ -38,7 +38,7 @@ class ServiceProviders extends Component {
        <Redirect to="/adminView" />
       :
       <div className='service-providers-container fixed-width global-padding'>
-        <h1>Service Providers</h1>
+        <h1>{this.props.match.params.type} Providers</h1>
         {
           this.props.provider.length == 0?
           <h2>Currently no Providers</h2>
