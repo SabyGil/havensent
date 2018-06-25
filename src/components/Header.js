@@ -260,7 +260,12 @@ class Header extends React.Component {
                     <Label for="part_time_staff"># of Part-Time Staff:</Label>
                     <Input required onChange={this.handleChange} type="number" name="part_time_staff" placeholder="# of PT Employees" />
                   </FormGroup>
-
+                  <a style={{paddingRight:"20px"}} href="https://docs.google.com/document/d/16fa27umgVIW-AUZgvT97-5TLkPC-Dyi2wQGY0MKx4-E/edit?usp=sharing">Privacy Policy</a>
+                  <a href="https://docs.google.com/document/d/13vni_Sz8HXcHhSa2-_Ioky0LHPaeUYlX3VrKU2PZQ4k/edit?usp=sharing">Terms of Use</a>
+                  <FormGroup>
+                  <Input style={{marginTop:"10px"}} name="terms" required type="checkbox"/> <Label style={{paddingRight:"20px"}}  for="terms">I agree to the Terms of Service and Privacy Policy</Label>
+                  
+                  </FormGroup>
                   <span className='sign-up-footer'>
                     <button onClick={(e)=>{this.toggleStep(e,2)}}>Back</button>
                     <button type="submit"> Submit </button>
